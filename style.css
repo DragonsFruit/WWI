@@ -1,0 +1,55 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar {
+    float: top;
+    height: 5%;
+    width: 95%;
+    margin-left: 5%;
+    border: 1px solid;
+    border-color: black;
+}
+
+.productAfbeelding {
+    float: left;
+    height: 55%;
+    width: 40%;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+    border: 1px solid;
+    border-color: black;
+}
+
+.productInformatie {
+    float: left;
+    height: 30%;
+    width: 30%;
+    margin-top: 5%;
+    border: 1px solid;
+    border-color: black;
+    position: relative;
+}
+
+.bestelKnop {
+    float: left;
+    height: 5%;
+    width: 30%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 1px solid;
+    border-color: black;
+}
+
+.productBeschrijving {
+    float: left;
+    height: 30%;
+    width: 30%;
+    border: 1px solid;
+    border-color: black;
+    position: relative;
+}
