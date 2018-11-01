@@ -1,9 +1,6 @@
 <?php
-    include 'database.php';
-
-    $productAfbeelding = '<img src="' . $foto . '"/>'; // Weet niet, kom ik ook niet uit
-    $productInformatie = $naam;
-    $productBeschrijving = $omschrijving;
+    // Connectie naar database file
+    include "database.php";
 ?>
 <html>
 <link rel="stylesheet" href="style.css"> 
@@ -15,10 +12,14 @@
 </nav>
 <body>
     <div class="productAfbeelding">
-        <?php echo $productAfbeelding ?>
+        <?php 
+            echo '<img src="data:image/jpeg;base64,'.base64_encode($blob).'"/>';
+        ?>
     </div>
     <div class="productInformatie">
-        <?php echo $productInformatie ?>
+        <?php 
+            echo $productNaam;
+        ?>
     </div>
     <div class="bestelKnop">
         TEST
