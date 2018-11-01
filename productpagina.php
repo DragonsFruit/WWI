@@ -1,7 +1,9 @@
 <?php
-    $productAfbeelding = "TEST";
-    $productInformatie = "TEST";
-    $productBeschrijving = "TEST";
+    include 'database.php';
+
+    $productAfbeelding = '<img src="' . $foto . '"/>'; // Weet niet, kom ik ook niet uit
+    $productInformatie = $naam;
+    $productBeschrijving = $omschrijving;
 ?>
 <html>
 <link rel="stylesheet" href="style.css"> 
