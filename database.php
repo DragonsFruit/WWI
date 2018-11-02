@@ -7,7 +7,8 @@ $pass = "";
 $pdo = new PDO($db, $user, $pass);
 
 // Voorbereiden
-$stmt = $pdo->prepare("SELECT * FROM stockitems WHERE StockItemID=1"); //stockitemid moet uiteindelijk variabel zijn
+$id = ($_GET["id"]);
+$stmt = $pdo->prepare("SELECT * FROM stockitems WHERE StockItemID=$id"); 
 
 // Uitvoeren
 $stmt->execute();
