@@ -6,7 +6,14 @@ html {
 body {
 /* Margin bottom by footer height */
     margin-bottom: 60px;
+    padding-top: 54px;
 }
+    @media (min-width: 992px) {
+    body {
+      padding-top: 56px;
+    }
+  }
+
 
 .footer {
     position: absolute;
@@ -20,7 +27,7 @@ body {
 
 .wrapper{
     display:grid;
-    grid-template-columns: 15% 30%;
+    grid-template-columns: 100% 100%;
     grid-column-gap:1em;
     grid-row-gap:1em;
 }
@@ -32,3 +39,20 @@ body {
 .wrapper > div:nth-child(odd){
     background:#ddd;
 }
+
+
+.productinformatiedoos{
+    display:grid;
+    grid-template-columns: 30% 30%;
+    grid-column-gap:1em;
+    grid-row-gap:1em;
+}
+
+.productinformatiedoos > div{
+    background:rgb(255, 255, 255);
+    padding:1em;
+}
+.productinformatiedoos > div:nth-child(odd){
+    background:rgb(0, 0, 0);
+}
+
