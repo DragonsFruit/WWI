@@ -1,9 +1,23 @@
 <?php
     // Connectie naar database file
-    include "database.php";
+    include "classes/DB.php";
 ?>
+
 <html>
-<link rel="stylesheet" href="style.css"> 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JS -->
+
+    <title><?php echo $productNaam; ?> | WWI</title>
+</head>
+
 <nav class="nav-bar">
   <a href="#hoofdpagina" class="nav-button">Hoofdpagina</a>
   <a href="#producten" class="nav-button">Producten</a>
@@ -17,9 +31,7 @@
         ?>
     </div>
     <div class="productInformatie">
-        <?php 
-            echo $productNaam;
-        ?>
+        <?php echo $productNaam; ?>
     </div>
     <div class="bestelKnop">
         TEST
