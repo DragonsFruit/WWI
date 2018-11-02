@@ -52,6 +52,10 @@
     </nav>
 
 
+<!--Grid Afbeelding-->
+
+    <div class ="wrapper">
+    <div>
     <!-- Carousel -->
     <main class="container-fluid">
         <div class="row">
@@ -87,7 +91,6 @@
             </div>
         </div>
     </main>
-    <!-- <div class="productInformatie">
         <?php echo $productNaam; ?>
     </div>
     <div class="bestelKnop">
@@ -96,11 +99,12 @@
     <div class="productBeschrijving">
         <?php echo $productBeschrijving ?>
     </div>
-    <div> -->
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
-      </div>
+
+    <!-- footer -->
+        <div> 
+        <footer class="footer">
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
     </footer>
 </body>
 </html>
