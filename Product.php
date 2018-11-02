@@ -66,97 +66,71 @@
         </div>
     </nav>
 
-<div class="container">
+<!-- <div class="container"> -->    
+    <div class="left" class="container" >
+        <div  class="row">
 
-<div class="row">
+        <div class="col-lg-7">
+            <main class="container-fluid">
+                <div class="row">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <?php    
+                            $image = [1,2];
+                                foreach ($image as $key => $value) {
+                                    if($key == 1) {
+                                        echo "<div class='carousel-item active'>";
+                                    } else {
+                                        echo "<div class='carousel-item'>";
+                                    }
 
-  <div class="col-lg-9">
-    <main class="container-fluid">
-        <div class="row">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <?php    
-                    $image = [1,2];
-                        foreach ($image as $key => $value) {
-                            if($key == 1) {
-                                echo "<div class='carousel-item active'>";
-                            } else {
-                                echo "<div class='carousel-item'>";
-                            }
+                                    echo "<img class='d-block w-100' src='https://via.placeholder.com/900x400'/></div>";
+                                }
+                                
+                            ?>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
 
-                            echo "<img class='d-block w-100' src='https://via.placeholder.com/900x400'/></div>";
-                        }
-                        
-                    ?>
+                    </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+            </main>
+        
+        <div class="right">
 
+            <div class="card mt-4">
+            <h1 class="card-header"><?php echo $productNaam; ?></h1>
+            <div class="list-group">
+                <h4>$24.99</h1>
+                <p class="card-text"> <?php echo $productBeschrijving ?> </p>
+                <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                4.0 sterren
+            </div>
             </div>
         </div>
-    </main>
-  </div>
 
-  <!-- /.col-lg-3 -->
+        </div>
 
-  <div class="col-lg-3">
-
-    <div class="card mt-4">
-    <h1 class="my-4"></h1>
-    <div class="list-group">
-    <h3 class="card-title"> <?php echo $productNaam; ?></h1>
-        <h4>$24.99</h1>
-        <p class="card-text"> <?php echo $productBeschrijving ?> </p>
-        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-        4.0 sterren
     </div>
-    
-    <!-- /.card -->
-
-    <div class="card card-outline-secondary my-4">
-      <div class="card-header">
-        Product Reviews
-      </div>
-      <div class="card-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-        <hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-        <hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-        <hr>
-        <a href="#" class="btn btn-success">Leave a Review</a>
-      </div>
-    </div>
-    <!-- /.card -->
-
-  </div>
-  <!-- /.col-lg-9 -->
-
-</div>
-
-</div>
 <!-- /.container -->
 
 <!-- Footer -->
-<footer class="py-5 bg-dark">
-<div class="container">
-  <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-</div>
-<!-- /.container -->
-</footer>
+
+        <div>
+            <footer class="footer">
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
+    </footer>
 
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
