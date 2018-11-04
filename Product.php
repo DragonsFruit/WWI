@@ -1,86 +1,27 @@
 <?php
+	$currentPage = 'product';
+
     // Connectie naar database file
     include "classes/DB.php";
+    include "partials/Header.php";
 ?>
 
-<html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <title><?php echo $productNaam; ?> | WWI</title>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>WorldWideImports</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/shop-item.css" rel="stylesheet">
-
-    
-
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">WorldWideImporters</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a href="#hoofdpagina" class="nav-link">Hoofdpagina</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#producten" class="nav-link">Producten</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#klantenservice" class="nav-link">Klantenservice</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#winkelmandje" class="nav-link">Winkelmandje</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-
-<!-- <div class="container"> -->    
-    <div class="left" class="container" >
-        <div  class="row">
-
-        <div class="col-lg-7">
-            <main class="container-fluid">
-                <div class="row">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<!-- Main -->
+    <main class="detail">
+        <section class="container detail-container">
+            <div class="row">
+                <!-- Product images-->
+                <div class="col-lg-5 px-0">
+                    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="1"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <?php    
-                            $image = [1,2];
+                            <?php
+                                $image = [1,2];
                                 foreach ($image as $key => $value) {
                                     if($key == 1) {
                                         echo "<div class='carousel-item active'>";
@@ -88,54 +29,110 @@
                                         echo "<div class='carousel-item'>";
                                     }
 
-                                    echo "<img class='d-block w-100' src='https://via.placeholder.com/900x400'/></div>";
+                                    echo "<img class='d-block w-100' src='https://via.placeholder.com/500x500'/></div>";
                                 }
-                                
                             ?>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
-
                     </div>
                 </div>
-            </main>
-        
-        <div class="right">
 
-            <div class="card mt-4">
-            <h1 class="card-header"><?php echo $productNaam; ?></h1>
-            <div class="list-group">
-                <h4>$24.99</h1>
-                <p class="card-text"> <?php echo $productBeschrijving ?> </p>
-                <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                4.0 sterren
+                <!-- Product details -->
+                <div class="detail-wrap col-lg-7 px-0">
+                    <h1 class="product-name"><?php echo $productNaam; ?></h1>
+
+                    <!-- Rating -->
+                    <div class="product-rating">
+                        <span class="product-star">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                        <span class="percent-num">4.0</span>
+                        <span class="ratings-num">(389 votes)</span>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="product-price">
+                        <div class="detail-description">
+                            <span class="detail-title">Price:</span>
+                            <div class="price-content">
+                                <span class="price-symbol">EUR €</span><span class="price"><?php echo $productPrijs ?></span><span class="price-unit">/ piece</span>
+                            </div>
+                        </div>
+                        <div class="detail-description">
+                            <span class="detail-title">Tax rate:</span>
+                            <div class="tax-content">
+                                <span class="tax-rate"><?php echo floor($productBtw) ?></span><span class="tax-unit">%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Attribute -->
+                    <div class="product-attribute">
+                        <form action="cart.php">
+                            <div class="product-info">
+                                <dl class="property-item">
+                                   <dt class="item-title">Color:</dt>
+                                    <dd class="item-description">
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-secondary"><input type="radio" name="color" id="option1" class="btn btn-primary" autocomplete="off">1</label>
+                                            <label class="btn btn-secondary"><input type="radio" name="color" id="option2" class="btn btn-primary" autocomplete="off">2</label>
+                                            <label class="btn btn-secondary"><input type="radio" name="color" id="option3" class="btn btn-primary" autocomplete="off">3</label>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="product-operate-wrap">
+                                <dl class="property-item">
+                                    <dt class="item-title">Shipping:</dt>
+                                    <dd class="item-description">
+                                        <div class="shipment-info">
+                                            <span class="shipment-cost">Free Shipping</span> to Netherlands via <span class="shipping-company">WorldWideImporters Standard Shipping</span>
+                                        </div>
+                                        <div class="shipment-addition-info">
+                                            <p>Estimated Delivery Time: <span class="shipping-days"><?php echo $productBezorgTijd ?> days</span>
+                                                <button type="button" class="btn btn-circle btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="If you finish the payment today, your order will arrive within the estimated delivery time.">?</button>
+                                            </p>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <!-- Quantity -->
+                                <dl class="property-item">
+                                    <dt class="item-title">Quantity:</dt>
+                                    <dd class="item-description">
+                                        <div class="quantity-info">
+                                            <span class="quantity-modified">
+                                                <input type="number" class="quantity-input" min="1" value="1" maxlength="5" autocomplete="off">
+                                            </span>
+                                            <span class="unit">piece</span>
+                                            <span class="available-stock">(In stock)</span>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                            <!-- Total price -->
+                                <dl class="property-item">
+                                    <dt class="item-title">Total price:</dt>
+                                    <dd class="item-description">
+                                        <div class="total-price-info">
+                                            <span class="total-price-show">
+                                                <span class="price-symbol">EUR €</span><span class="total-price-value">14.5</span>
+                                            </span>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            </div>
-        </div>
+        </section>
+    </main>
 
-        </div>
+<?php include "partials/Footer.php" ?>
 
-    </div>
-<!-- /.container -->
-
-<!-- Footer -->
-
-        <div>
-            <footer class="footer">
-            <span class="text-muted">Place sticky footer content here.</span>
-        </div>
-    </footer>
-
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>
