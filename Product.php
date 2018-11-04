@@ -77,7 +77,7 @@
                         <div class="detail-description">
                             <span class="detail-title">Price:</span>
                             <div class="price-content">
-                                <span class="price-symbol">EUR €</span><span class="price"><?php echo $productPrijs ?> </span><span class="price-unit"> / piece</span>
+                                <span class="price-symbol">EUR €</span><span id="product-price" class="price"><?php echo $productPrijs ?> </span><span class="price-unit"> / piece</span>
                             </div>
                         </div>
                         <div class="detail-description">
@@ -138,7 +138,7 @@
                                     <dd class="item-description">
                                         <div class="total-price-info">
                                             <span class="total-price-show">
-                                                <span class="price-symbol">EUR €</span><span class="total-price-value">14.5</span>
+                                                <span class="price-symbol">EUR €</span><span id="total-price" class="total-price-value"><?php echo $productPrijs ?></span>
                                             </span>
                                         </div>
                                     </dd>
