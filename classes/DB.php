@@ -15,11 +15,15 @@ try {
 	    // Loop langs alle rijen
 	    foreach($pdo->query('SELECT * FROM stockitems WHERE StockItemID='.$id) as $row) { //stockitemid moet uiteindelijk variabel zijn
 	        // Haal kolommen uit de array en zet het om naar strings, deze worden in een variable geplaatst
-	        $productNaam = $row['StockItemName'];
-		    $productPrijs = $row['RecommendedRetailPrice'];
-		    $productBtw = $row['TaxRate'];
-	        $productBeschrijving = $row['MarketingComments'];
-		    $productBezorgTijd = $row['LeadTimeDays'];
+	        $productName = $row['StockItemName'];
+		    $productPrice = $row['RecommendedRetailPrice'];
+		    $productTaxRate = $row['TaxRate'];
+		    $productDescription = $row['MarketingComments'];
+		    $productLeadTimeDays = $row['LeadTimeDays'];
+		    $productWeight = $row['TypicalWeightPerUnit'];
+		    $productBrand = $row['Brand'];
+		    $productSize = $row['Size'];
+		    $productTags = $row['Tags'];
 	        $blob = $row['Photo'];
 	    }
 	    $pdo = null;
