@@ -12,40 +12,57 @@
     <main class="detail">
         <section class="container detail-container">
             <div class="row">
-                <!-- Product images-->
-                <div class="col-lg-5 px-0">
-                    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselIndicators" data-slide-to="1"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <?php
-                                $image = [1,2];
-                                foreach ($image as $key => $value) {
-                                    if($key == 1) {
-                                        echo "<div class='carousel-item active'>";
-                                    } else {
-                                        echo "<div class='carousel-item'>";
-                                    }
+                <!-- Carousel -->
+                <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails col-lg-6 px-0" data-ride="carousel">
+                    <div class="row mx-0">
+                        <div class="col-lg-2">
+                            <ol class="image-thumb-list px-0">
+	                            <?php
+                                    $image = [0 => 'https://place-hold.it/600x500/', 1 => 'https://place-hold.it/300x600/', 2 => 'https://place-hold.it/1920x1080/', 3 => 'https://place-hold.it/400x300/'];
+                                    foreach ($image as $key => $value) {
+                                        if($key == 1) {
+                                            echo "<li data-target='#carousel-thumb' data-slide-to='$key' class='active'><span class='img-thumb-item'>";
+                                        } else {
+                                            echo "<li data-target='#carousel-thumb' data-slide-to='$key'><span class='img-thumb-item'>";
+                                        }
 
-                                    echo "<img class='d-block w-100' src='https://via.placeholder.com/500x500'/></div>";
-                                }
-                            ?>
+                                        echo "<img class='d-block w-100 h-100 img-fluid' src='$value'></span></li>";
+                                    }
+                                ?>
+                            </ol>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+
+                        <div class="col-lg-10 px-0">
+                            <!--Slides-->
+                            <div class="carousel-inner" role="listbox">
+	                            <?php
+		                            foreach ($image as $key => $value) {
+			                            if($key == 1) {
+				                            echo "<div class='carousel-item active'>";
+			                            } else {
+				                            echo "<div class='carousel-item'>";
+			                            }
+
+			                            echo "<img class='d-block wx-500 hx-500 img-cover' src='$value'></div>";
+		                            }
+	                            ?>
+                            </div>
+
+                            <!--Controls-->
+                            <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Product details -->
-                <div class="detail-wrap col-lg-7 px-0">
+                <div class="detail-wrap col-lg-6 px-0">
                     <h1 class="product-name"><?php echo $productNaam; ?></h1>
 
                     <!-- Rating -->
@@ -60,7 +77,7 @@
                         <div class="detail-description">
                             <span class="detail-title">Price:</span>
                             <div class="price-content">
-                                <span class="price-symbol">EUR €</span><span class="price"><?php echo $productPrijs ?></span><span class="price-unit">/ piece</span>
+                                <span class="price-symbol">EUR €</span><span class="price"><?php echo $productPrijs ?> </span><span class="price-unit"> / piece</span>
                             </div>
                         </div>
                         <div class="detail-description">

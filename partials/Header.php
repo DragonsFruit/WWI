@@ -6,6 +6,7 @@
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/fontawesome.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
 	<!-- JS -->
@@ -28,24 +29,38 @@
 			<a class="navbar-brand" href="#">WorldWideImporters</a>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item <?php if($currentPage =='home'){echo 'active';}?>">
-						<a href="#hoofdpagina" class="nav-link">Home</a>
-					</li>
+                <form class="form-inline my-2 my-lg-0 mx-auto w-70">
+                    <div class="input-group w-100">
+                        <input class="form-control" type="search" placeholder="I'm shopping for..." aria-label="Search">
+                        <div class="input-group-append">
+                            <select class="browser-default custom-select">
+                                <option selected>All Categories</option>
+                                <option value="1">Clothing</option>
+                                <option value="2">Mugs</option>
+                                <option value="3">Novelty Items</option>
+                            </select>
+
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search text-grey" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+<!--                    <input class="form-control w-90" type="search" placeholder="I'm shopping for..." aria-label="Search">-->
+<!--                    <button class="btn btn-outline-primary" type="submit"><i class="far fa-search"></i></button>-->
+                </form>
+
+				<ul class="navbar-nav">
+<!--					<li class="nav-item --><?php //if($currentPage =='home'){echo 'active';}?><!--">-->
+<!--						<a href="#hoofdpagina" class="nav-link">Home</a>-->
+<!--					</li>-->
 					<li class="nav-item <?php if($currentPage =='product'){echo 'active';}?>">
-						<a href="product.php?id=1" class="nav-link">Products</a>
+						<a href="product.php?id=1" class="nav-link"><i class="far fa-th-large"></i> Products</a>
 					</li>
-					<li class="nav-item <?php if($currentPage =='customerService'){echo 'active';}?>">
-						<a href="#klantenservice" class="nav-link">Customer Service</a>
-					</li>
+<!--					<li class="nav-item --><?php //if($currentPage =='customerService'){echo 'active';}?><!--">-->
+<!--						<a href="#klantenservice" class="nav-link">Customer Service</a>-->
+<!--					</li>-->
 					<li class="nav-item <?php if($currentPage =='cart'){echo 'active';}?>">
-						<a href="#winkelmandje" class="nav-link">Cart</a>
+						<a href="#winkelmandje" class="nav-link"><i class="far fa-shopping-cart"></i> Cart</a>
 					</li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="I'm shopping for..." aria-label="Search">
-					<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-				</form>
 			</div>
 		</div>
 	</nav>
