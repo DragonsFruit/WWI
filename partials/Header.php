@@ -26,7 +26,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<a class="navbar-brand" href="#">WorldWideImporters</a>
+			<a class="navbar-brand" href="#"><img src="pictures/wide-world-importers-logo-small.png" height="60" width="160"></a>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form class="form-inline my-2 my-lg-0 mx-auto w-70">
