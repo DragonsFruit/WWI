@@ -87,6 +87,20 @@ dd {
     border-radius: 0 !important;
 }
 
+#serachResults {
+    top: 100%;
+    z-index: 1000;
+}
+
+.search-image {
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.search-description {
+    font-size: small;
+}
+
 /* Carousel */
 .image-thumb-list {
     position: absolute;
