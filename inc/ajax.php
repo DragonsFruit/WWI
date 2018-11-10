@@ -7,7 +7,8 @@
 	if (isset($_POST['search'])) {
 		//Search box value assigning to $Name variable.
 		$name = $_POST['search'];
-		$search->getProductsWithName($name);
+		$category = $_POST['category'];
+		$search->getProductsWith($name, $category);
 		$searchResults = $search->data;
 		//Creating unordered list to display result.
 		echo '<div class="list-group">';

@@ -1,3 +1,9 @@
+<?php
+	$category = new Category();
+	$category->getCategories();
+	$categories = $category->data;
+?>
+
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -33,13 +39,14 @@
                 <form class="form-inline my-2 my-lg-0 mx-auto w-70">
                     <div class="input-group w-100">
                         <input id="search" class="form-control" type="search" placeholder="I'm shopping for..." aria-label="Search" autocomplete="off" spellcheck="false">
-	                    <div id="serachResults" class="position-absolute d-none"></div>
+	                    <div id="serachResults" class="w-100 position-absolute d-none"></div>
                         <div class="input-group-append">
-                            <select class="browser-default custom-select">
-                                <option selected>All Categories</option>
-                                <option value="1">Clothing</option>
-                                <option value="2">Mugs</option>
-                                <option value="3">Novelty Items</option>
+                            <select id="category" class="browser-default custom-select" name="category">
+	                            <option value="0" selected>All Categories</option>
+	                            <?php foreach ($categories as $category) { ?>
+		                            <option value="<?php echo $category["StockGroupID"];?>"><?php echo $category["StockGroupName"];?></option>
+	                            <?php } ?>
+	                            <option value="0">All Categories</option>
                             </select>
                             <button class="btn btn-primary" type="submit"><i class="fa fa-search text-grey" aria-hidden="true"></i></button>
                         </div>
