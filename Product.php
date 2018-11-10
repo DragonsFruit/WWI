@@ -1,9 +1,24 @@
 <?php
+	// Load classes
+	include_once "inc/autoload.php";
+
+	// Set current page active
 	$currentPage = 'product';
 
-    // Connectie naar database file
-    include "classes/DB.php";
-    include "partials/Header.php";
+	// Get product
+    $product = new Product();
+	$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+	if (!is_null($id) && is_numeric($id)) {
+	    $product->getProductDetailsWithId($id);
+	} else {
+		header('Location: product.php?id=1');
+		die();
+	}
+
+	// Specify header title
+	$headerTitle =  $product->productName;
+
+	include "inc/header.php";
 ?>
 
 
@@ -63,7 +78,7 @@
 
                 <!-- Product details -->
                 <div class="detail-wrap col-lg-6 px-0">
-                    <h1 class="product-name"><?php echo $productName; ?></h1>
+                    <h1 class="product-name"><?php echo $product->productName; ?></h1>
 
                     <!-- Rating -->
                     <div class="product-rating">
@@ -77,13 +92,13 @@
                         <div class="detail-description">
                             <span class="detail-title">Price:</span>
                             <div class="price-content">
-                                <span class="price-symbol">EUR €</span><span id="product-price" class="price"><?php echo $productPrice ?> </span><span class="price-unit"> / piece</span>
+                                <span class="price-symbol">EUR €</span><span id="product-price" class="price"><?php echo $product->productPrice ?> </span><span class="price-unit"> / piece</span>
                             </div>
                         </div>
                         <div class="detail-description">
                             <span class="detail-title">Tax rate:</span>
                             <div class="tax-content">
-                                <span class="tax-rate"><?php echo floor($productTaxRate) ?></span><span class="tax-unit">%</span>
+                                <span class="tax-rate"><?php echo floor($product->productTaxRate) ?></span><span class="tax-unit">%</span>
                             </div>
                         </div>
                     </div>
@@ -107,10 +122,10 @@
                                     <dt class="item-title">Shipping:</dt>
                                     <dd class="item-description">
                                         <div class="shipment-info">
-                                            <span class="shipment-cost">Free Shipping</span> to Netherlands via <span class="shipping-company">WorldWideImporters Standard Shipping</span>
+                                            <span class="shipment-cost">Free Shipping</span> to Netherlands via <span class="shipping-company">WideWorldImporters Standard Shipping</span>
                                         </div>
                                         <div class="shipment-addition-info">
-                                            <p>Estimated Delivery Time: <span class="shipping-days"><?php echo $productLeadTimeDays ?> days</span>
+                                            <p>Estimated Delivery Time: <span class="shipping-days"><?php echo $product->productLeadTimeDays ?> days</span>
                                                 <button type="button" class="btn btn-circle btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="If you finish the payment today, your order will arrive within the estimated delivery time.">?</button>
                                             </p>
                                         </div>
@@ -137,7 +152,7 @@
                                     <dd class="item-description">
                                         <div class="total-price-info">
                                             <span class="total-price-show">
-                                                <span class="price-symbol">EUR €</span><span id="total-price" class="total-price-value"><?php echo $productPrice ?></span>
+                                                <span class="price-symbol">EUR €</span><span id="total-price" class="total-price-value"><?php echo $product->productPrice ?></span>
                                             </span>
                                         </div>
                                     </dd>
@@ -184,7 +199,7 @@
                                                 <span class="propery-des"><?php // echo $productBrand ?>A Datum Corporation</span>
                                             </li>
                                             <?php
-                                                $productTags = json_decode($productTags);
+                                                $productTags = json_decode($product->productTags);
                                                 foreach ($productTags as $key => $value) { ?>
                                                 <li class="property-item">
                                                     <span class="propery-title">Usage <?php echo $key+1 ?>:</span>
@@ -199,7 +214,7 @@
                                 <div class="box product-property-main my-2">
                                     <div class="box-title">Product Description</div>
                                     <div class="box-body">
-                                        <p class="mt-2 mb-0"><?php echo $productDescription ?></p>
+                                        <p class="mt-2 mb-0"><?php echo $product->productDescription ?></p>
                                     </div>
                                 </div>
 
@@ -214,7 +229,7 @@
                                             </li>
                                             <li class="packaging-item">
                                                 <span class="packaging-title">Package Weight:</span>
-                                                <span class="packaging-des"><?php echo $productWeight ?> kg</span>
+                                                <span class="packaging-des"><?php echo $product->productWeight ?> kg</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -234,5 +249,5 @@
 
     </main>
 
-<?php include "partials/Footer.php" ?>
+<?php include "inc/footer.php" ?>
 

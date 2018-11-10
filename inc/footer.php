@@ -5,7 +5,7 @@
 		</div>
 
 		<!-- Copyright -->
-		<div class="footer-copyright text-center">© <?= date('Y'); ?> WorldWideImporters. All rights reserved.</div>
+		<div class="footer-copyright text-center">© <?= date('Y'); ?> Wide World Importers. All rights reserved.</div>
 	</footer>
 </body>
 

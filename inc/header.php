@@ -15,7 +15,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 
-	<title><?php echo $productName ?> | WWI</title>
+	<title><?php echo $headerTitle; ?> | WWI</title>
 </head>
 
 <body>
@@ -25,8 +25,9 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
-			<a class="navbar-brand" href="#"><img src="pictures/wide-world-importers-logo-small.png" height="60" width="160"></a>
+            <a class="navbar-brand mx-0" href="#">
+                <img src="pictures/WideWorldImportersLogo.png" width="40" height="40" class="d-inline-block align-top" alt="WideWorldImporters"><span class="align-middle d-none d-sm-inline-block"><span style="color: #00aeef;">Wide World</span> Importers</span>
+            </a>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form class="form-inline my-2 my-lg-0 mx-auto w-70">
@@ -39,12 +40,9 @@
                                 <option value="2">Mugs</option>
                                 <option value="3">Novelty Items</option>
                             </select>
-
                             <button class="btn btn-primary" type="submit"><i class="fa fa-search text-grey" aria-hidden="true"></i></button>
                         </div>
                     </div>
-<!--                    <input class="form-control w-90" type="search" placeholder="I'm shopping for..." aria-label="Search">-->
-<!--                    <button class="btn btn-outline-primary" type="submit"><i class="far fa-search"></i></button>-->
                 </form>
 
 				<ul class="navbar-nav">
