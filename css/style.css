@@ -87,7 +87,7 @@ dd {
     border-radius: 0 !important;
 }
 
-#serachResults {
+#searchResultsBox {
     top: 100%;
     z-index: 1000;
 }

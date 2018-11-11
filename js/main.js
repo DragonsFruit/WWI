@@ -1,37 +1,23 @@
-// Getting value from "ajax.php".
-function fill(Value) {
-    //Assigning value to "search" div in "search.php" file.
-    $('#search').val(Value);
-
-    //Hiding "display" div in "search.php" file.
-    $('#display').hide();
-}
-
 // Start searching
-function search() {
-	//Assigning search box value to javascript variable named as "name".
-	let name = $('#search').val().trim();
-	let category = $('#category').val().trim();
+function searchProduct() {
+	let searchValue = $('#search').val().trim();
+	let categoryValue = $('#category').val().trim();
 
-	let searchResultBox = $("#serachResults");
+	let searchResultBox = $("#searchResultsBox");
 	searchResultBox.removeClass("d-none");
 
-	//Validating, if "name" is empty.
-	if (!name.trim()) {
-		//Assigning empty value to "display" div in "search.php" file.
+	if (!searchValue.trim()) {
 		searchResultBox.addClass("d-none");
 		searchResultBox.html("");
 	} else {
-		//AJAX is called.
 		$.ajax({
 			type: "POST",
 			url: "inc/ajax.php",
 			data: {
-				search: name,
-				category: category
+				search: searchValue,
+				category: categoryValue
 			},
 			success: function (html) {
-				//Assigning result to "display" div in "search.php" file.
 				searchResultBox.html(html).show();
 			}
 		});
@@ -40,22 +26,40 @@ function search() {
 
 $(document).ready(function () {
 	// Enable tooltip
-    $('[data-toggle="tooltip"]').tooltip();
+	$('[data-toggle="tooltip"]').tooltip();
 
-    // Calculate product total price
-    $(".quantity-input").change('change', function () {
-        let totalCost = $("#product-price").html() * $(this).val();
-        $("#total-price").html(Math.round(totalCost * 100) / 100);
+	// Calculate product total price
+	$(".quantity-input").change('change', function () {
+		let totalCost = $("#productPrice").html() * $(this).val();
+		$("#totalPrice").html(Math.round(totalCost * 100) / 100);
+	});
+
+	// Search when typing or category is changed
+	$("#search").keyup(function () {
+		searchProduct();
+	});
+
+	$("#search").focusin(function () {
+		let searchResultBox = $("#searchResultsBox");
+		searchResultBox.removeClass("d-none");
+	});
+
+	$("#search").focusout(function () {
+		let searchResultBox = $("#searchResultsBox");
+		searchResultBox.addClass("d-none");
+	});
+
+	$("#category").change(function () {
+		searchProduct();
+	});
+
+    $("#category").focusin(function () {
+	    let searchResultBox = $("#searchResultsBox");
+	    searchResultBox.removeClass("d-none");
     });
 
-    // Search when typing or category is changed
-    $("#search").keyup(function () {
-        search();
+    $("#category").focusout(function () {
+	    let searchResultBox = $("#searchResultsBox");
+	    searchResultBox.addClass("d-none");
     });
-
-    $("#category").change(function () {
-	    search();
-    });
-
-
 });

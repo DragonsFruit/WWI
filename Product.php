@@ -92,7 +92,7 @@
                         <div class="detail-description">
                             <span class="detail-title">Price:</span>
                             <div class="price-content">
-                                <span class="price-symbol">US $</span><span id="product-price" class="price"><?php echo $product->productPrice ?> </span><span class="price-unit"> / piece</span>
+                                <span class="price-symbol">US $</span><span id="productPrice" class="price"><?php echo $product->productPrice ?> </span><span class="price-unit"> / piece</span>
                             </div>
                         </div>
                         <div class="detail-description">
@@ -152,7 +152,7 @@
                                     <dd class="item-description">
                                         <div class="total-price-info">
                                             <span class="total-price-show">
-                                                <span class="price-symbol">US $</span><span id="total-price" class="total-price-value"><?php echo $product->productPrice ?></span>
+                                                <span class="price-symbol">US $</span><span id="totalPrice" class="total-price-value"><?php echo $product->productPrice ?></span>
                                             </span>
                                         </div>
                                     </dd>

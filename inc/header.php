@@ -39,7 +39,7 @@
                 <form class="form-inline my-2 my-lg-0 mx-auto w-70">
                     <div class="input-group w-100">
                         <input id="search" class="form-control" type="search" placeholder="I'm shopping for..." aria-label="Search" autocomplete="off" spellcheck="false">
-	                    <div id="serachResults" class="w-100 position-absolute d-none"></div>
+	                    <div id="searchResultsBox" class="w-100 position-absolute d-none"></div>
                         <div class="input-group-append">
                             <select id="category" class="browser-default custom-select" name="category">
 	                            <option value="0" selected>All Categories</option>
