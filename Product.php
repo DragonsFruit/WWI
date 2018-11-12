@@ -105,61 +105,71 @@
 
                     <!-- Attribute -->
                     <div class="product-attribute">
-                        <form action="cart.php">
-                            <div class="product-info">
-                                <dl class="property-item">
-                                   <dt class="item-title">Color:</dt>
-                                    <dd class="item-description">
-                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                            <label class="btn btn-secondary"><input type="radio" name="color" id="option1" class="btn btn-primary" autocomplete="off">Green</label>
-                                            <label class="btn btn-secondary"><input type="radio" name="color" id="option2" class="btn btn-primary" autocomplete="off">Gray</label>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </div>
-                            <div class="product-operate-wrap">
-                                <dl class="property-item">
-                                    <dt class="item-title">Shipping:</dt>
-                                    <dd class="item-description">
-                                        <div class="shipment-info">
-                                            <span class="shipment-cost">Free Shipping</span> to Netherlands via <span class="shipping-company">WideWorldImporters Standard Shipping</span>
-                                        </div>
-                                        <div class="shipment-addition-info">
-                                            <p>Estimated Delivery Time: <span class="shipping-days"><?php echo $product->productLeadTimeDays ?> days</span>
-                                                <button type="button" class="btn btn-circle btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="If you finish the payment today, your order will arrive within the estimated delivery time.">?</button>
-                                            </p>
-                                        </div>
-                                    </dd>
-                                </dl>
+                        <div class="product-info">
+                            <dl class="property-item">
+                               <dt class="item-title">Color:</dt>
+                                <dd class="item-description">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-secondary"><input type="radio" name="color" id="option1" class="btn btn-primary" autocomplete="off">Green</label>
+                                        <label class="btn btn-secondary"><input type="radio" name="color" id="option2" class="btn btn-primary" autocomplete="off">Gray</label>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="product-operate-wrap">
+                            <dl class="property-item">
+                                <dt class="item-title">Shipping:</dt>
+                                <dd class="item-description">
+                                    <div class="shipment-info">
+                                        <span class="shipment-cost">Free Shipping</span> to Netherlands via <span class="shipping-company">WideWorldImporters Standard Shipping</span>
+                                    </div>
+                                    <div class="shipment-addition-info">
+                                        <p>Estimated Delivery Time: <span class="shipping-days"><?php echo $product->productLeadTimeDays ?> days</span>
+                                            <button type="button" class="btn btn-circle btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="If you finish the payment today, your order will arrive within the estimated delivery time.">?</button>
+                                        </p>
+                                    </div>
+                                </dd>
+                            </dl>
 
-                                <!-- Quantity -->
-                                <dl class="property-item">
-                                    <dt class="item-title">Quantity:</dt>
-                                    <dd class="item-description">
-                                        <div class="quantity-info">
-                                            <span class="quantity-modified">
-                                                <input type="number" class="quantity-input" min="1" value="1" maxlength="5" autocomplete="off">
-                                            </span>
-                                            <span class="unit">piece</span>
-                                            <span class="available-stock">(In stock)</span>
-                                        </div>
-                                    </dd>
-                                </dl>
+                            <!-- Quantity -->
+                            <dl class="property-item">
+                                <dt class="item-title">Quantity:</dt>
+                                <dd class="item-description">
+                                    <div class="quantity-info">
+                                        <span class="quantity-modified">
+                                            <input type="number" class="quantity-input" min="1" value="1" maxlength="5" autocomplete="off">
+                                        </span>
+                                        <span class="unit">piece</span>
+                                        <span class="available-stock">(In stock)</span>
+                                    </div>
+                                </dd>
+                            </dl>
 
-                            <!-- Total price -->
-                                <dl class="property-item">
-                                    <dt class="item-title">Total price:</dt>
-                                    <dd class="item-description">
-                                        <div class="total-price-info">
-                                            <span class="total-price-show">
-                                                <span class="price-symbol">US $</span><span id="totalPrice" class="total-price-value"><?php echo $product->productPrice ?></span>
-                                            </span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </form>
+                        <!-- Total price -->
+                            <dl class="property-item">
+                                <dt class="item-title">Total price:</dt>
+                                <dd class="item-description">
+                                    <div class="total-price-info">
+                                        <span class="total-price-show">
+                                            <span class="price-symbol">US $</span><span id="totalPrice" class="total-price-value"><?php echo $product->productPrice ?></span>
+                                        </span>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
                     </div>
+	                <div class="product-actions mb-0">
+		                <dl class="property-item">
+			                <div class="row" id="productActionBlock">
+								<span class="col-6">
+									<a href="#!" id="buyNowButton" class="buy-now btn btn-success w-100">Buy Now</a>
+								</span>
+	                            <span class="col-6">
+									<a href="#!" id="addCartButton" class="add-to-cart btn btn-primary w-100">Add to Cart</a>
+								</span>
+			                </div>
+		                </dl>
+	                </div>
                 </div>
             </div>
         </section>

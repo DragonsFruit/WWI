@@ -37,8 +37,8 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form class="form-inline my-2 my-lg-0 mx-auto w-70">
-                    <div class="input-group w-100">
-                        <input id="search" class="form-control" type="search" placeholder="I'm shopping for..." aria-label="Search" autocomplete="off" spellcheck="false">
+                    <div class="input-group search-main w-100">
+                        <input id="search" class="form-control search" type="search" placeholder="I'm shopping for..." aria-label="Search" autocomplete="off" spellcheck="false">
 	                    <div id="searchResultsBox" class="w-100 position-absolute d-none"></div>
                         <div class="input-group-append">
                             <select id="category" class="browser-default custom-select" name="category">
@@ -48,7 +48,7 @@
 	                            <?php } ?>
 	                            <option value="0">All Categories</option>
                             </select>
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-search text-grey" aria-hidden="true"></i></button>
+                            <button class="btn btn-primary btn-search" type="submit"><i class="fa fa-search text-grey" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </form>
@@ -64,7 +64,11 @@
 <!--						<a href="#klantenservice" class="nav-link">Customer Service</a>-->
 <!--					</li>-->
 					<li class="nav-item <?php if($currentPage =='cart'){echo 'active';}?>">
-						<a href="#winkelmandje" class="nav-link"><i class="far fa-shopping-cart"></i> Cart</a>
+						<span class="cart-counter mt-1 px-2">0</span>
+						<a href="#winkelmandje" class="nav-link cart position-relative">
+							<i class="far fa-shopping-cart"></i>
+							<span>Cart</span>
+						</a>
 					</li>
 				</ul>
 			</div>

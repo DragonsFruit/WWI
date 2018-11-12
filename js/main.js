@@ -62,4 +62,24 @@ $(document).ready(function () {
 	    let searchResultBox = $("#searchResultsBox");
 	    searchResultBox.addClass("d-none");
     });
+
+    // Add to cart
+	$("a.add-to-cart").click(function(event) {
+		let quantityInput = $(".quantity-input").val();
+		let cartCounter = $(".cart-counter").html();
+		let count = Number(cartCounter) + Number(quantityInput);
+
+		$("a.add-to-cart").addClass("size");
+		setTimeout(function() {
+			$("a.add-to-cart").addClass("hover");
+		}, 200);
+		setTimeout(function() {
+			$(".cart-counter").text(count);
+		}, 600);
+		setTimeout(function() {
+			$("a.add-to-cart").removeClass("hover");
+			$("a.add-to-cart").removeClass("size");
+		}, 650);
+		event.preventDefault();
+	});
 });
