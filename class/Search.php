@@ -11,7 +11,7 @@
 
 		public function getProductsWith($name, $categoryId) {
 			//stockitemid moet uiteindelijk variabel zijn
-			$sql = "SELECT SI.StockItemID, SI.StockItemName, SI.SearchDetails, SI.RecommendedRetailPrice, SI.Photo
+			$sql = "SELECT SI.StockItemID, SI.StockItemName, SI.SearchDetails,                  SI.RecommendedRetailPrice, SI.Photo
 										  FROM stockitems SI
 										  JOIN stockitemstockgroups SIG
 									      ON SI.StockItemID = SIG.StockItemID
@@ -22,7 +22,7 @@
 				$sql .= " AND SG.StockGroupID = '$categoryId'";
 			}
 
-			$sql .= " LIMIT 5";
+			$sql .= " GROUP BY SI.StockItemID LIMIT 5";
 
 			$result = $this->db->run($sql)->fetchAll();
 			$this->data = $result;
