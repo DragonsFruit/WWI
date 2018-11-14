@@ -10,13 +10,7 @@
 		}
 
 		public function getProductlist() {
-			$result = $this->db->run("SELECT SI.StockItemID, SI.StockItemName, SI.SearchDetails,                  SI.RecommendedRetailPrice, SI.Photo
-                                        FROM stockitems SI
-                                        JOIN stockitemstockgroups SIG
-                                        ON SI.StockItemID = SIG.StockItemID
-                                        JOIN stockgroups SG
-                                        ON SIG.StockGroupID = SG.StockGroupID
-                                        WHERE SI.StockItemName LIKE '%$name%'")->fetchAll();
+			$result = $this->db->run("SELECT * FROM stockitems")->fetchAll();
 			$this->data = $result;
 		}
 	}
