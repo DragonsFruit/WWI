@@ -5,23 +5,26 @@
 	// Set current page active
 	$currentPage = 'product_list';
 
-	// Get product
-    $product = new Product();
-	$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-	if (!is_null($id) && is_numeric($id)) {
-	    $product->getProductDetailsWithId($id);
-	} else {
-		header('Location: product_list.php?id=1');
-		die();
-	}
-
 	// Specify header title
     $headerTitle =  "Products";
+
+
+    //tijdelijk 0
+    
+    if(filter_has_var(INPUT_GET, "categoryId")) {
+        $categoryId = filter_input(INPUT_GET, "categoryId",FILTER_SANITIZE_NUMBER_INT);
+    } else {
+        $categoryId = 0;
+    }
     
     $productlist = new Productlist();
-	$productlist->getProductlist();
-	$productlists = $productlist->data;
+	$productlist->getProductlistBy($categoryId);
+    $productlists = $productlist->data;
 
+    $category = new Category();
+	$category->getCategories();
+	$categories = $category->data;
+    
 	include "inc/header.php";
 ?>
 <div class="container">
@@ -30,33 +33,33 @@
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                 <ul class="list-group category_block">
-                    <li class="list-group-item"><a href="category.html">Cras justo odio</a></li>
-                    <li class="list-group-item"><a href="category.html">Dapibus ac facilisis in</a></li>
-                    <li class="list-group-item"><a href="category.html">Morbi leo risus</a></li>
-                    <li class="list-group-item"><a href="category.html">Porta ac consectetur ac</a></li>
-                    <li class="list-group-item"><a href="category.html">Vestibulum at eros</a></li>
+                    <?php foreach ($categories as $category) { ?>
+                        <li class="list-group-item"><a href="Product_list.php?categoryId=<?php echo $category["StockGroupID"]; ?>"><?php echo $category["StockGroupName"]; ?></a></li>
+                    <?php }?>   
                 </ul>
             </div>
         </div>
         <div class="col">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-warning btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-primary btn-block">Add to cart</a>
+                <?php foreach ($productlists as $product) {?>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="product.php?id=<?php echo $product["StockItemID"]; ?>" title="View Product"><?php echo $product["StockItemName"]; ?></a></h4>
+                                <p class="card-text"><?php echo $product["MarketingComments"]; ?></p>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="btn btn-warning btn-block"><?php echo $product["RecommendedRetailPrice"]; ?></p>
+                                    </div>
+                                    <div class="col">
+                                        <a href="#" class="btn btn-primary btn-block">Add to cart</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php }?>
                 <div class="col-12">
                     <nav aria-label="...">
                         <ul class="pagination">
