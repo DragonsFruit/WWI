@@ -33,6 +33,7 @@
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                 <ul class="list-group category_block">
+                <li class="list-group-item"><a href="Product_list.php">All Categories</a></li>
                     <?php foreach ($categories as $category) { ?>
                         <li class="list-group-item"><a href="Product_list.php?categoryId=<?php echo $category["StockGroupID"]; ?>"><?php echo $category["StockGroupName"]; ?></a></li>
                     <?php }?>   
@@ -47,13 +48,13 @@
                             <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title"><a href="product.php?id=<?php echo $product["StockItemID"]; ?>" title="View Product"><?php echo $product["StockItemName"]; ?></a></h4>
-                                <p class="card-text"><?php echo $product["MarketingComments"]; ?></p>
+                                <p class="card-text text_card"><?php echo $product["MarketingComments"]; ?></p>
                                 <div class="row">
-                                    <div class="col">
-                                        <p class="btn btn-warning btn-block"><?php echo $product["RecommendedRetailPrice"]; ?></p>
+                                    <div class="col-12">
+                                        <a href="#!" id="buyNowButton" class="buy_now_list btn btn-warning w-100"><span class="price-symbol">US $</span><?php echo $product["RecommendedRetailPrice"]; ?></a>
                                     </div>
                                     <div class="col">
-                                        <a href="#" class="btn btn-primary btn-block">Add to cart</a>
+                                        <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary w-100">Add to Cart</a>
                                     </div>
                                 </div>
                             </div>
