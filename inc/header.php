@@ -58,7 +58,7 @@
 <!--						<a href="#hoofdpagina" class="nav-link">Home</a>-->
 <!--					</li>-->
 					<li class="nav-item <?php if($currentPage =='product'){echo 'active';}?>">
-						<a href="product.php?id=1" class="nav-link"><i class="far fa-th-large"></i> Products</a>
+						<a href="product_list.php" class="nav-link"><i class="far fa-th-large"></i> Products</a>
 					</li>
 <!--					<li class="nav-item --><?php //if($currentPage =='customerService'){echo 'active';}?><!--">-->
 <!--						<a href="#klantenservice" class="nav-link">Customer Service</a>-->
