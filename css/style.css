@@ -549,9 +549,16 @@ a.buy-now {
 }
 
 /* productlist */
+.card_margin {
+	margin-bottom: 10px;
+}
 .text_card {
 	overflow: hidden;
 	height: 74px;
+}
+
+.title_card {
+	height: 90;
 }
 
 a.buy_now_list {

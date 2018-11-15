@@ -9,8 +9,7 @@
     $headerTitle =  "Products";
 
 
-    //tijdelijk 0
-    
+    //category
     if(filter_has_var(INPUT_GET, "categoryId")) {
         $categoryId = filter_input(INPUT_GET, "categoryId",FILTER_SANITIZE_NUMBER_INT);
     } else {
@@ -18,12 +17,23 @@
     }
     
     $productlist = new Productlist();
-	$productlist->getProductlistBy($categoryId);
+	$productlist->getProductlistBy($categoryId, $recordsFrom, $recordsPerPage);
     $productlists = $productlist->data;
 
     $category = new Category();
 	$category->getCategories();
-	$categories = $category->data;
+    $categories = $category->data;
+    
+    //pagination (lang niet af, limiet is nu 20 per pagina)
+    if (filter_has_var(INPUT_GET,"page")){
+        $page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
+    } else {
+        $page = 1;
+    }
+
+    $recordsPerPage = 20;
+    $recordsFrom = ($recordsPerPage * $page) - $recordsPerPage;
+    $numberProducts = $result->rowCount();
     
 	include "inc/header.php";
 ?>
@@ -44,10 +54,10 @@
             <div class="row">
                 <?php foreach ($productlists as $product) {?>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card">
+                        <div class="card card_margin">
                             <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title"><a href="product.php?id=<?php echo $product["StockItemID"]; ?>" title="View Product"><?php echo $product["StockItemName"]; ?></a></h4>
+                                <h4 class="card-title title_card"><a href="product.php?id=<?php echo $product["StockItemID"]; ?>" title="View Product"><?php echo $product["StockItemName"]; ?></a></h4>
                                 <p class="card-text text_card"><?php echo $product["MarketingComments"]; ?></p>
                                 <div class="row">
                                     <div class="col-12">
