@@ -15,15 +15,7 @@
     } else {
         $categoryId = 0;
     }
-    
-    $productlist = new Productlist();
-	$productlist->getProductlistBy($categoryId, $recordsFrom, $recordsPerPage);
-    $productlists = $productlist->data;
 
-    $category = new Category();
-	$category->getCategories();
-    $categories = $category->data;
-    
     //pagination (lang niet af, limiet is nu 20 per pagina)
     if (filter_has_var(INPUT_GET,"page")){
         $page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
@@ -33,7 +25,24 @@
 
     $recordsPerPage = 20;
     $recordsFrom = ($recordsPerPage * $page) - $recordsPerPage;
-    $numberProducts = $result->rowCount();
+
+    //count products (voor pagination)
+    $productlist = new Productlist();
+	$productlist->getProductlistBy($categoryId, 0, 5000);
+    $productlists = $productlist->data;
+    $numberProducts = count($productlists);
+
+    //products uit database
+    $productlist = new Productlist();
+	$productlist->getProductlistBy($categoryId, $recordsFrom, $recordsPerPage);
+    $productlists = $productlist->data;
+
+    //categories uit database
+    $category = new Category();
+	$category->getCategories();
+    $categories = $category->data;
+    
+    
     
 	include "inc/header.php";
 ?>
@@ -72,18 +81,20 @@
                     </div>
                 <?php }?>
                 <div class="col-12">
-                    <nav aria-label="...">
+                    <nav aria-label="product_pages">
                         <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            <li class="page-item">
+                                <a class="page-link" href="Product_list.php?page=<?php if($page > 1){$page -= 1;} echo $page; if($categoryId != 0){print "&categoryId=".$categoryId;}?>" tabindex="-1">Previous</a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active">
+                            <?php for($i = 1; $i <= ($numberProducts / $recordsPerPage) + 1; $i++){?>
+                            <li class="page-item <?php if($i == $page + 1 ){echo "active";} ?>"><a class="page-link" href="Product_list.php?page=<?php echo $i; if($categoryId != 0){print "&categoryId=".$categoryId;}?>"><?php echo $i?></a></li>
+                            <?php }?>
+                            <!-- tijdelijk uitgeschakeld <li class="page-item active">
                                 <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                            <li class="page-item <?php if($page >= ($numberProducts / $recordsPerPage) - 1){echo "disabled";} ?>">
+                                <a class="page-link" href="Product_list.php?page=<?php $page += 2; echo $page; if($categoryId != 0){print "&categoryId=".$categoryId;}?>">Next</a>
                             </li>
                         </ul>
                     </nav>
