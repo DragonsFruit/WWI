@@ -53,15 +53,15 @@ $(document).ready(function () {
 		searchProduct();
 	});
 
-	$("#search").focusin(function () {
-		let searchResultBox = $("#searchResultsBox");
-		searchResultBox.removeClass("d-none");
-	});
+	// $("#search").focusin(function () {
+	// 	let searchResultBox = $("#searchResultsBox");
+	// 	searchResultBox.removeClass("d-none");
+	// });
 
-	$("#search").focusout(function () {
-		let searchResultBox = $("#searchResultsBox");
-		searchResultBox.addClass("d-none");
-	});
+	// $("#search").focusout(function () {
+	// 	let searchResultBox = $("#searchResultsBox");
+	// 	searchResultBox.addClass("d-none");
+	// });
 
 	$("#category").change(function () {
 		searchProduct();
@@ -113,7 +113,7 @@ $(document).ready(function () {
 	});
 
 	// Pay button
-	$(".btn-pay").click(function(){
-		$(".tab-nav-main > .nav-tabs > .active").parent().find("a").trigger("click");
+	$(".btn-next").click(function(){
+		$('.nav-tabs .active').parent().next('li').find('a').trigger('click');
 	});
 });
