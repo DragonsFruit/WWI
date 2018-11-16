@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	// Load classes
 	include_once "inc/autoload.php";
 
@@ -73,8 +74,11 @@
 							</div>
 							<div class="form-group">
 								<div class="form-check">
+									<input class="form-check-input" type="checkbox" id="gridCheck">
+									<label class="form-check-label" for="gridCheck">Ja, ik wil graag op de hoogte gehouden worden van bijzondere aanbiedingen en kortingen.</label>
+									<br>
 									<input class="form-check-input" type="checkbox" id="gridCheck" required>
-									<label class="form-check-label" for="gridCheck">Check me out</label>
+									<label class="form-check-label" for="gridCheck">Ik ga akkoord met de algemene voorwaarden.</label>
 								</div>
 							</div>
 							<a class="btn btn-primary btn-next text-white">Next</a>
@@ -84,7 +88,7 @@
 				<!-- betaling -->
                 <div class="tab-pane fade show" id="nav-product-betaling" role="tabpanel" aria-labelledby="product-betaling-tab">
 					<div id="payment-form">
-						<div><p>Totaalbedrag: $12<!-- moet gevuld worden met een echo van het totaalbedrag --></p></div>
+						<div><p>Totaalbedrag: <?php   ?> <!-- moet gevuld worden met een echo van het totaalbedrag --></p></div>
 
 						<div class="form-row">
 							<label for="ideal-bank-element">iDEAL Bank: </label>
