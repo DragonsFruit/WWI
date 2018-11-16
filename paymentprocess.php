@@ -62,22 +62,22 @@
 							</div>
 							<div class="form-group">
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" id="gridCheck">
+									<input class="form-check-input" type="checkbox" id="gridCheck" required>
 									<label class="form-check-label" for="gridCheck">Check me out</label>
 								</div>
 							</div>
-							<button type="submit" class="btn btn-primary">Sign in</button>
+							<button type="submit" class="btn btn-primary">Next</button>
 						</form>
 					</div>
                 </div>
 				<!-- betaling -->
                 <div class="tab-pane fade show" id="nav-product-betaling" role="tabpanel" aria-labelledby="product-betaling-tab">
 					<div id="payment-form">
-						<div><p>Totaalbedrag: $12</p></div>
+						<div><p>Totaalbedrag: $12<!-- moet gevuld worden met een echo van het totaalbedrag --></p></div>
 
 						<div class="form-row">
 							<label for="ideal-bank-element">iDEAL Bank: </label>
-							<select class="custom-select" id="ideal-bank-element">
+							<select class="custom-select" id="ideal-bank-element"> 
 								<option selected>Kies uw bank</option>
 								<option value="abn_amro">ABN AMRO</option>
 								<option value="asn_bank">ASN Bank</option>
@@ -92,6 +92,7 @@
 								<option value="van_lanschot">Van Lanschot</option>
 							</select>
 						</div>
+						<br>
 						
 						<a class="btn btn-primary btn-pay text-white">Submit Payment</a>
 
