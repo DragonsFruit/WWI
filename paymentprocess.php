@@ -9,6 +9,7 @@
 	$headerTitle =  "wideworldimporters";
 
 	include "inc/header.php";
+	$totaal = $sum = array_sum(array_column($_SESSION['cart'], 'product_price'));
 ?>
 
 <main class="container">
@@ -88,7 +89,7 @@
 				<!-- betaling -->
                 <div class="tab-pane fade show" id="nav-product-betaling" role="tabpanel" aria-labelledby="product-betaling-tab">
 					<div id="payment-form">
-						<div><p>Totaalbedrag: <?php   ?> <!-- moet gevuld worden met een echo van het totaalbedrag --></p></div>
+						<div><p>Totaalbedrag: <?php print ($totaal);  ?> <!-- moet gevuld worden met een echo van het totaalbedrag --></p></div>
 
 						<div class="form-row">
 							<label for="ideal-bank-element">iDEAL Bank: </label>
