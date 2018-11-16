@@ -16,7 +16,7 @@
         $categoryId = 0;
     }
 
-    //pagination (lang niet af, limiet is nu 20 per pagina)
+    //pagination (af volgens mij)
     if (filter_has_var(INPUT_GET,"page")){
         $page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
     } else {
@@ -83,18 +83,14 @@
                 <div class="col-12">
                     <nav aria-label="product_pages">
                         <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="Product_list.php?page=<?php if($page > 1){$page -= 1;} echo $page; if($categoryId != 0){print "&categoryId=".$categoryId;}?>" tabindex="-1">Previous</a>
+                            <li class="page-item <?php if ($page == 1){echo "disabled";} ?>">
+                                <a class="page-link" href="Product_list.php?page=<?php if($page > 1){echo $page-1;} if($categoryId != 0){print "&categoryId=".$categoryId;}?>" tabindex="-1">Previous</a>
                             </li>
                             <?php for($i = 1; $i <= ($numberProducts / $recordsPerPage) + 1; $i++){?>
-                            <li class="page-item <?php if($i == $page + 1 ){echo "active";} ?>"><a class="page-link" href="Product_list.php?page=<?php echo $i; if($categoryId != 0){print "&categoryId=".$categoryId;}?>"><?php echo $i?></a></li>
+                            <li class="page-item <?php if($i == $page){echo "active";} ?>"><a class="page-link" href="Product_list.php?page=<?php echo $i; if($categoryId != 0){print "&categoryId=".$categoryId;}?>"><?php echo $i?></a></li>
                             <?php }?>
-                            <!-- tijdelijk uitgeschakeld <li class="page-item active">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-                            <li class="page-item <?php if($page >= ($numberProducts / $recordsPerPage) - 1){echo "disabled";} ?>">
-                                <a class="page-link" href="Product_list.php?page=<?php $page += 2; echo $page; if($categoryId != 0){print "&categoryId=".$categoryId;}?>">Next</a>
+                            <li class="page-item <?php if($page >= $numberProducts / $recordsPerPage){echo "disabled";} ?>">
+                                <a class="page-link" href="Product_list.php?page=<?php echo $page + 1; if($categoryId != 0){print "&categoryId=".$categoryId;}?>">Next</a>
                             </li>
                         </ul>
                     </nav>
