@@ -547,3 +547,33 @@ a.buy-now {
 	background-color: rgba(0, 0, 0, .2);
 	color:            rgba(255, 255, 255, .6);
 }
+
+/* productlist */
+.card_margin {
+	margin-bottom: 10px;
+}
+.text_card {
+	overflow: hidden;
+	height: 74px;
+}
+
+.title_card {
+	height: 90;
+}
+
+a.buy_now_list {
+	background:            #2CDB54;
+	font-size:             18px;
+	letter-spacing:        2px;
+	color:                 rgb(255, 255, 255);
+	text-transform:        uppercase;
+	-moz-border-radius:    24px;
+	-webkit-border-radius: 24px;
+	border-radius:         24px;
+	text-align:            center;
+	border:                none;
+	box-shadow:            0 3px 6px rgba(44, 219, 84, 0.16), 0 3px 6px rgba(45, 219, 50, 0.23);
+	-moz-box-shadow:       0 3px 6px rgba(44, 219, 84, 0.16), 0 3px 6px rgba(45, 219, 50, 0.23);
+	-webkit-box-shadow:    0 3px 6px rgba(44, 219, 84, 0.16), 0 3px 6px rgba(45, 219, 50, 0.23);
+	margin-bottom: 10px;
+}

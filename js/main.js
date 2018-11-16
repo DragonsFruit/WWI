@@ -111,4 +111,9 @@ $(document).ready(function () {
 		}, 650);
 		event.preventDefault();
 	});
+
+	// Pay button
+	$(".btn-pay").click(function(){
+		$(".tab-nav-main > .nav-tabs > .active").parent().find("a").trigger("click");
+	});
 });

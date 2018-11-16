@@ -13,7 +13,7 @@
 <main class="container">
     <div class="row">
         <div class="col-12">
-            <nav>
+            <nav class="tab-nav-main">
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="bevestig-tab" data-toggle="tab" href="#nav-bevestig" role="tab" aria-controls="nav-bevestig" aria-selected="true">Bevestig bestelling</a>
                     <a class="nav-item nav-link" id="product-betaling-tab" data-toggle="tab" href="#nav-product-betaling" role="tab" aria-controls="nav-product-feedback" aria-selected="false">Betaling</a>
@@ -63,18 +63,43 @@
 							<div class="form-group">
 								<div class="form-check">
 									<input class="form-check-input" type="checkbox" id="gridCheck">
-									<label class="form-check-label" for="gridCheck">
-									Check me out
-									</label>
+									<label class="form-check-label" for="gridCheck">Check me out</label>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-primary">Sign in</button>
 						</form>
 					</div>
                 </div>
-                <div class="tab-pane fade show active" id="nav-product-betaling" role="tabpanel" aria-labelledby="product-betaling-tab">
+				<!-- betaling -->
+                <div class="tab-pane fade show" id="nav-product-betaling" role="tabpanel" aria-labelledby="product-betaling-tab">
+					<div id="payment-form">
+						<div><p>Totaalbedrag: $12</p></div>
+
+						<div class="form-row">
+							<label for="ideal-bank-element">iDEAL Bank: </label>
+							<select class="custom-select" id="ideal-bank-element">
+								<option selected>Kies uw bank</option>
+								<option value="abn_amro">ABN AMRO</option>
+								<option value="asn_bank">ASN Bank</option>
+								<option value="bunq">Bunq</option>
+								<option value="ing">ING</option>
+								<option value="knab">Knab</option>
+								<option value="moneyou">Moneyou</option>
+								<option value="rabobank">Rabobank</option>
+								<option value="regiobank">RegioBank</option>
+								<option value="sns_bank">SNS Bank (De Volksbank)</option>
+								<option value="triodos_bank">Triodos Bank</option>
+								<option value="van_lanschot">Van Lanschot</option>
+							</select>
+						</div>
+						
+						<a class="btn btn-primary btn-pay text-white">Submit Payment</a>
+
+						<!-- Used to display form errors. -->
+						<div id="error-message" role="alert"></div>
+					</div>
                 </div>
-                <div class="tab-pane fade show active" id="nav-product-klaar" role="tabpanel" aria-labelledby="product-klaar-tab">
+                <div class="tab-pane fade show" id="nav-product-klaar" role="tabpanel" aria-labelledby="product-klaar-tab">
                 </div>
             </div>
         </div>
