@@ -1,3 +1,17 @@
+// retrieve get parameter
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
 // Start searching
 function searchProduct() {
 	let searchValue = $('#search').val().trim();
@@ -66,8 +80,23 @@ $(document).ready(function () {
     // Add to cart
 	$("a.add-to-cart").click(function(event) {
 		let quantityInput = $(".quantity-input").val();
-		let cartCounter = $(".cart-counter").html();
+		let cartCounter = $(".cart-counter").html().trim();
 		let count = Number(cartCounter) + Number(quantityInput);
+		let productName = $(".product-name").html().trim();
+		let productPrice = $(".total-price-value").html().trim();
+		var url = window.location.pathname;
+		let id = findGetParameter('id');
+
+		$.ajax({
+			type: "POST",
+			url: 'inc/add-to-cart.php',
+			data: {
+				name: productName,
+				quantity: quantityInput,
+				price: productPrice,
+				id: id
+			}
+		});
 
 		$("a.add-to-cart").addClass("size");
 		setTimeout(function() {
