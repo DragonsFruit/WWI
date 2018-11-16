@@ -9,7 +9,7 @@
 			$this->db = DB::instance();
 		}
 
-		public function getProductlistBy($categoryId) {
+		public function getProductlistBy($categoryId, $recordsFrom, $recordsPerPage) {
 			$sql = "SELECT SI.StockItemID, SI.StockItemName, SI.RecommendedRetailPrice, SI.MarketingComments, SI.Photo
 					FROM stockitems SI
 					JOIN stockitemstockgroups SIG
@@ -20,7 +20,7 @@
 			if ($categoryId != 0) {
 				$sql .= " WHERE SG.StockGroupID = '$categoryId'";
 			}
-			$sql .= " GROUP BY SI.StockItemID";
+			$sql .= " GROUP BY SI.StockItemID LIMIT $recordsFrom, $recordsPerPage";
 			
 			$result = $this->db->run($sql)->fetchAll();
 			$this->data=$result;

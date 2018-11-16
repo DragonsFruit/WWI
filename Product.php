@@ -1,6 +1,7 @@
 <?php
-	// Load classes
-	include_once "inc/autoload.php";
+    session_start();
+    // Load classes
+    include_once "inc/autoload.php";
 
 	// Set current page active
 	$currentPage = 'product';
@@ -78,7 +79,7 @@
 
                 <!-- Product details -->
                 <div class="detail-wrap col-lg-6 px-0">
-                    <h1 class="product-name"><?php echo $product->productName; ?></h1>
+                    <h1 id="productName" class="product-name"><?php echo $product->productName; ?></h1>
 
                     <!-- Rating -->
                     <div class="product-rating">
@@ -137,7 +138,7 @@
                                 <dd class="item-description">
                                     <div class="quantity-info">
                                         <span class="quantity-modified">
-                                            <input type="number" class="quantity-input" min="1" value="1" maxlength="5" autocomplete="off">
+                                            <input type="number" id="totalQuantity" class="quantity-input" min="1" value="1" maxlength="5" autocomplete="off">
                                         </span>
                                         <span class="unit">piece</span>
                                         <span class="available-stock">(In stock)</span>
@@ -165,8 +166,8 @@
 									<a href="#!" id="buyNowButton" class="buy-now btn btn-success w-100">Buy Now</a>
 								</span>
 	                            <span class="col-6">
-									<a href="#!" id="addCartButton" class="add-to-cart btn btn-primary w-100">Add to Cart</a>
-								</span>
+                                    <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary w-100">Add to Cart</a>
+                                </span>
 			                </div>
 		                </dl>
 	                </div>
@@ -258,5 +259,9 @@
         </section>
     </main>
 
-<?php include "inc/footer.php" ?>
+<?php 
+    include "inc/footer.php";
+?>
+
+
 

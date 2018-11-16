@@ -1,3 +1,17 @@
+// retrieve get parameter
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
 // Start searching
 function searchProduct() {
 	let searchValue = $('#search').val().trim();
@@ -39,15 +53,15 @@ $(document).ready(function () {
 		searchProduct();
 	});
 
-	$("#search").focusin(function () {
-		let searchResultBox = $("#searchResultsBox");
-		searchResultBox.removeClass("d-none");
-	});
+	// $("#search").focusin(function () {
+	// 	let searchResultBox = $("#searchResultsBox");
+	// 	searchResultBox.removeClass("d-none");
+	// });
 
-	$("#search").focusout(function () {
-		let searchResultBox = $("#searchResultsBox");
-		searchResultBox.addClass("d-none");
-	});
+	// $("#search").focusout(function () {
+	// 	let searchResultBox = $("#searchResultsBox");
+	// 	searchResultBox.addClass("d-none");
+	// });
 
 	$("#category").change(function () {
 		searchProduct();
@@ -66,8 +80,23 @@ $(document).ready(function () {
     // Add to cart
 	$("a.add-to-cart").click(function(event) {
 		let quantityInput = $(".quantity-input").val();
-		let cartCounter = $(".cart-counter").html();
+		let cartCounter = $(".cart-counter").html().trim();
 		let count = Number(cartCounter) + Number(quantityInput);
+		let productName = $(".product-name").html().trim();
+		let productPrice = $(".total-price-value").html().trim();
+		var url = window.location.pathname;
+		let id = findGetParameter('id');
+
+		$.ajax({
+			type: "POST",
+			url: 'inc/add-to-cart.php',
+			data: {
+				name: productName,
+				quantity: quantityInput,
+				price: productPrice,
+				id: id
+			}
+		});
 
 		$("a.add-to-cart").addClass("size");
 		setTimeout(function() {
@@ -81,5 +110,10 @@ $(document).ready(function () {
 			$("a.add-to-cart").removeClass("size");
 		}, 650);
 		event.preventDefault();
+	});
+
+	// Pay button
+	$(".btn-next").click(function(){
+		$('.nav-tabs .active').parent().next('li').find('a').trigger('click');
 	});
 });
