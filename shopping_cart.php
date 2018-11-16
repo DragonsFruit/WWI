@@ -9,7 +9,7 @@
     var_dump($_SESSION['cart']);
     foreach ($_SESSION['cart'] as $key => $product) {
     ?>
-        <table class="table">
+        <table class="table table-hover">
             <tr>
                 <td> <?php echo $product['item_name']; ?> </td>
                 <td> <?php echo $product['item_quantity']; ?> </td>
@@ -22,7 +22,8 @@
         </table>
     <?php
     }   
-
+    $totaal = $sum = array_sum(array_column($_SESSION['cart'], 'product_price'));
+    print($totaal);
 
     if (filter_input(INPUT_GET, 'action') == 'delete') {
         foreach($_SESSION['cart'] as $key => $product) {
