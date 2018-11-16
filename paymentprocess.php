@@ -13,13 +13,24 @@
 <main class="container">
     <div class="row">
         <div class="col-12">
-            <nav class="tab-nav-main">
+            <!-- <nav class="tab-nav-main">
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="bevestig-tab" data-toggle="tab" href="#nav-bevestig" role="tab" aria-controls="nav-bevestig" aria-selected="true">Bevestig bestelling</a>
                     <a class="nav-item nav-link" id="product-betaling-tab" data-toggle="tab" href="#nav-product-betaling" role="tab" aria-controls="nav-product-feedback" aria-selected="false">Betaling</a>
                     <a class="nav-item nav-link" id="product-klaar-tab" data-toggle="tab" href="#nav-product-klaar" role="tab" aria-controls="nav-product-shipping" aria-selected="false">Klaar</a>
                 </div>
-            </nav>
+            </nav> -->
+			<ul class="nav nav-tabs tab-nav-main" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" id="bevestig-tab" data-toggle="tab" href="#nav-bevestig" role="tab" aria-controls="nav-bevestig" aria-selected="true">Bevestig bestelling</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="product-betaling-tab" data-toggle="tab" href="#nav-product-betaling" role="tab" aria-controls="nav-product-feedback" aria-selected="false">Betaling</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="product-klaar-tab" data-toggle="tab" href="#nav-product-klaar" role="tab" aria-controls="nav-product-shipping" aria-selected="false">Klaar</a>
+				</li>
+			</ul>
             <div class="tab-content" id="nav-tabContent">
                 <!-- Product bevestiging -->
                 <div class="tab-pane fade show active" id="nav-bevestig" role="tabpanel" aria-labelledby="bevestig-tab">
@@ -66,7 +77,7 @@
 									<label class="form-check-label" for="gridCheck">Check me out</label>
 								</div>
 							</div>
-							<button type="submit" class="btn btn-primary">Next</button>
+							<a class="btn btn-primary btn-next text-white">Next</a>
 						</form>
 					</div>
                 </div>
@@ -94,13 +105,14 @@
 						</div>
 						<br>
 						
-						<a class="btn btn-primary btn-pay text-white">Submit Payment</a>
+						<a class="btn btn-primary btn-next text-white">Submit Payment</a>
 
 						<!-- Used to display form errors. -->
 						<div id="error-message" role="alert"></div>
 					</div>
                 </div>
                 <div class="tab-pane fade show" id="nav-product-klaar" role="tabpanel" aria-labelledby="product-klaar-tab">
+					TEST
                 </div>
             </div>
         </div>
