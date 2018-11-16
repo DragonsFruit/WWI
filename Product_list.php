@@ -66,13 +66,14 @@
                         <div class="card card_margin">
                             <img class="card-img-top" style="heigth:400px width:600px" src="https://place-hold.it/600x500/" alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title title_card"><a href="product.php?id=<?php echo $product["StockItemID"]; ?>" title="View Product"><?php echo $product["StockItemName"]; ?></a></h4>
+                                <h4 class="card-title title_card"><a class="product-name" href="product.php?id=<?php echo $product["StockItemID"]; ?>" title="View Product"><?php echo $product["StockItemName"]; ?></a></h4>
                                 <p class="card-text text_card"><?php echo $product["MarketingComments"]; ?></p>
                                 <div class="row">
                                     <div class="col-12">
-                                        <a href="#!" id="buyNowButton" class="buy_now_list btn btn-warning w-100"><span class="price-symbol">US $</span><?php echo $product["RecommendedRetailPrice"]; ?></a>
+                                        <a href="#!" id="buyNowButton" class="buy_now_list btn btn-warning w-100"><span class="price-symbol">US $</span><span class="total-price-value"><?php echo $product["RecommendedRetailPrice"]; ?></span></a>
                                     </div>
                                     <div class="col">
+                                        <input type="hidden"  class="quantity-input" value=1>
                                         <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary w-100">Add to Cart</a>
                                     </div>
                                 </div>
