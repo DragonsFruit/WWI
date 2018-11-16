@@ -70,9 +70,10 @@
                                 <p class="card-text text_card"><?php echo $product["MarketingComments"]; ?></p>
                                 <div class="row">
                                     <div class="col-12">
-                                        <a href="#!" id="buyNowButton" class="buy_now_list btn btn-warning w-100"><span class="price-symbol quantity-input" value=1>US $</span><span class="total-price-value"><?php echo $product["RecommendedRetailPrice"]; ?></span></a>
+                                        <a href="#!" id="buyNowButton" class="buy_now_list btn btn-warning w-100"><span class="price-symbol">US $</span><span class="total-price-value"><?php echo $product["RecommendedRetailPrice"]; ?></span></a>
                                     </div>
                                     <div class="col">
+                                        <input type="hidden"  class="quantity-input" value=1>
                                         <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary w-100">Add to Cart</a>
                                     </div>
                                 </div>
