@@ -112,6 +112,15 @@ $(document).ready(function () {
 		event.preventDefault();
 	});
 
+	// Cart button
+	$("#shoppingCart").on("click", function() {
+		if ($("#shoppingCartItems").hasClass("d-none")) {
+			$("#shoppingCartItems").removeClass("d-none");
+		} else {
+			$("#shoppingCartItems").addClass("d-none");
+		}
+	});
+
 	// Pay button
 	$(".btn-next").click(function(){
 		$('.nav-tabs .active').parent().next('li').find('a').trigger('click');
