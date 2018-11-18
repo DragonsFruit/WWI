@@ -49,7 +49,7 @@
 	        <div class="col-12 col-sm-3">
 	            <div class="card bg-light mb-3">
 	                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
-	                <div class="list-group ">
+	                <div class="list-group">
 	                    <a href="Product_list.php" class="list-group-item list-group-item-action">All Categories</a>
 	                    <?php foreach ($categories as $category) { ?>
 	                        <a href="Product_list.php?categoryId=<?php echo $category["StockGroupID"]; ?>" class="list-group-item list-group-item-action"><?php echo $category["StockGroupName"]; ?></a>
@@ -64,16 +64,17 @@
 	                        <div class="card mb-3" style="min-width: 250px">
 	                            <img class="card-img-top" src="https://place-hold.it/250x250/">
 	                            <div class="card-body">
-	                                <a id="productName" class="product-name" href="product.php?id=<?php echo $product["StockItemID"] ?>">
-		                                <h4 class="card-title"><?php echo $product["StockItemName"] ?></h4>
+	                                <a class="product-name" href="product.php?id=<?php echo $product["StockItemID"] ?>">
+		                                <h4 id="productName" class="card-title"><?php echo $product["StockItemName"] ?></h4>
 	                                </a>
+		                            <input type="number" class="quantity-input" value="1" hidden>
 		                            <?php if($product["MarketingComments"] != "") { ?>
 	                                    <p class="card-text"><?php echo $product["MarketingComments"] ?></p>
 		                            <?php } ?>
 	                                <div class="row">
 		                                <div class="col-12">
 			                                <a href="#!" id="buyNowButton" class="buy-now btn btn-success btn-success-custom w-100 mb-2">
-				                                <span class="price-symbol">US $</span><span id="totalPrice" ><?php echo $product["RecommendedRetailPrice"] ?></span>
+				                                <span class="price-symbol">US $</span><span id="totalPrice"><?php echo $product["RecommendedRetailPrice"] ?></span>
 			                                </a>
 			                                <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary btn-primary-custom w-100">Add to Cart</a>
 		                                </div>

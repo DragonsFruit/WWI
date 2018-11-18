@@ -72,6 +72,7 @@
 									<div class="shopping-cart-total">
 										<span class="lighter-text">Total:</span>
 										<span class="main-color-text">$<span id="shoppingCartTotalPrice"><?php echo (!$_SESSION["cart"]["misc"]["total_price"]) ? 0 : $_SESSION["cart"]["misc"]["total_price"] ?></span></span>
+										<span class="lighter-text" style="float: right"><a href="shopping_cart.php">Go to cart</a></span>
 									</div>
 								</div>
 
