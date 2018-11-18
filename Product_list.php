@@ -52,7 +52,7 @@
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                 <ul class="list-group category_block">
-                <li class="list-group-item"><a href="Product_list.php">All Categories</a></li>
+                <li class="list-group-item"><a href="Product_list.php">Alle Categories</a></li>
                     <?php foreach ($categories as $category) { ?>
                         <li class="list-group-item"><a href="Product_list.php?categoryId=<?php echo $category["StockGroupID"]; ?>"><?php echo $category["StockGroupName"]; ?></a></li>
                     <?php }?>   
@@ -69,12 +69,11 @@
                                 <h4 class="card-title title_card"><a class="product-name title_card" href="product.php?id=<?php echo $product["StockItemID"]; ?>" title="View Product"><?php echo $product["StockItemName"]; ?></a></h4>
                                 <p class="card-text text_card"><?php echo $product["MarketingComments"]; ?></p>
                                 <div class="row">
-                                    <div class="col-12">
-                                        <a href="#!" id="buyNowButton" class="buy_now_list btn btn-warning w-100"><span class="price-symbol">US $</span><span class="total-price-value"><?php echo $product["RecommendedRetailPrice"]; ?></span></a>
+                                    <div class="price_list col-12">
+                                       <span class="price-symbol">US $</span><span class="total-price-value"><?php echo $product["RecommendedRetailPrice"]; ?></span>
                                     </div>
                                     <div class="col">
-                                        <input type="hidden"  class="quantity-input" value=1>
-                                        <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary w-100">Add to Cart</a>
+                                        <a href="product.php?id=<?php echo $product["StockItemID"]; ?>" class="btn btn-primary w-100">View Product</a>
                                     </div>
                                 </div>
                             </div>

@@ -1,15 +1,15 @@
 // retrieve get parameter
 function findGetParameter(parameterName) {
-    var result = null,
-        tmp = [];
-    location.search
-        .substr(1)
-        .split("&")
-        .forEach(function (item) {
-          tmp = item.split("=");
-          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-        });
-    return result;
+	var result = null,
+		tmp = [];
+	location.search
+		.substr(1)
+		.split("&")
+		.forEach(function (item) {
+			tmp = item.split("=");
+			if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+		});
+	return result;
 }
 
 // Start searching
@@ -67,18 +67,18 @@ $(document).ready(function () {
 		searchProduct();
 	});
 
-    $("#category").focusin(function () {
-	    let searchResultBox = $("#searchResultsBox");
-	    searchResultBox.removeClass("d-none");
-    });
+	$("#category").focusin(function () {
+		let searchResultBox = $("#searchResultsBox");
+		searchResultBox.removeClass("d-none");
+	});
 
-    $("#category").focusout(function () {
-	    let searchResultBox = $("#searchResultsBox");
-	    searchResultBox.addClass("d-none");
-    });
+	$("#category").focusout(function () {
+		let searchResultBox = $("#searchResultsBox");
+		searchResultBox.addClass("d-none");
+	});
 
-    // Add to cart
-	$("a.add-to-cart").click(function(event) {
+	// Add to cart
+	$("a.add-to-cart").click(function (event) {
 		let quantityInput = $(".quantity-input").val();
 		let cartCounter = $(".cart-counter").html().trim();
 		let count = Number(cartCounter) + Number(quantityInput);
@@ -99,13 +99,13 @@ $(document).ready(function () {
 		});
 
 		$("a.add-to-cart").addClass("size");
-		setTimeout(function() {
+		setTimeout(function () {
 			$("a.add-to-cart").addClass("hover");
 		}, 200);
-		setTimeout(function() {
+		setTimeout(function () {
 			$(".cart-counter").text(count);
 		}, 600);
-		setTimeout(function() {
+		setTimeout(function () {
 			$("a.add-to-cart").removeClass("hover");
 			$("a.add-to-cart").removeClass("size");
 		}, 650);
@@ -113,7 +113,7 @@ $(document).ready(function () {
 	});
 
 	// Cart button
-	$("#shoppingCart").on("click", function() {
+	$("#shoppingCart").on("click", function () {
 		if ($("#shoppingCartItems").hasClass("d-none")) {
 			$("#shoppingCartItems").removeClass("d-none");
 		} else {
@@ -122,7 +122,8 @@ $(document).ready(function () {
 	});
 
 	// Pay button
-	$(".btn-next").click(function(){
+	$(".btn-next").click(function () {
 		$('.nav-tabs .active').parent().next('li').find('a').trigger('click');
 	});
 });
+
