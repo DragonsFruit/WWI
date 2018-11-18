@@ -1,5 +1,4 @@
 <?php
-    session_start();
     // Load classes
     include_once "inc/autoload.php";
 
@@ -21,8 +20,6 @@
 
 	include "inc/header.php";
 ?>
-
-
 
 <!-- Main -->
     <main class="detail">
@@ -163,10 +160,10 @@
 		                <dl class="property-item">
 			                <div class="row" id="productActionBlock">
 								<span class="col-6">
-									<a href="#!" id="buyNowButton" class="buy-now btn btn-success w-100">Buy Now</a>
+									<a href="#!" id="buyNowButton" class="btn btn-success btn-success-custom w-100">Buy Now</a>
 								</span>
 	                            <span class="col-6">
-                                    <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary w-100">Add to Cart</a>
+                                    <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary btn-primary-custom w-100">Add to Cart</a>
                                 </span>
 			                </div>
 		                </dl>

@@ -8,15 +8,14 @@
 	// Specify header title
     $headerTitle =  "Products";
 
-
-    //category
+    // Category
     if(filter_has_var(INPUT_GET, "categoryId")) {
         $categoryId = filter_input(INPUT_GET, "categoryId",FILTER_SANITIZE_NUMBER_INT);
     } else {
         $categoryId = 0;
     }
 
-    //pagination (af volgens mij)
+    // Pagination
     if (filter_has_var(INPUT_GET,"page")){
         $page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
     } else {
@@ -26,24 +25,22 @@
     $recordsPerPage = 20;
     $recordsFrom = ($recordsPerPage * $page) - $recordsPerPage;
 
-    //count products (voor pagination)
-    $productlist = new Productlist();
-	$productlist->getProductlistBy($categoryId, 0, 5000);
-    $productlists = $productlist->data;
-    $numberProducts = count($productlists);
+    // Count products for pagination
+    $productList = new Productlist();
+	$productList->getProductListBy($categoryId, 0, 5000);
+	$productsList = $productList->data;
+    $numberProducts = count($productsList);
 
-    //products uit database
-    $productlist = new Productlist();
-	$productlist->getProductlistBy($categoryId, $recordsFrom, $recordsPerPage);
-    $productlists = $productlist->data;
+    // Products from the database
+    $productList = new Productlist();
+	$productList->getProductListBy($categoryId, $recordsFrom, $recordsPerPage);
+	$productsList = $productList->data;
 
-    //categories uit database
+    // Categories uit database
     $category = new Category();
 	$category->getCategories();
     $categories = $category->data;
-    
-    
-    
+
 	include "inc/header.php";
 ?>
 <div class="container">
@@ -97,7 +94,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-</div>
+</main>
+
 <?php include "inc/footer.php" ?>

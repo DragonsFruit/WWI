@@ -1,21 +1,30 @@
-// retrieve get parameter
+// Find get parameter
 function findGetParameter(parameterName) {
-	var result = null,
-		tmp = [];
-	location.search
-		.substr(1)
-		.split("&")
-		.forEach(function (item) {
-			tmp = item.split("=");
-			if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-		});
-	return result;
+    let result = null,
+        tmp = [];
+    location.search.substr(1).split("&").forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
 }
 
-// Start searching
+// Check required inputs
+function checkRequiredInputs() {
+	let isValid = true;
+	$("input").filter("[required]").each(function() {
+		if ($(this).val() === "" || $(this).prop("checked") === false) {
+			isValid = false;
+			return false;
+		}
+	});
+	return isValid;
+}
+
+// Search for product
 function searchProduct() {
-	let searchValue = $('#search').val().trim();
-	let categoryValue = $('#category').val().trim();
+	let searchValue = $("#search").val().trim();
+	let categoryValue = $("#category").val().trim();
 
 	let searchResultBox = $("#searchResultsBox");
 	searchResultBox.removeClass("d-none");
@@ -26,7 +35,7 @@ function searchProduct() {
 	} else {
 		$.ajax({
 			type: "POST",
-			url: "inc/ajax.php",
+			url: "inc/search.php",
 			data: {
 				search: searchValue,
 				category: categoryValue
@@ -38,12 +47,26 @@ function searchProduct() {
 	}
 }
 
+// Get shopping cart products
+function getShoppingCartProducts() {
+	let shoppingCartBox = $("#shoppingCartBox");
+	shoppingCartBox.removeClass("d-none");
+
+	$.ajax({
+		type: "POST",
+		url: "inc/cart.php",
+		success: function (html) {
+			shoppingCartBox.html(html).show();
+		}
+	});
+}
+
 $(document).ready(function () {
 	// Enable tooltip
 	$('[data-toggle="tooltip"]').tooltip();
 
 	// Calculate product total price
-	$(".quantity-input").change('change', function () {
+	$(".quantity-input").change("change", function () {
 		let totalCost = $("#productPrice").html() * $(this).val();
 		$("#totalPrice").html(Math.round(totalCost * 100) / 100);
 	});
@@ -53,10 +76,10 @@ $(document).ready(function () {
 		searchProduct();
 	});
 
-	// $("#search").focusin(function () {
-	// 	let searchResultBox = $("#searchResultsBox");
-	// 	searchResultBox.removeClass("d-none");
-	// });
+	$("#search").focusin(function () {
+		let searchResultBox = $("#searchResultsBox");
+		searchResultBox.removeClass("d-none");
+	});
 
 	// $("#search").focusout(function () {
 	// 	let searchResultBox = $("#searchResultsBox");
@@ -67,63 +90,83 @@ $(document).ready(function () {
 		searchProduct();
 	});
 
-	$("#category").focusin(function () {
-		let searchResultBox = $("#searchResultsBox");
-		searchResultBox.removeClass("d-none");
-	});
+    $("#category").focusin(function () {
+	    let searchResultBox = $("#searchResultsBox");
+	    searchResultBox.removeClass("d-none");
+    });
 
-	$("#category").focusout(function () {
-		let searchResultBox = $("#searchResultsBox");
-		searchResultBox.addClass("d-none");
-	});
+    $("#category").focusout(function () {
+	    let searchResultBox = $("#searchResultsBox");
+	    searchResultBox.addClass("d-none");
+    });
 
-	// Add to cart
-	$("a.add-to-cart").click(function (event) {
+    // Add to cart
+	$("a.add-to-cart").click(function(event) {
 		let quantityInput = $(".quantity-input").val();
 		let cartCounter = $(".cart-counter").html().trim();
 		let count = Number(cartCounter) + Number(quantityInput);
-		let productName = $(".product-name").html().trim();
-		let productPrice = $(".total-price-value").html().trim();
-		var url = window.location.pathname;
-		let id = findGetParameter('id');
+
+		let oldTotalPrice = $("#shoppingCartTotalPrice").html().trim();
+		let newTotalPrice = $("#totalPrice").html().trim();
+		let totalPrice = Number(oldTotalPrice) + Number(newTotalPrice);
+
+		let productName = $("#productName").html().trim();
+		let id = findGetParameter("id");
 
 		$.ajax({
 			type: "POST",
-			url: 'inc/add-to-cart.php',
+			url: "inc/add-to-cart.php",
 			data: {
 				name: productName,
 				quantity: quantityInput,
-				price: productPrice,
+				price: newTotalPrice,
 				id: id
 			}
 		});
 
-		$("a.add-to-cart").addClass("size");
-		setTimeout(function () {
-			$("a.add-to-cart").addClass("hover");
+		let button = $(this);
+		button.addClass("size");
+		setTimeout(function() {
+			button.addClass("hover");
 		}, 200);
-		setTimeout(function () {
+		setTimeout(function() {
 			$(".cart-counter").text(count);
+			$("#shoppingCartTotalPrice").text(totalPrice);
 		}, 600);
-		setTimeout(function () {
-			$("a.add-to-cart").removeClass("hover");
-			$("a.add-to-cart").removeClass("size");
+		setTimeout(function() {
+			button.removeClass("hover");
+			button.removeClass("size");
 		}, 650);
 		event.preventDefault();
 	});
 
-	// Cart button
-	$("#shoppingCart").on("click", function () {
-		if ($("#shoppingCartItems").hasClass("d-none")) {
-			$("#shoppingCartItems").removeClass("d-none");
+	// Shopping cart button
+	$("#shoppingCartButton").on("click", function() {
+		getShoppingCartProducts();
+
+		if ($("#shoppingCart").hasClass("d-none")) {
+			$("#shoppingCart").removeClass("d-none");
 		} else {
-			$("#shoppingCartItems").addClass("d-none");
+			$("#shoppingCart").addClass("d-none");
 		}
 	});
 
 	// Pay button
-	$(".btn-next").click(function () {
-		$('.nav-tabs .active').parent().next('li').find('a').trigger('click');
+	$(".btn-next").click(function(){
+		if (checkRequiredInputs()) {
+			$(".nav-tabs .active").parent().next("li").find("a").trigger("click");
+		}
 	});
-});
 
+	// Check mark
+	$("#product-klaar-tab").click(function () {
+		setTimeout(function() {
+			$(".payment-description").html("Processing payment...");
+		}, 100);
+		setTimeout(function() {
+			$(".payment-description").html("Payment received!");
+			$(".circle-loader").toggleClass("load-complete");
+			$(".checkmark").toggle();
+		}, 3000);
+	})
+});

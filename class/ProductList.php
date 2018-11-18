@@ -1,6 +1,5 @@
 <?php
-	class Productlist {
-		/* @var DB */
+	class ProductList {
 		protected $db;
 
 		public $data;
@@ -9,7 +8,7 @@
 			$this->db = DB::instance();
 		}
 
-		public function getProductlistBy($categoryId, $recordsFrom, $recordsPerPage) {
+		public function getProductListBy($categoryId, $recordsFrom, $recordsPerPage) {
 			$sql = "SELECT SI.StockItemID, SI.StockItemName, SI.RecommendedRetailPrice, SI.MarketingComments, SI.Photo
 					FROM stockitems SI
 					JOIN stockitemstockgroups SIG

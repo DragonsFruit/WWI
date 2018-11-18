@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	$category = new Category();
 	$category->getCategories();
 	$categories = $category->data;
@@ -21,9 +23,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<script src="https://js.stripe.com/v3/"></script>
 	<script src="js/main.js"></script>
-	
 
-	<title><?php echo $headerTitle; ?> | WWI</title>
+	<title><?php echo (!$headerTitle) ? 'WideWorldImporters' : $headerTitle; ?> | WWI</title>
 </head>
 
 <body>
@@ -60,37 +61,23 @@
 						<a href="product_list.php" class="nav-link"><i class="far fa-th-large"></i> Products</a>
 					</li>
 					<li class="nav-item <?php if($currentPage =='cart'){echo 'active';}?>">
-						<span class="cart-counter mt-1 px-2">0</span>
-						<a href="#cart" id="shoppingCart" class="nav-link cart position-relative">
+						<span class="cart-counter mt-1 px-2"><?php echo (!$_SESSION["cart"]["misc"]["total_quantity"]) ? 0 : $_SESSION["cart"]["misc"]["total_quantity"] ?></span>
+						<a href="#cart" id="shoppingCartButton" class="nav-link cart position-relative">
 							<i class="far fa-shopping-cart"></i>
 							<span>Cart</span>
 						</a>
-						<div id="shoppingCartItems" class="position-absolute d-none">
+						<div id="shoppingCart" class="position-absolute d-none">
 							<div class="shopping-cart">
 								<div class="shopping-cart-header">
-									<i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
 									<div class="shopping-cart-total">
 										<span class="lighter-text">Total:</span>
-										<span class="main-color-text">$2,229.97</span>
+										<span class="main-color-text">$<span id="shoppingCartTotalPrice"><?php echo (!$_SESSION["cart"]["misc"]["total_price"]) ? 0 : $_SESSION["cart"]["misc"]["total_price"] ?></span></span>
 									</div>
 								</div>
-								<!--end shopping-cart-header -->
 
-								<ul class="shopping-cart-items list-group list-group-flush">
-									<?php
-										$cartItems = $_SESSION["cart"];
-										foreach ($cartItems as $cartItem) {
-									?>
-									<li class="list-group-item">
-										<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
-										<span class="item-name"><?php echo $cartItem["item_name"]?></span>
-										<span class="item-price"><?php echo $cartItem["product_price"]?></span>
-										<span class="item-quantity"><?php echo $cartItem["item_quantity"]?></span>
-									</li>
-									<?php }?>
-								</ul>
+								<ul id="shoppingCartBox" class="shopping-cart-items list-group list-group-flush"></ul>
 
-								<a href="paymentprocess.php" class="btn btn-primary d-block mt-2">Checkout</a>
+								<a href="paymentprocess.php" class="btn btn-primary btn-primary-custom d-block mt-2">Checkout</a>
 							</div>
 						</div>
 					</li>
@@ -98,3 +85,4 @@
 			</div>
 		</div>
 	</nav>
+    <hr class="col-12 mt-0">

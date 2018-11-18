@@ -2,18 +2,10 @@
 	// Load classes
 	include_once "inc/autoload.php";
 
-	// Set current page active
-	$currentPage = 'home';
-
-	$headerTitle =  "wideworldimporters";
-
 	include "inc/header.php";
 ?>
 
-
-
 <main>
-
 	<section class="container">
     	<div class="row">
 			<!-- Carousel -->

@@ -2,7 +2,6 @@
 	include "DB.php";
 
 	class Product {
-		/* @var DB */
 		protected $db;
 
 		public $productName;

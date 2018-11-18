@@ -1,8 +1,5 @@
 <?php
-	// include "DB.php";
-
 	class Registration {
-		/* @var DB */
 		protected $db;
 
         public $data;
@@ -11,15 +8,12 @@
 			$this->db = DB::instance();
 		}
 
-		public function registerUserWith($firstName,$lastName,$postCode,$houseNumber,$streetName,$country) {
-				$sql = "INSERT INTO customers(CustomerID,CustomerName,CustomerCategoryID,PrimaryContactPersonID,deliverymethodID,DeliveryCityID,PostalCityID,LastEditedBy)
-				VALUES (@Rows,?,?,?,?,?,?,?)";
-				$this->db->run("set @Rows= (SELECT COUNT(*) FROM customers);");
-				$this->db->run($sql, [$firstName . " " . $lastName, 1, 1, 1, 1, 1, 1]);
-				
-				// $sql = "INSERT INTO customers(CustomerName,CustomerCategoryID,PrimaryContactPersonID,deliverymethodID,DeliveryCityID,PostalCityID,LastEditedBy)
-                // VALUES (?,?,?,?,?,?,?)";
-                // $this->db->run($sql, [$firstName . " " . $lastName, 1, 1, 1, 1, 1, 1]);
-			
+		public function registerUserWith($firstName, $lastName, $postCode, $houseNumber, $streetName, $city) {
+			$name = $firstName . " " . $lastName;
+			$sql = "INSERT INTO customers(CustomerID, CustomerName, CustomerCategoryID, PrimaryContactPersonID, DeliveryMethodID, DeliveryCityID, PostalCityID, LastEditedBy)
+			VALUES (@Rows, ?, ?, ?, ?, ?, ?, ?)";
+
+			$this->db->run("SET @Rows= (SELECT COUNT(*) FROM customers)");
+			$this->db->run($sql, [$name, 1, 1, 1, 1, 1, 1]);
 		}
 	}
