@@ -86,4 +86,4 @@
 			</div>
 		</div>
 	</nav>
-    <hr class="col-12 mt-0">
+    <!-- <hr class="col-12 mt-0"> -->
