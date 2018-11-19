@@ -1,17 +1,35 @@
 <?php
     include_once "inc/autoload.php";
 
+	$currentPage = "shopping_cart";
+
 	$headerTitle =  "Shopping Cart";
 
-    include "inc/header.php";
+	session_start();
 
 	if (filter_input(INPUT_GET, 'action') == 'delete') {
 		foreach($_SESSION['cart'] as $key => $product) {
 			if ($key == filter_input(INPUT_GET, 'id')) {
 				unset($_SESSION['cart'][$key]);
+				// Totals
+				$oldTotalQuantity = $_SESSION["cart"]["misc"]["total_quantity"];
+				// $totalQuantity = $oldTotalQuantity + $newQuantity;
+				$totalQuantity = array_sum(array_column($_SESSION['cart'], 'product_quantity'));
+
+				$oldTotalPrice = $_SESSION["cart"]["misc"]["total_price"];
+				// $totalPrice = $oldTotalPrice + $newPrice;
+				$totalPrice = array_sum(array_column($_SESSION['cart'], 'product_price'));
+
+				$misc = [
+					"total_quantity" => $totalQuantity,
+					"total_price" => $totalPrice
+				];
+				$_SESSION["cart"]["misc"] = $misc;
 			}
 		}
 	}
+
+    include "inc/header.php";
 
     $totalQuantity = $_SESSION["cart"]["misc"]["total_quantity"];
 ?>
@@ -47,7 +65,7 @@
 								</td>
 								<td data-th="Price">$<?php echo $cartItem['product_price'] / $cartItem['product_quantity'] ?></td>
 								<td data-th="Quantity">
-									<input type="number" class="form-control text-center" value="<?php echo $cartItem['product_quantity'] ?>">
+									<input type="number" class="form-control text-center" value="<?php echo $cartItem['product_quantity'] ?>" min="0">
 								</td>
 								<td data-th="Subtotal" class="text-center">$<?php echo $cartItem['product_price']?></td>
 								<td class="actions" data-th="">

@@ -3,7 +3,7 @@
 	include_once "inc/autoload.php";
 	
 	// Set current page active
-	$currentPage = 'product';
+	$currentPage = 'registration';
 
 	// Specify header title
 	$headerTitle =  "form";
