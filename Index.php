@@ -1,7 +1,7 @@
 <?php
 	// Load classes
 	include_once "inc/autoload.php";
-
+	$currentPage = 'Homepage';
 	include "inc/header.php";
 ?>
 
