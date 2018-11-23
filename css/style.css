@@ -216,6 +216,7 @@ dd {
 	line-height:   22px;
 	padding:       10px 20px 0;
 	margin-bottom: 0;
+	max-height:    123px;
 }
 
 .product-rating {
@@ -737,7 +738,17 @@ table#cart>tbody>tr>td, table#cart>tfoot>tr>td{
 
 /* Product list */
 .card-product-list {
-	min-width: 250px !important;
+	min-width: 265px !important;
+	max-width: 265px !important;
+	display  : block !important;
+}
+
+.card-product-text {
+	height: 48;
+}
+
+.card-product-title {
+	height: 87px;
 }
 
 /* Check mark */
