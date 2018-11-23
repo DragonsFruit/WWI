@@ -9,12 +9,6 @@ function findGetParameter(parameterName) {
     return result;
 }
 
-function findProductId(){
-	$(".card-product").click(function () {
-		$(this).find(".card-product .id-input");
-	})
-}
-
 // Check required inputs
 function checkRequiredInputs() {
 	let isValid = true;
@@ -119,6 +113,9 @@ $(document).ready(function () {
 
     // Add to cart
 	$("a.add-to-cart").click(function(event) {
+		let id = findGetParameter("id");
+		let productName = $("#productName").html().trim();
+
 		let quantityInput = $(".quantity-input").val();
 		let cartCounter = $(".cart-counter").html().trim();
 		let count = Number(cartCounter) + Number(quantityInput);
@@ -127,17 +124,23 @@ $(document).ready(function () {
 		let newTotalPrice = $("#totalPrice").html().trim();
 		let totalPrice = Number(oldTotalPrice) + Number(newTotalPrice);
 
-		let productName = $("#productName").html().trim();
-		let id = findGetParameter("id");
+		if (id === null) {
+			id = $(this).parents(".card-product").find(".id-input").val();
+			productName = $(this).parents(".card-product").find("#productName").html().trim();
+
+			quantityInput = $(this).parents(".card-product").find(".quantity-input").val();
+
+			newTotalPrice = $(this).parents(".card-product").find("#totalPrice").html().trim();
+		}
 
 		$.ajax({
 			type: "POST",
 			url: "inc/add-to-cart.php",
 			data: {
+				id: id,
 				name: productName,
 				quantity: quantityInput,
 				price: newTotalPrice,
-				id: id
 			}
 		});
 
@@ -180,6 +183,12 @@ $(document).ready(function () {
 		setTimeout(function() {
 			$(".payment-description").html("Processing payment...");
 		}, 100);
+
+		$.ajax({
+			type: "POST",
+			url: "inc/destroy.php"
+		});
+
 		setTimeout(function() {
 			$(".payment-description").html("Payment received!");
 			$(".circle-loader").toggleClass("load-complete");
