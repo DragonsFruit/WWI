@@ -52,7 +52,7 @@
 <main>
 	<div class="container">
 	    <div class="row">
-	        <div class="col-12 col-sm-3">
+	        <div class="col-lg-3 col-sm-12">
 	            <div class="card bg-light mb-3">
 	                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
 	                <div class="list-group">
@@ -63,7 +63,7 @@
 	                </div>
 	            </div>
 	        </div>
-	        <div class="col">
+	        <div class="col-lg-9 col-sm-12">
 	            <div class="row">
 		            <div class="card-deck">
 	                <?php foreach ($productsList as $product) {?>
