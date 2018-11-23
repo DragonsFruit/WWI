@@ -1,6 +1,18 @@
 <?php
 	session_start();
 
+	if(!isset($_SESSION["cart"])){
+		$product = [
+			"cart" => [
+				"misc" => [
+					"total_price" => 0,
+					"total_quantity" => 0,
+				]
+			],
+		];
+		$_SESSION = $product;
+	}
+
 	$category = new Category();
 	$category->getCategories();
 	$categories = $category->data;
