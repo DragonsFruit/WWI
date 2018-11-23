@@ -10,7 +10,9 @@ body {
 }
 
 main {
+	background-color: #EEEEEE;
 	flex: 1 0 auto;
+	padding-top: 1rem;
 }
 
 dt {
@@ -155,10 +157,9 @@ dd {
 }
 
 /* Detail page */
-.detail {
-	padding-top:      15px;
-	background-color: #EEEEEE;
-}
+/*.detail {*/
+	/*background-color: #EEEEEE;*/
+/*}*/
 
 .detail-container {
 	width:            100%;
