@@ -9,52 +9,70 @@
 	$headerTitle =  "form";
 
 	include "inc/header.php";
+
+	if (isset($_POST["voornaam"]) &&
+        isset($_POST["achternaam"])) {
+		$registration = new Registration();
+		$email = $_POST['email'];
+		$wachtwoord = $_POST['wachtwoord'];
+		$voornaam = $_POST['voornaam'];
+		$achternaam = $_POST['achternaam'];
+		$postcode = $_POST['postcode'];
+		$straat = $_POST['adres'];
+		$huisnummer = $_POST['nummer'];
+		$stad = $_POST['stad'];
+        $registration->registerUserPassword($email, $wachtwoord, $voornaam, $achternaam, $postcode, $straat, $huisnummer, $stad);
+    }
 ?>
+
+<main>
 <div class="container">
-	<form>
+	<form method='POST'>
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<label for="inputEmail">Email</label>
+				<input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputPassword">Password</label>
+				<input type="password" class="form-control" id="inputPassword" name="wachtwoord" placeholder="Password">
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<label for="inputFirstName">First Name</label>
+				<input type="text" class="form-control" id="inputFirstName" name="voornaam">
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputLastName">Last Name</label>
+				<input type="text" class="form-control" id="inputLastName" name="achternaam">
+			</div>
+		</div>
 		<div class="form-row">
 			<div class="form-group col-md-6">
-				<label for="inputEmail4">Email</label>
-				<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+				<label for="inputAddress">Address</label>
+				<input type="text" class="form-control" id="inputAddress" name="adres">
 			</div>
-			<div class="form-group col-md-6">
-				<label for="inputPassword4">Password</label>
-				<input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+			<div class="form-group col-md-2">
+				<label for="inputNumber">Number</label>
+				<input type="text" class="form-control" id="inputNumber" name="nummer">
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="inputAddress">Address</label>
-			<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-		</div>
-		<div class="form-group">
-			<label for="inputAddress2">Address 2</label>
-			<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
 		</div>
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="inputCity">City</label>
-				<input type="text" class="form-control" id="inputCity">
-			</div>
-			<div class="form-group col-md-4">
-				<label for="inputState">State</label>
-				<select id="inputState" class="form-control">
-					<option selected>Choose...</option>
-					<option>...</option>
-				</select>
+				<input type="text" class="form-control" id="inputCity" name="stad">
 			</div>
 			<div class="form-group col-md-2">
 				<label for="inputZip">Zip</label>
-				<input type="text" class="form-control" id="inputZip">
+				<input type="text" class="form-control" id="inputZip" name="postcode">
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="gridCheck">
-				<label class="form-check-label" for="gridCheck">
-				Check me out
-				</label>
-			</div>
-		</div>
-		<button type="submit" class="btn btn-primary">Sign in</button>
+		<button type="submit" class="btn btn-primary">Register</button>
 	</form>
 </div>
+</main>
+
+<?php
+	include "inc/footer.php"
+?>
