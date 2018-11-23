@@ -13,10 +13,21 @@ function findGetParameter(parameterName) {
 function checkRequiredInputs() {
 	let isValid = true;
 	$("input").filter("[required]").each(function() {
-		if ($(this).val() === "" || $(this).prop("checked") === false) {
+		if ($(this).prop("type") == "checkbox") {
+			if ($(this).prop("checked") === false) {
+				isValid = false;
+				$(this).addClass("error");
+				return false;
+			}
+		}
+
+		if ($(this).val() === "") {
 			isValid = false;
+			$(this).addClass("error");
 			return false;
 		}
+		
+		$(this).removeClass("error");
 	});
 	return isValid;
 }
@@ -102,6 +113,9 @@ $(document).ready(function () {
 
     // Add to cart
 	$("a.add-to-cart").click(function(event) {
+		let id = findGetParameter("id");
+		let productName = $("#productName").html().trim();
+
 		let quantityInput = $(".quantity-input").val();
 		let cartCounter = $(".cart-counter").html().trim();
 		let count = Number(cartCounter) + Number(quantityInput);
@@ -110,17 +124,23 @@ $(document).ready(function () {
 		let newTotalPrice = $("#totalPrice").html().trim();
 		let totalPrice = Number(oldTotalPrice) + Number(newTotalPrice);
 
-		let productName = $("#productName").html().trim();
-		let id = findGetParameter("id");
+		if (id === null) {
+			id = $(this).parents(".card-product").find(".id-input").val();
+			productName = $(this).parents(".card-product").find("#productName").html().trim();
+
+			quantityInput = $(this).parents(".card-product").find(".quantity-input").val();
+
+			newTotalPrice = $(this).parents(".card-product").find("#totalPrice").html().trim();
+		}
 
 		$.ajax({
 			type: "POST",
 			url: "inc/add-to-cart.php",
 			data: {
+				id: id,
 				name: productName,
 				quantity: quantityInput,
 				price: newTotalPrice,
-				id: id
 			}
 		});
 
@@ -163,10 +183,21 @@ $(document).ready(function () {
 		setTimeout(function() {
 			$(".payment-description").html("Processing payment...");
 		}, 100);
+
+		$.ajax({
+			type: "POST",
+			url: "inc/destroy.php"
+		});
+
 		setTimeout(function() {
 			$(".payment-description").html("Payment received!");
 			$(".circle-loader").toggleClass("load-complete");
 			$(".checkmark").toggle();
 		}, 3000);
+	});
+
+	// Pagination products per page
+	$(".dropdownProducts").change(function(){
+		$("form").submit();
 	});
 });

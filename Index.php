@@ -1,7 +1,8 @@
 <?php
 	// Load classes
 	include_once "inc/autoload.php";
-	$currentPage = 'Homepage';
+	$headerTitle = "WideWorldImporters";
+	$currentPage = "home";
 	include "inc/header.php";
 ?>
 

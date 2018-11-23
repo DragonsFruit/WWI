@@ -10,7 +10,9 @@ body {
 }
 
 main {
+	background-color: #EEEEEE;
 	flex: 1 0 auto;
+	padding-top: 1rem;
 }
 
 dt {
@@ -20,6 +22,8 @@ dt {
 dd {
 	margin: 0 0 0 40px !important;
 }
+
+/* Misc */
 
 .left {
 	float:   left;
@@ -31,6 +35,10 @@ dd {
 	float:   right;
 	width:   50%;
 	padding: 10px;
+}
+
+.error {
+	border: 1px solid red !important;
 }
 
 /* Display */
@@ -149,10 +157,9 @@ dd {
 }
 
 /* Detail page */
-.detail {
-	padding-top:      15px;
-	background-color: #EEEEEE;
-}
+/*.detail {*/
+	/*background-color: #EEEEEE;*/
+/*}*/
 
 .detail-container {
 	width:            100%;
@@ -209,6 +216,7 @@ dd {
 	line-height:   22px;
 	padding:       10px 20px 0;
 	margin-bottom: 0;
+	max-height:    123px;
 }
 
 .product-rating {
@@ -730,7 +738,17 @@ table#cart>tbody>tr>td, table#cart>tfoot>tr>td{
 
 /* Product list */
 .card-product-list {
-	min-width: 250px !important;
+	min-width: 265px !important;
+	max-width: 265px !important;
+	display  : block !important;
+}
+
+.card-product-text {
+	height: 48;
+}
+
+.card-product-title {
+	height: 87px;
 }
 
 /* Check mark */
