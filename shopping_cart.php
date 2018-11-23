@@ -4,9 +4,7 @@
 	$currentPage = "shopping_cart";
 
 	$headerTitle =  "Shopping Cart";
-
-	session_start();
-
+	include "inc/header.php";
 	if (filter_input(INPUT_GET, 'action') == 'delete') {
 		foreach($_SESSION['cart'] as $key => $product) {
 			if ($key == filter_input(INPUT_GET, 'id')) {
@@ -28,8 +26,6 @@
 			}
 		}
 	}
-
-    include "inc/header.php";
 
     $totalQuantity = $_SESSION["cart"]["misc"]["total_quantity"];
 ?>
