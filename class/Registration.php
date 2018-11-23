@@ -26,7 +26,7 @@
 	}
 
 /* CREATE TABLE useraccounts (
-userid int NOT NULL,
+userid int NOT NULL auto_increment,
 email varchar(45) NOT NULL,
 wachtwoord varchar(45) NOT NULL,
 voornaam varchar(45) NOT NULL,
