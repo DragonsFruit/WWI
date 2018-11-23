@@ -20,9 +20,15 @@
         $page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
     } else {
         $page = 1;
+	}
+	
+	if (filter_has_var(INPUT_POST,"numberProducts")){
+        $recordsPerPage = filter_input(INPUT_POST,"numberProducts",FILTER_SANITIZE_NUMBER_INT);
+    } else {
+        $recordsPerPage = 15;
     }
 
-    $recordsPerPage = 20;
+    
     $recordsFrom = ($recordsPerPage * $page) - $recordsPerPage;
 
     // Count products for pagination
@@ -95,6 +101,15 @@
 	                            <li class="page-item <?php if($page >= $numberProducts / $recordsPerPage){echo "disabled";} ?>">
 	                                <a class="page-link" href="Product_list.php?page=<?php echo $page + 1; if($categoryId != 0){print "&categoryId=".$categoryId;}?>">Next</a>
 	                            </li>
+								<form name="numberProductsPage" method="POST" action="Product_list.php">
+								<div class="form-group">
+									<select name="numberProducts" class="form-control dropdownProducts" id="sel1">
+										<option value=15>15</option>
+										<option value=30>30</option>
+										<option value=45>45</option>
+									</select>
+								</div> 
+								</form>
 	                        </ul>
 	                    </nav>
 	                </div>

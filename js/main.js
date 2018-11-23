@@ -169,4 +169,9 @@ $(document).ready(function () {
 			$(".checkmark").toggle();
 		}, 3000);
 	});
+
+	// Pagination products per page
+	$(".dropdownProducts").change(function(){
+		$("form").submit();
+	});
 });
