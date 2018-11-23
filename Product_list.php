@@ -67,7 +67,7 @@
 	            <div class="row">
 		            <div class="card-deck">
 	                <?php foreach ($productsList as $product) {?>
-	                        <div class="card card-product mb-3" style="min-width: 250px">
+	                        <div class="card card-product card-product-list mb-3" style="min-width: 250px">
 	                            <img class="card-img-top" src="https://place-hold.it/250x250/">
 	                            <div class="card-body">
 	                                <a class="product-name" href="product.php?id=<?php echo $product["StockItemID"] ?>">
