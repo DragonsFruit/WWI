@@ -67,13 +67,14 @@
 	            <div class="row">
 		            <div class="card-deck">
 	                <?php foreach ($productsList as $product) {?>
-	                        <div class="card mb-3" style="min-width: 250px">
+	                        <div class="card card-product mb-3" style="min-width: 250px">
 	                            <img class="card-img-top" src="https://place-hold.it/250x250/">
 	                            <div class="card-body">
 	                                <a class="product-name" href="product.php?id=<?php echo $product["StockItemID"] ?>">
 		                                <h4 id="productName" class="card-title"><?php echo $product["StockItemName"] ?></h4>
 	                                </a>
 		                            <input type="number" class="quantity-input" value="1" hidden>
+									<input type="number" class="id-input" value="<?php echo $product["StockItemID"] ?>" hidden>
 		                            <?php if($product["MarketingComments"] != "") { ?>
 	                                    <p class="card-text"><?php echo $product["MarketingComments"] ?></p>
 		                            <?php } ?>

@@ -9,14 +9,31 @@ function findGetParameter(parameterName) {
     return result;
 }
 
+function findProductId(){
+	$(".card-product").click(function () {
+		$(this).find(".card-product .id-input");
+	})
+}
+
 // Check required inputs
 function checkRequiredInputs() {
 	let isValid = true;
 	$("input").filter("[required]").each(function() {
-		if ($(this).val() === "" || $(this).prop("checked") === false) {
+		if ($(this).prop("type") == "checkbox") {
+			if ($(this).prop("checked") === false) {
+				isValid = false;
+				$(this).addClass("error");
+				return false;
+			}
+		}
+
+		if ($(this).val() === "") {
 			isValid = false;
+			$(this).addClass("error");
 			return false;
 		}
+		
+		$(this).removeClass("error");
 	});
 	return isValid;
 }
