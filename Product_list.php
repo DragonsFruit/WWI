@@ -101,7 +101,8 @@
 	                            <?php }?>
 	                            <li class="page-item <?php if($page >= $numberProducts / $recordsPerPage){echo "disabled";} ?>">
 	                                <a class="page-link" href="Product_list.php?page=<?php echo $page + 1; if($categoryId != 0){print "?categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>">Next</a>
-	                            </li>
+								</li>
+								<!-- Werkt nog niet helemaal, categoryId wordt niet goed meegegeven -->
 								<form name="numberProductsPage" method="GET" action="Product_list.php?<?php if($categoryId != 0){print "&categoryId=".$categoryId;}?>">
 								<div class="form-group">
 									<select name="recordsPerPage" class="form-control dropdownProducts" id="sel1">
