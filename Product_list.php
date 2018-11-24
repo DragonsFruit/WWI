@@ -58,7 +58,7 @@
 	                <div class="list-group">
 	                    <a href="Product_list.php" class="list-group-item list-group-item-action">All Categories</a>
 	                    <?php foreach ($categories as $category) { ?>
-	                        <a href="Product_list.php?categoryId=<?php echo $category["StockGroupID"]; ?>" class="list-group-item list-group-item-action"><?php echo $category["StockGroupName"]; ?></a>
+	                        <a href="Product_list.php?categoryId=<?php echo $category["StockGroupID"];if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;} ?>" class="list-group-item list-group-item-action"><?php echo $category["StockGroupName"]; ?></a>
 	                    <?php }?>
 	                </div>
 	            </div>
@@ -100,15 +100,17 @@
 	                                <li class="page-item <?php if($i == $page){echo "active";} ?>"><a class="page-link" href="Product_list.php?page=<?php echo $i; if($categoryId != 0){print "&categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>"><?php echo $i?></a></li>
 	                            <?php }?>
 	                            <li class="page-item <?php if($page >= $numberProducts / $recordsPerPage){echo "disabled";} ?>">
-	                                <a class="page-link" href="Product_list.php?page=<?php echo $page + 1; if($categoryId != 0){print "&categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>">Next</a>
-	                            </li>
-								<form name="numberProductsPage" method="GET" action="Product_list.php">
+	                                <a class="page-link" href="Product_list.php?page=<?php echo $page + 1; if($categoryId != 0){print "?categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>">Next</a>
+								</li>
+								<!-- Werkt nog niet helemaal, categoryId wordt niet goed meegegeven -->
+								<form name="numberProductsPage" method="GET" action="Product_list.php?<?php if($categoryId != 0){print "&categoryId=".$categoryId;}?>">
 								<div class="form-group">
 									<select name="recordsPerPage" class="form-control dropdownProducts" id="sel1">
-										<option value=15>15</option>
-										<option value=20>20</option>
-										<option value=25>25</option>
-										<option value=30>30</option>
+										<option class="dropdown-item">Number per page</option>
+										<option class="dropdown-item <?php if($recordsPerPage == 15){echo "active";} ?>" value=15>15</option>
+										<option class="dropdown-item <?php if($recordsPerPage == 20){echo "active";} ?>" value=20>20</option>
+										<option class="dropdown-item <?php if($recordsPerPage == 25){echo "active";} ?>" value=25>25</option>
+										<option class="dropdown-item <?php if($recordsPerPage == 30){echo "active";} ?>" value=30>30</option>
 									</select>
 								</div> 
 								</form>
