@@ -10,11 +10,17 @@
 	$totalPrice = $_SESSION["cart"]["misc"]["total_price"];
 ?>
     <main>
-        <div class="container">
+        <!-- <div class="container">
             <a href="http://localhost/wwi/index.php">Home</a> >> <span style="<?php if($currentPage == 'contact'){echo('font-weight: bold;');}?>">Contact</span>
-        <div>
-    <br>
+        <div> -->
+
         <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white text-white">
+                    <li class="breadcrumb-item"><a href="http://localhost/wwi/index.php">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                </ol>
+            </nav>
             <div class="card border border-secondary">
                 <div class="card-body">
                     <h5 class="card-title">Contact</h5>
