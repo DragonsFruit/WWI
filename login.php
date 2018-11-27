@@ -16,21 +16,16 @@
         $inputUsername = $_POST['email'];
         $inputPassword = $_POST['wachtwoord'];
         $login->loginUser($inputPassword, $inputUsername);
-        // $sql = "SELECT Wachtwoord FROM useraccounts WHERE Email = $inputUsername";
-        // $sqlResult = $this->db->run($sql)->fetchAll();
-        // if (password_verify($inputPassword, $sqlResult)) {
-        //    $_SESSION['user'] = $inputUsername;
-        //}
     }
 ?>
 
-<?php
+<main>
+    <div class="container"> <?php
     if (isset($_SESSION['user'])) {
         print('You have succesfully logged in');
+        var_dump($_SESSION);
     }
-    else { ?>
-        <main>
-            <div class="container">
+    else { var_dump($_SESSION); ?>
             <form class="form-signin" method="POST">
                 <h2 class="form-signin-heading">Log in</h2><br>
                 <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus>
@@ -40,11 +35,9 @@
                 </div>
                 <br><a href="registery.php">No account? Register here</a><br>
                 <br><button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-            </form>
-            </div>
+            </form> <?php } ?>
+            </div> 
         </main>
-    <?php }
-?>
 
 <?php 
     include "inc/footer.php";
