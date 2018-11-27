@@ -10,13 +10,13 @@
         
         public function loginUser($inputPassword, $inputUsername) {
             try {
-                $sql = "SELECT * FROM useraccounts WHERE Email = ?";
+                $sql = "SELECT * FROM useraccounts WHERE email = ?";
                 $result = $this->db->run($sql, [$inputUsername])->fetch(PDO::FETCH_ASSOC);
-                if (password_verify($inputPassword, $result['Wachtwoord'])) {
+                if (password_verify($inputPassword, $result['wachtwoord'])) {
                     $_SESSION['user'] = $inputUsername;
                 }
             } catch (PDOException $e) {
-                echo 'Database error: ' . $e->getMessage();
+                echo 'Login error: ' . $e->getMessage();
             }
         }
 	}

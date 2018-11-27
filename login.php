@@ -22,10 +22,9 @@
 <main>
     <div class="container"> <?php
     if (isset($_SESSION['user'])) {
-        print('You have succesfully logged in');
-        var_dump($_SESSION);
+        print('You have successfully logged in');
     }
-    else { var_dump($_SESSION); ?>
+    else { ?>
             <form class="form-signin" method="POST">
                 <h2 class="form-signin-heading">Log in</h2><br>
                 <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus>
