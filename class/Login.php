@@ -13,7 +13,7 @@
                 $sql = "SELECT * FROM useraccounts WHERE email = ?";
                 $result = $this->db->run($sql, [$inputUsername])->fetch(PDO::FETCH_ASSOC);
                 if (password_verify($inputPassword, $result['wachtwoord'])) {
-                    $_SESSION['user'] = $inputUsername;
+                    $_SESSION['user']['username'] = $result["voornaam"];
                 }
             } catch (PDOException $e) {
                 echo 'Login error: ' . $e->getMessage();
