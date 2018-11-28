@@ -1,6 +1,11 @@
 <?php
 	session_start();
 
+	if ($currentPage == "login" && isset($_SESSION["user"])) {
+		header("Location: index.php");
+		die();
+	}
+
 	if(!isset($_SESSION["cart"])){
 		$product = [
 			"cart" => [

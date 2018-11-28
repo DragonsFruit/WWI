@@ -9,11 +9,6 @@
 
 	include "inc/header.php";
 
-	if (isset($_SESSION["user"])) {
-		header("Location: index.php");
-		die();
-	}
-
 	if (isset($_POST["email"]) && isset($_POST["wachtwoord"])) {
 		$login = new Login();
 		$inputUsername = $_POST['email'];

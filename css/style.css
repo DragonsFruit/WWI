@@ -821,3 +821,9 @@ table#cart>tbody>tr>td, table#cart>tfoot>tr>td{
 		opacity: 1;
 	}
 }
+
+/* Front page */
+
+.product-deals {
+	border-radius: 10px;
+}
