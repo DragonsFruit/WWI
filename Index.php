@@ -64,7 +64,7 @@
 			</div>
 		</div>
 
-		<div class="row product-deals mt-3 bg-white">
+		<!-- <div class="row product-deals mt-3 bg-white">
 			<div class="col-lg-12">
 				<h3>Products Under $30</h3>
 				<ul class="list-inline">
@@ -84,9 +84,9 @@
 					<?php } ?>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 
-		<div class="row product-deals my-3 bg-white">
+		<!-- <div class="row product-deals my-3 bg-white">
 			<div class="col-lg-12">
 				<h3>More To Love</h3>
 				<ul class="list-inline">
@@ -106,7 +106,7 @@
 					<?php } ?>
 				</ul>
 			</div>
-		</div>
+		</div> -->
     </section>
 </main>
 
