@@ -24,23 +24,23 @@
 
 <main>
 	<section class="container">
-    	<div class="row">
-		    <div class="col-lg-12">
-<!--				Carousel -->
+		<div class="row">
+			<div class="col-lg-12">
+				<!--				Carousel -->
 				<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-	                <div class="carousel-inne h-25">
-	                    <div class="carousel-item active">
-	                        <img class="d-block w-100" src="https://place-hold.it/600x500/" height="250" alt="First slide">
-	                    </div>
-	                    <div class="carousel-item">
-	                        <img class="d-block w-100" src="https://place-hold.it/300x600/" height="250" alt="Second slide">
-	                    </div>
-	                    <div class="carousel-item">
-	                        <img class="d-block w-100" src="https://place-hold.it/1920x1080/" height="250" alt="Third slide">
-	                    </div>
-	                </div>
+					<div class="carousel-inne h-25">
+						<div class="carousel-item active">
+							<img class="d-block w-100" src="https://place-hold.it/600x500/" height="250" alt="First slide">
+						</div>
+						<div class="carousel-item">
+							<img class="d-block w-100" src="https://place-hold.it/300x600/" height="250" alt="Second slide">
+						</div>
+						<div class="carousel-item">
+							<img class="d-block w-100" src="https://place-hold.it/1920x1080/" height="250" alt="Third slide">
+						</div>
+					</div>
 				</div>
-		    </div>
+			</div>
 		</div>
 		<div class="row product-deals mt-3 bg-white">
 			<div class="col-lg-12">
@@ -64,7 +64,7 @@
 			</div>
 		</div>
 
-		<!-- <div class="row product-deals mt-3 bg-white">
+		<div class="row product-deals mt-3 bg-white">
 			<div class="col-lg-12">
 				<h3>Products Under $30</h3>
 				<ul class="list-inline">
@@ -84,9 +84,9 @@
 					<?php } ?>
 				</ul>
 			</div>
-		</div> -->
+		</div>
 
-		<!-- <div class="row product-deals my-3 bg-white">
+		<div class="row product-deals my-3 bg-white">
 			<div class="col-lg-12">
 				<h3>More To Love</h3>
 				<ul class="list-inline">
@@ -106,8 +106,8 @@
 					<?php } ?>
 				</ul>
 			</div>
-		</div> -->
-    </section>
+		</div>
+	</section>
 </main>
 
 <?php include "inc/footer.php" ?>
