@@ -85,3 +85,4 @@ nbdist/
 
 # OS
 .DS_Store
+class/DB.php
