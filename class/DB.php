@@ -2,7 +2,7 @@
 	define('DB_HOST', '127.0.0.1');
 	define('DB_NAME', 'wideworldimporters');
 	define('DB_USER', 'wideworldimporters');
-	define('DB_PASS', 'tXkaKYO61WUQcy6C');
+	define('DB_PASS', 'jBlG9mbnmFUbgaEC');
 	define('DB_CHAR', 'utf8');
 
 	class DB {

@@ -200,4 +200,24 @@ $(document).ready(function () {
 	$(".dropdownProducts").change(function(){
 		$("form").submit();
 	});
+
+	// Shopping cart quantity input
+	$("#quantityInput").change(function(){
+		let quantityInput = $("#quantityInput").val();
+		let id = $("#productId").val();
+		let price = $("#productPrice").html().trim();
+		let newTotalPrice = price * quantityInput;
+
+		$("#totalPrice").html(newTotalPrice);
+
+		$.ajax({
+			type: "POST",
+			url: "inc/add-to-cart.php",
+			data: {
+				id: id,
+				quantity: quantityInput,
+				price: newTotalPrice,
+			}
+		});
+	});
 });

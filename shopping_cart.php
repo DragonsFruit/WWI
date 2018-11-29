@@ -59,11 +59,12 @@
 										</div>
 									</div>
 								</td>
-								<td data-th="Price">$<?php echo $cartItem['product_price'] / $cartItem['product_quantity'] ?></td>
+								<td data-th="Price" id="productPrice">$<?php echo $cartItem['product_price'] / $cartItem['product_quantity'] ?></td>
 								<td data-th="Quantity">
-									<input type="number" class="form-control text-center" value="<?php echo $cartItem['product_quantity'] ?>" min="0">
+									<input type="number" id="quantityInput" class="form-control text-center" value="<?php echo $cartItem['product_quantity'] ?>" min="0">
+									<input type="number" id="productId" value="<?php echo $cartItem['product_id'] ?>" hidden>
 								</td>
-								<td data-th="Subtotal" class="text-center">$<?php echo $cartItem['product_price']?></td>
+								<td data-th="Subtotal" id="totalPrice" class="text-center">$<?php echo $cartItem['product_price']?></td>
 								<td class="actions" data-th="">
 									<a href="shopping_cart.php?action=delete&id=<?php echo $cartItem['product_id'] ?>" class="btn btn-danger btn-danger-custom">
 										<i class="far fa-trash-alt"></i> Remove
