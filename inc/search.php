@@ -17,7 +17,20 @@
 		foreach ($searchResults as $searchResult) {
 ?>
 			<a id="<?php echo $searchResult["StockItemID"]?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="product.php?id=<?php echo $searchResult["StockItemID"]?>">
-				<img src="<?php echo $searchResult["Photo"]?>" class="search-image" height="40" width="40" alt="<?php echo $searchResult["StockItemName"]?>" />
+				<?php
+					$image = json_decode($searchResult["Photo"]);
+					$itemName = $searchResult["StockItemName"];
+
+					if (!is_null($image)) {
+						foreach ($image as $key => $value) {
+							if ($key == 0) {
+								echo "<img src=\"$value\" class=\"search-image\" height=\"40\" width=\"40\" alt=\"$itemName\" />";
+							}
+						}
+					} else {
+						echo "<img src=\"https://placehold.it/40x40\" class=\"search-image\" height=\"40\" width=\"40\" alt=\"$itemName\" />";
+					}
+				?>
 				<span class="search-description w-100 mx-2"><?php echo $searchResult["SearchDetails"]; ?></span>
 				<span class="badge badge-primary badge-pill">$<?php echo $searchResult["RecommendedRetailPrice"]; ?></span>
 			</a>
