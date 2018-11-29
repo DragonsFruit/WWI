@@ -31,7 +31,8 @@
                         <div class="col-lg-2">
                             <ol class="image-thumb-list px-0">
 	                            <?php
-                                    $image = [0 => 'https://place-hold.it/600x500/', 1 => 'https://place-hold.it/300x600/', 2 => 'https://place-hold.it/1920x1080/', 3 => 'https://place-hold.it/400x300/'];
+                                    // $image = [0 => 'https://place-hold.it/600x500/', 1 => 'https://place-hold.it/300x600/', 2 => 'https://place-hold.it/1920x1080/', 3 => 'https://place-hold.it/400x300/'];
+                                    $image = json_decode($product->productPhoto);
                                     foreach ($image as $key => $value) {
                                         if($key == 1) {
                                             echo "<li data-target='#carousel-thumb' data-slide-to='$key' class='active'><span class='img-thumb-item'>";
