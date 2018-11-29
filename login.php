@@ -13,7 +13,7 @@
 		$login = new Login();
 		$inputUsername = $_POST['email'];
 		$inputPassword = $_POST['wachtwoord'];
-		$login->loginUser($inputPassword, $inputUsername);
+		$login->login($inputUsername, $inputPassword);
 	}
 ?>
 
