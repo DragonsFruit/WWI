@@ -151,7 +151,7 @@ $(document).ready(function () {
 		}, 200);
 		setTimeout(function() {
 			$(".cart-counter").text(count);
-			$("#shoppingCartTotalPrice").text(totalPrice);
+			$("#shoppingCartTotalPrice").text(totalPrice.toFixed(2));
 		}, 600);
 		setTimeout(function() {
 			button.removeClass("hover");
@@ -210,19 +210,29 @@ $(document).ready(function () {
 
 		// Update subtotal of product
 		let subPrice = Number(price) * Number(quantityInput);
-		$("#subtotalPrice").text(subPrice);
+		$("#subtotalPrice").text(subPrice.toFixed(2));
 
-		// Update shopping cart total product count
-		let totalCount = Number(quantityInput) + Number();
-		$("#shoppingCartTotalCount").text();
-
-		// Update cart counter
-		let cartCounter = $(".cart-counter").html().trim();
-		let count = Number(cartCounter) + Number(quantityInput);
+		// Update counters
+		let totalQuantityInput = $("#cart #quantityInput");
+		let count = 0;
+		$.each(totalQuantityInput, function (i, val) {
+			let inputValue = $(val).val();
+			count += Number(inputValue);
+		});
+		$(".cart-counter").text(count);
+		$("#shoppingCartTotalCount").text(count);
 
 		// // Update shopping cart total price
-		// let newTotalPrice = $("#totalPrice").html().trim();
-		// $("#shoppingCartTotalPrice").text(newTotalPrice);
+		let subtotalPrice = $("#cart #subtotalPrice");
+		count = 0;
+		$.each(subtotalPrice, function (i, val) {
+			let inputValue = $(val).html().trim();
+			count += Number(inputValue);
+		});
+		$("#totalPrice").text(count.toFixed(2));
+		$("#shoppingCartTotalPrice").text(count.toFixed(2));
+
+		let newTotalPrice = $("#totalPrice").html().trim();
 
 		$.ajax({
 			type: "POST",
