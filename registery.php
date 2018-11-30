@@ -28,6 +28,7 @@
 <main>
 <div class="container">
 	<form method='POST'>
+	<h2 class="form-signin-heading">Log in</h2><br>
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="inputEmail">Email</label>
