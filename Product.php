@@ -33,14 +33,17 @@
 	                            <?php
                                     // $image = [0 => 'https://place-hold.it/600x500/', 1 => 'https://place-hold.it/300x600/', 2 => 'https://place-hold.it/1920x1080/', 3 => 'https://place-hold.it/400x300/'];
                                     $image = json_decode($product->productPhoto);
-                                    foreach ($image as $key => $value) {
-                                        if($key == 1) {
-                                            echo "<li data-target='#carousel-thumb' data-slide-to='$key' class='active'><span class='img-thumb-item'>";
-                                        } else {
-                                            echo "<li data-target='#carousel-thumb' data-slide-to='$key'><span class='img-thumb-item'>";
-                                        }
-
-                                        echo "<img class='d-block w-100 h-100 img-fluid' src='$value'></span></li>";
+                                    if ($image != []) {
+	                                    foreach ($image as $key => $value) {
+		                                    if ($key == 1) {
+			                                    echo "<li data-target=\"#carousel-thumb\" data-slide-to=\"$key\" class=\"active\"><span class=\"img-thumb-item\">";
+	                                        } else {
+			                                    echo "<li data-target=\"#carousel-thumb\" data-slide-to=\"$key\"><span class=\"img-thumb-item\">";
+	                                        }
+		                                    echo "<img class=\"d - block w - 100 h - 100 img - fluid\" src=\"$value\"></span></li>";
+	                                    }
+                                    } else {
+	                                    echo "<img class=\"d - block w - 100 h - 100 img - fluid\" src=\"https://placehold.it/40x40\"></span></li>";
                                     }
                                 ?>
                             </ol>
@@ -50,15 +53,19 @@
                             <!--Slides-->
                             <div class="carousel-inner" role="listbox">
 	                            <?php
-		                            foreach ($image as $key => $value) {
-			                            if($key == 1) {
-				                            echo "<div class='carousel-item active'>";
-			                            } else {
-				                            echo "<div class='carousel-item'>";
-			                            }
+	                                if ($image != []) {
+			                            foreach ($image as $key => $value) {
+				                            if($key == 1) {
+					                            echo "<div class=\"carousel-item active\">";
+				                            } else {
+					                            echo "<div class=\"carousel-item\">";
+				                            }
 
-			                            echo "<img class='d-block wx-500 hx-500 img-cover' src='$value'></div>";
-		                            }
+				                            echo "<img class=\"d-block wx-500 hx-500 img-cover\" src=\"$value\"></div>";
+			                            }
+		                            } else {
+	                                    echo "<img class=\"d - block w - 100 h - 100 img - fluid\" src=\"https://placehold.it/500x500\"></span></li>";
+                                    }
 	                            ?>
                             </div>
 

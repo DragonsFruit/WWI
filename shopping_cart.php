@@ -32,7 +32,7 @@
 
 <main>
 	<div class="container">
-		<h1>Your Shopping Cart <small style="font-size: 16px;">(<?php echo ($totalQuantity > 0) ? "$totalQuantity Items" : "$totalQuantity Item" ?>)</small></h1>
+		<h1>Your Shopping Cart <small id="shoppingCartTotalCount" style="font-size: 16px;">(<?php echo ($totalQuantity > 0) ? "$totalQuantity Items" : "$totalQuantity Item" ?>)</small></h1>
 		<table id="cart" class="table table-hover table-condensed">
 			<thead>
 				<tr>
@@ -50,21 +50,21 @@
 					foreach ($cartItems as $cartItem) {
 						if ($cartItem != $cartItems["misc"]) {
 							?>
-							<tr>
+							<tr id="listItem">
 								<td data-th="Product">
 									<div class="row">
 										<div class="col-sm-3 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive" /></div>
 										<div class="col-sm-9">
-											<h4 class="mx-0"><?php echo $cartItem['product_name'] ?></h4>
+											<h4 class="mx-0" id="productName"><?php echo $cartItem['product_name'] ?></h4>
 										</div>
 									</div>
 								</td>
-								<td data-th="Price" id="productPrice">$<?php echo $cartItem['product_price'] / $cartItem['product_quantity'] ?></td>
+								<td data-th="Price">$<span id="productPrice"><?php echo $cartItem['product_price'] / $cartItem['product_quantity'] ?></span></td>
 								<td data-th="Quantity">
 									<input type="number" id="quantityInput" class="form-control text-center" value="<?php echo $cartItem['product_quantity'] ?>" min="0">
 									<input type="number" id="productId" value="<?php echo $cartItem['product_id'] ?>" hidden>
 								</td>
-								<td data-th="Subtotal" id="totalPrice" class="text-center">$<?php echo $cartItem['product_price']?></td>
+								<td data-th="Subtotal" class="text-center">$<span id="subtotalPrice"><?php echo $cartItem['product_price']?></span></td>
 								<td class="actions" data-th="">
 									<a href="shopping_cart.php?action=delete&id=<?php echo $cartItem['product_id'] ?>" class="btn btn-danger btn-danger-custom">
 										<i class="far fa-trash-alt"></i> Remove
@@ -80,7 +80,7 @@
 		        <tr>
 			        <td><a href="product_list.php" class="btn btn-secondary btn-secondary-custom"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 			        <td colspan="2" class="hidden-xs"></td>
-			        <td class="hidden-xs text-center"><strong>Total $<?php echo $_SESSION["cart"]["misc"]["total_price"] ?></strong></td>
+			        <td class="hidden-xs text-center"><strong id="totalPrice">Total $<?php echo $_SESSION["cart"]["misc"]["total_price"] ?></strong></td>
 			        <td><a href="paymentprocess.php" class="btn btn-success btn-success-custom">Checkout <i class="fa fa-angle-right"></i></a></td>
 		        </tr>
 	        </tfoot>

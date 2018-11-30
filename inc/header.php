@@ -73,6 +73,18 @@
                 </form>
 
 				<ul class="navbar-nav">
+					<?php if (!isset($_SESSION['user']['username'])) { ?>
+						<li class="nav-item">
+							<a href="login.php" class="nav-link"><i class="far fa-user"></i> Login</a>
+						</li>
+					<?php } else { ?>
+						<li class="nav-item">
+							<a href="index.php" class="nav-link"><i class="far fa-user"></i> <?php echo "Hello, " . $_SESSION['user']['username'] ?></a>
+						</li>
+					<?php } ?>
+					<li class="nav-item <?php if($currentPage =='product'){echo 'active';}?>">
+						<a href="product_list.php" class="nav-link"><i class="far fa-th-large"></i> Products</a>
+					</li>
 					<li class="nav-item <?php if($currentPage =='cart'){echo 'active';}?>">
 						<span class="cart-counter mt-1 px-2"><?php echo (!$_SESSION["cart"]["misc"]["total_quantity"]) ? 0 : $_SESSION["cart"]["misc"]["total_quantity"] ?></span>
 						<a href="#cart" id="shoppingCartButton" class="nav-link cart position-relative">
@@ -95,18 +107,6 @@
 							</div>
 						</div>
 					</li>
-					<li class="nav-item <?php if($currentPage =='product'){echo 'active';}?>">
-						<a href="product_list.php" class="nav-link"><i class="far fa-th-large"></i> Products</a>
-					</li>
-					<?php if (!isset($_SESSION['user']['username'])) { ?>
-						<li class="nav-item">
-							<a href="login.php" class="nav-link"><i class="far fa-user"></i> Login</a>
-						</li>
-					<?php } else { ?>
-						<li class="nav-item">
-							<a href="index.php" class="nav-link"><i class="far fa-user"></i> <?php echo "Hello, " . $_SESSION['user']['username'] ?></a>
-						</li>
-					<?php } ?>
 				</ul>
 			</div>
 		</div>
