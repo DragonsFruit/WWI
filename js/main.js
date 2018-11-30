@@ -203,21 +203,38 @@ $(document).ready(function () {
 
 	// Shopping cart quantity input
 	$("#quantityInput").change(function(){
-		let quantityInput = $("#quantityInput").val();
-		let id = $("#productId").val();
-		let price = $("#productPrice").html().trim();
-		let newTotalPrice = price * quantityInput;
+		let id = $(this).parents("#listItem").find("#productId").val();
+		let productName = $(this).parents("#listItem").find("#productName").html().trim();
+		let quantityInput = $(this).parents("#listItem").find("#quantityInput").val();
+		let price = $(this).parents("#listItem").find("#productPrice").html().trim();
 
-		$("#totalPrice").html(newTotalPrice);
+		// Update subtotal of product
+		let subPrice = Number(price) * Number(quantityInput);
+		$("#subtotalPrice").text(subPrice);
+
+		// Update shopping cart total product count
+		let totalCount = Number(quantityInput) + Number();
+		$("#shoppingCartTotalCount").text();
+
+		// Update cart counter
+		let cartCounter = $(".cart-counter").html().trim();
+		let count = Number(cartCounter) + Number(quantityInput);
+
+		// // Update shopping cart total price
+		// let newTotalPrice = $("#totalPrice").html().trim();
+		// $("#shoppingCartTotalPrice").text(newTotalPrice);
 
 		$.ajax({
 			type: "POST",
 			url: "inc/add-to-cart.php",
 			data: {
 				id: id,
+				name: productName,
 				quantity: quantityInput,
 				price: newTotalPrice,
 			}
 		});
+
+
 	});
 });
