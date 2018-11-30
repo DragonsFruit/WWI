@@ -32,7 +32,7 @@
 
 <main>
 	<div class="container">
-		<h1>Your Shopping Cart <small id="shoppingCartTotalCount" style="font-size: 16px;">(<?php echo ($totalQuantity > 0) ? "$totalQuantity Items" : "$totalQuantity Item" ?>)</small></h1>
+		<h1>Your Shopping Cart <small style="font-size: 16px;">(<span id="shoppingCartTotalCount"><?php echo $totalQuantity ?></span><?php echo ($totalQuantity > 0) ? " Items" : " Item" ?>)</small></h1>
 		<table id="cart" class="table table-hover table-condensed">
 			<thead>
 				<tr>
@@ -80,7 +80,7 @@
 		        <tr>
 			        <td><a href="product_list.php" class="btn btn-secondary btn-secondary-custom"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 			        <td colspan="2" class="hidden-xs"></td>
-			        <td class="hidden-xs text-center"><strong id="totalPrice">Total $<?php echo $_SESSION["cart"]["misc"]["total_price"] ?></strong></td>
+			        <td class="hidden-xs text-center"><strong>Total $<span id="totalPrice"><?php echo $_SESSION["cart"]["misc"]["total_price"] ?></span></strong></td>
 			        <td><a href="paymentprocess.php" class="btn btn-success btn-success-custom">Checkout <i class="fa fa-angle-right"></i></a></td>
 		        </tr>
 	        </tfoot>
