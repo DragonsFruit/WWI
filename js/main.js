@@ -198,7 +198,7 @@ $(document).ready(function () {
 
 	// Pagination products per page
 	$(".dropdownProducts").change(function(){
-		$("form").submit();
+		$("#paginationForm").submit();
 	});
 
 	// Shopping cart quantity input
