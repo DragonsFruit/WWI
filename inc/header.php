@@ -78,8 +78,13 @@
 							<a href="login.php" class="nav-link"><i class="far fa-user"></i> Login</a>
 						</li>
 					<?php } else { ?>
-						<li class="nav-item">
-							<a href="index.php" class="nav-link"><i class="far fa-user"></i> <?php echo "Hello, " . $_SESSION['user']['username'] ?></a>
+						<li class="nav-item dropdown">
+							<a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="far fa-user"></i> <?php echo "Hello, " . $_SESSION['user']['username'] ?></a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item text-dark bg-transparent" href="#!">Wish List</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item text-danger bg-transparent" id="logOut" href="#!">Log Out</a>
+							</div>
 						</li>
 					<?php } ?>
 					<li class="nav-item <?php if($currentPage =='product'){echo 'active';}?>">

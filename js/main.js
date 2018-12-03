@@ -244,7 +244,16 @@ $(document).ready(function () {
 				price: newTotalPrice,
 			}
 		});
+	});
 
-
+	// Logout user
+	$("#logOut").click(function(){
+		$.ajax({
+			type: "POST",
+			url: "inc/destroy.php",
+			success: function() {
+				location.reload();
+			}
+		});
 	});
 });
