@@ -59,7 +59,7 @@
 										</div>
 									</div>
 								</td>
-								<td data-th="Price">$<span id="productPrice"><?php echo $cartItem['product_price'] / $cartItem['product_quantity'] ?></span></td>
+								<td data-th="Price">$<span id="productPrice"><?php echo round($cartItem['product_price'], 2, PHP_ROUND_HALF_UP) / $cartItem['product_quantity'] ?></span></td>
 								<td data-th="Quantity">
 									<input type="number" id="quantityInput" class="form-control text-center" value="<?php echo $cartItem['product_quantity'] ?>" min="1">
 									<input type="number" id="productId" value="<?php echo $cartItem['product_id'] ?>" hidden>
