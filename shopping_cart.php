@@ -61,7 +61,7 @@
 								</td>
 								<td data-th="Price">$<span id="productPrice"><?php echo $cartItem['product_price'] / $cartItem['product_quantity'] ?></span></td>
 								<td data-th="Quantity">
-									<input type="number" id="quantityInput" class="form-control text-center" value="<?php echo $cartItem['product_quantity'] ?>" min="0">
+									<input type="number" id="quantityInput" class="form-control text-center" value="<?php echo $cartItem['product_quantity'] ?>" min="1">
 									<input type="number" id="productId" value="<?php echo $cartItem['product_id'] ?>" hidden>
 								</td>
 								<td data-th="Subtotal" class="text-center">$<span id="subtotalPrice"><?php echo $cartItem['product_price']?></span></td>
