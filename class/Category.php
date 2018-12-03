@@ -9,7 +9,12 @@
 		}
 
 		public function getCategories() {
-			$result = $this->db->run("SELECT StockGroupID, StockGroupName FROM stockgroups ORDER BY StockGroupName ASC")->fetchAll();
+			$result = $this->db->run("SELECT SG.StockGroupID, SG.StockGroupName
+										  FROM stockgroups SG
+										  JOIN stockitemstockgroups s on SG.StockGroupID = s.StockGroupID
+										  WHERE s.StockGroupID = SG.StockGroupID
+										  GROUP BY s.StockGroupID
+										  ORDER BY StockGroupName ASC")->fetchAll();
 			$this->data = $result;
 		}
 	}

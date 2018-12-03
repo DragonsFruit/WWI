@@ -565,6 +565,11 @@ table#cart>tbody>tr>td, table#cart>tfoot>tr>td{
 	-webkit-box-shadow: 0 3px 6px rgba(165, 165, 180, 0.2), 0 3px 6px rgba(245, 245, 245, 0.2);
 }
 
+/* Border Radius */
+.br-10 {
+	border-radius: 10px;
+}
+
 /* Buttons */
 .btn-circle {
 	width:         30px !important;
@@ -820,10 +825,4 @@ table#cart>tbody>tr>td, table#cart>tfoot>tr>td{
 		width: 1.75em;
 		opacity: 1;
 	}
-}
-
-/* Front page */
-
-.product-deals {
-	border-radius: 10px;
 }

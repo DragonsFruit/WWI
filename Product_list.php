@@ -63,11 +63,11 @@
 	                </div>
 	            </div>
 	        </div>
-	        <div class="col-lg-9 col-sm-12">
+	        <div class="col-lg-9 col-sm-12 mb-3 br-10 bg-white">
 	            <div class="row">
-		            <div class="card-deck">
+		            <div class="card-deck py-3 px-3 mx-auto">
 	                <?php foreach ($productsList as $product) {?>
-	                        <div class="card card-product card-product-list mb-3" style="min-width: 250px">
+	                        <div class="card card-product card-product-list mb-3 mx-auto" style="min-width: 250px">
 	                            <img class="card-img-top" src="https://place-hold.it/250x250/">
 	                            <div class="card-body">
 	                                <a class="product-name" href="product.php?id=<?php echo $product["StockItemID"] ?>">
@@ -76,7 +76,7 @@
 		                            <input type="number" class="quantity-input" value="1" hidden>
 									<input type="number" class="id-input" value="<?php echo $product["StockItemID"] ?>" hidden>
 		                            <?php if($product["MarketingComments"] != "") { ?>
-	                                    <p class="card-text card-product-text"><?php echo $product["MarketingComments"] ?></p>
+	                                    <p class="card-text card-product-text text-truncate"><?php echo $product["MarketingComments"] ?></p>
 		                            <?php } ?>
 	                                <div class="row">
 		                                <div class="col-12">

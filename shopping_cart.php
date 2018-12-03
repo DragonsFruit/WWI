@@ -31,7 +31,7 @@
 ?>
 
 <main>
-	<div class="container">
+	<div class="container bg-white br-10">
 		<h1>Your Shopping Cart <small style="font-size: 16px;">(<span id="shoppingCartTotalCount"><?php echo $totalQuantity ?></span><?php echo ($totalQuantity > 0) ? " Items" : " Item" ?>)</small></h1>
 		<table id="cart" class="table table-hover table-condensed">
 			<thead>
