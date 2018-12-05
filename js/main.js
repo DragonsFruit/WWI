@@ -72,6 +72,54 @@ function getShoppingCartProducts() {
 	});
 }
 
+// // Shopping cart quantity input
+// function updateItemInCart() {
+// 	let id = $(this).parents("#listItem").find("#productId").val();
+// 	let productName = $(this).parents("#listItem").find("#productName").html().trim();
+// 	let productImage = $(this).parents("#listItem").find("#productImage").attr("src").trim();
+// 	let quantityInput = $(this).parents("#listItem").find("#quantityInput").val();
+// 	let price = $(this).parents("#listItem").find("#productPrice").html().trim();
+//
+// 	// Update subtotal of product
+// 	let subPrice = Number(price) * Number(quantityInput);
+// 	subPrice = subPrice.toFixed(2);
+// 	$("#subtotalPrice").text(subPrice);
+//
+// 	// Update counters
+// 	let totalQuantityInput = $("#cart #quantityInput");
+// 	let count = 0;
+// 	$.each(totalQuantityInput, function (i, val) {
+// 		let inputValue = $(val).val();
+// 		count += Number(inputValue);
+// 	});
+// 	$(".cart-counter").text(count);
+// 	$("#shoppingCartTotalCount").text(count);
+//
+// 	// // Update shopping cart total price
+// 	let subtotalPrice = $("#cart #subtotalPrice");
+// 	count = 0;
+// 	$.each(subtotalPrice, function (i, val) {
+// 		let inputValue = $(val).html().trim();
+// 		count += Number(inputValue);
+// 	});
+// 	$("#totalPrice").text(count.toFixed(2));
+// 	$("#shoppingCartTotalPrice").text(count.toFixed(2));
+//
+// 	let newTotalPrice = $("#totalPrice").html().trim();
+//
+// 	$.ajax({
+// 		type: "POST",
+// 		url: "inc/add-to-cart.php",
+// 		data: {
+// 			id: id,
+// 			name: productName,
+// 			image: productImage,
+// 			quantity: quantityInput,
+// 			price: newTotalPrice,
+// 		}
+// 	});
+// }
+
 $(document).ready(function () {
 	// Enable tooltip
 	$('[data-toggle="tooltip"]').tooltip();
@@ -115,6 +163,7 @@ $(document).ready(function () {
 	$("a.add-to-cart").click(function(event) {
 		let id = findGetParameter("id");
 		let productName = $("#productName").html().trim();
+		let productImage = $("#productImage0").attr("src").trim();
 
 		let quantityInput = $(".quantity-input").val();
 		let cartCounter = $(".cart-counter").html().trim();
@@ -127,9 +176,8 @@ $(document).ready(function () {
 		if (id === null) {
 			id = $(this).parents(".card-product").find(".id-input").val();
 			productName = $(this).parents(".card-product").find("#productName").html().trim();
-
+			productImage = $(this).parents(".card-product").find("#productImage0").attr("src").trim();
 			quantityInput = $(this).parents(".card-product").find(".quantity-input").val();
-
 			newTotalPrice = $(this).parents(".card-product").find("#totalPrice").html().trim();
 		}
 
@@ -139,6 +187,7 @@ $(document).ready(function () {
 			data: {
 				id: id,
 				name: productName,
+				image: productImage,
 				quantity: quantityInput,
 				price: newTotalPrice,
 			}
@@ -202,15 +251,18 @@ $(document).ready(function () {
 	});
 
 	// Shopping cart quantity input
-	$("#quantityInput").change(function(){
+	$(".product-quantity").change(function(){
 		let id = $(this).parents("#listItem").find("#productId").val();
 		let productName = $(this).parents("#listItem").find("#productName").html().trim();
+		let productImage = $(this).parents("#listItem").find("#productImage").attr("src").trim();
 		let quantityInput = $(this).parents("#listItem").find("#quantityInput").val();
 		let price = $(this).parents("#listItem").find("#productPrice").html().trim();
+		let subTotalPrice = $(this).parents("#listItem").find("#subtotalPrice");
 
 		// Update subtotal of product
 		let subPrice = Number(price) * Number(quantityInput);
-		$("#subtotalPrice").text(subPrice.toFixed(2));
+		subPrice = subPrice.toFixed(2);
+		subTotalPrice.text(subPrice);
 
 		// Update counters
 		let totalQuantityInput = $("#cart #quantityInput");
@@ -232,16 +284,15 @@ $(document).ready(function () {
 		$("#totalPrice").text(count.toFixed(2));
 		$("#shoppingCartTotalPrice").text(count.toFixed(2));
 
-		let newTotalPrice = $("#totalPrice").html().trim();
-
 		$.ajax({
 			type: "POST",
-			url: "inc/add-to-cart.php",
+			url: "inc/updateCart.php",
 			data: {
 				id: id,
 				name: productName,
+				image: productImage,
 				quantity: quantityInput,
-				price: newTotalPrice,
+				price: subPrice,
 			}
 		});
 	});

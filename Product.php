@@ -23,7 +23,7 @@
 
 <!-- Main -->
     <main class="detail">
-        <section class="container detail-container border br-10 py-3 mb-2">
+        <section class="container detail-container border br-10 mb-2">
             <div class="row">
                 <!-- Carousel -->
                 <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails col-lg-6 px-0" data-ride="carousel">
@@ -35,17 +35,20 @@
                                     $image = json_decode($product->productPhoto);
                                     if ($image != []) {
 	                                    foreach ($image as $key => $value) {
-		                                    if ($key == 1) {
-			                                    echo "<li data-target=\"#carousel-thumb\" data-slide-to=\"$key\" class=\"active\"><span class=\"img-thumb-item\">";
-	                                        } else {
-			                                    echo "<li data-target=\"#carousel-thumb\" data-slide-to=\"$key\"><span class=\"img-thumb-item\">";
-	                                        }
-		                                    echo "<img class=\"d-block w-100 h-100 img-fluid\" src=\"$value\"></span></li>";
-	                                    }
-                                    } else {
-	                                    echo "<img class=\"d-block w-100 h-100 img-fluid\" src=\"pictures/missing_product.jpg\"></span></li>";
-                                    }
-                                ?>
+		                                    if ($key == 1) { ?>
+			                                    <li data-target="#carousel-thumb" data-slide-to="<?php echo $key ?>" class="active"><span class="img-thumb-item">
+	                                        <?php } else { ?>
+			                                    <li data-target="#carousel-thumb" data-slide-to="<?php echo $key ?>"><span class="img-thumb-item">
+	                                        <?php } ?>
+	                                                <img class="d-block w-100 h-100 img-fluid img-thumbnail" src="<?php echo $value?>"></span></li>
+	                                    <?php }
+                                    } else { ?>
+	                                    <li data-target="#carousel-thumb" data-slide-to="0" class="active">
+		                                    <span class="img-thumb-item">
+	                                            <img class="d-block w-100 h-100 img-fluid img-thumbnail" src="pictures/missing_product.jpg">
+		                                    </span>
+	                                    </li>
+                                <?php } ?>
                             </ol>
                         </div>
 
@@ -55,18 +58,19 @@
 	                            <?php
 	                                if ($image != []) {
 			                            foreach ($image as $key => $value) {
-				                            if($key == 1) {
-					                            echo "<div class=\"carousel-item active\">";
-				                            } else {
-					                            echo "<div class=\"carousel-item\">";
-				                            }
-
-				                            echo "<img class=\"d-block wx-500 hx-500 img-cover\" src=\"$value\"></div>";
-			                            }
-		                            } else {
-	                                    echo "<img class=\"d-block w-100 h-100 img-fluid\" src=\"pictures/missing_product.jpg\"></span></li>";
-                                    }
-	                            ?>
+				                            if($key == 1) { ?>
+					                            <div class="carousel-item active">
+		                                    <?php } else { ?>
+					                            <div class="carousel-item">
+				                            <?php } ?>
+					                                <img id="productImage<?php echo $key?>" class="d-block wx-500 hx-500 img-cover img-thumbnail" src="<?php echo $value ?>">
+					                            </div>
+			                            <?php }
+		                            } else { ?>
+			                            <div class="carousel-item active">
+                                            <img id="productImage0" class="d-block w-100 h-100 img-cover img-thumbnail" src="pictures/missing_product.jpg">
+			                            </div>
+                                <?php } ?>
                             </div>
 
                             <!--Controls-->
@@ -84,7 +88,7 @@
 
                 <!-- Product details -->
                 <div class="detail-wrap col-lg-6 px-0">
-                    <h1 id="productName" class="product-name"><?php echo $product->productName; ?></h1>
+                    <h1 id="productName" class="product-name"><?php echo $product->productName ?></h1>
 
                     <!-- Rating -->
                     <div class="product-rating">
@@ -232,7 +236,7 @@
 		                    <!-- Product video -->
 		                    <div class="tab-pane fade" id="nav-product-video" role="tabpanel" aria-labelledby="product-video-tab">
 			                    <div class="mt-3">
-			                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/<?php echo $product->youTubeID ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/<?php echo $product->youTubeID ?>" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			                    </div>
 		                    </div>
 	                    <?php } ?>

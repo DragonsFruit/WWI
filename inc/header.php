@@ -1,5 +1,7 @@
 <?php
-	session_start();
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 
 	if ($currentPage == "login" && isset($_SESSION["user"])) {
 		header("Location: index.php");
@@ -40,7 +42,7 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
 
-	<title><?php echo (!$headerTitle) ? 'WideWorldImporters' : $headerTitle; ?> | WWI</title>
+	<title><?php echo (!$headerTitle) ? 'WideWorldImporters' : $headerTitle ?> | WWI</title>
 </head>
 
 <body>
@@ -63,7 +65,7 @@
                             <select id="category" class="browser-default custom-select" name="category">
 	                            <option value="0" selected>All Categories</option>
 	                            <?php foreach ($categories as $category) { ?>
-		                            <option value="<?php echo $category["StockGroupID"];?>"><?php echo $category["StockGroupName"];?></option>
+		                            <option value="<?php echo $category["StockGroupID"] ?>"><?php echo $category["StockGroupName"] ?></option>
 	                            <?php } ?>
 	                            <option value="0">All Categories</option>
                             </select>
@@ -98,7 +100,7 @@
 						</a>
 					</li>
 					<li class="nav-item position-relative <?php if($currentPage =='cart'){echo 'active';}?>">
-						<a href="#cart" id="shoppingCartButton" class="nav-link cart pt-4 plx-30">
+						<a href="#!" id="shoppingCartButton" class="nav-link cart pt-4 plx-30">
 							<i class="far fa-shopping-cart nav-icon"></i>
 							<span class="mw-100 of-hidden pl-1">Winkelwagen</span>
 						</a>

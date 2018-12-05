@@ -26,9 +26,9 @@
 	<section class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<!--				Carousel -->
+				<!-- Carousel -->
 				<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-					<div class="carousel-inne h-25">
+					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<img class="d-block w-100" src="https://place-hold.it/600x500/" height="250" alt="First slide">
 						</div>
@@ -46,16 +46,20 @@
 			<div class="col-lg-12">
 				<h3>Flash Deals</h3>
 				<ul class="list-inline">
-					<?php foreach ($productListDeals as $product) {?>
+					<?php foreach ($productListDeals as $product) { ?>
 						<li class="list-inline-item">
 							<div class="">
 								<div class="">
 									<a href="product.php?id=<?php echo $product["StockItemID"] ?>">
-										<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
+										<?php if ($product["Photo"] != "") { ?>
+											<img src="<?php echo $product["Photo"] ?>" class="img-fluid img-thumbnail" width="200">
+										<?php } else { ?>
+											<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
+										<?php } ?>
 									</a>
 								</div>
 								<div class="">
-									<span class="">US $<?php echo $product["RecommendedRetailPrice"] ?></span>
+									<span class="">EUR €<?php echo $product["RecommendedRetailPrice"] ?></span>
 								</div>
 							</div>
 						</li>
@@ -66,14 +70,18 @@
 
 		<div class="row bg-white border br-10 py-3 mt-3">
 			<div class="col-lg-12">
-				<h3>Products Under $30</h3>
+				<h3>Producten Onder €30</h3>
 				<ul class="list-inline">
-					<?php foreach ($productListUnder as $product) {?>
+					<?php foreach ($productListUnder as $product) { ?>
 						<li class="list-inline-item">
 							<div class="">
 								<div class="">
 									<a href="product.php?id=<?php echo $product["StockItemID"] ?>">
-										<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
+										<?php if ($product["Photo"] != "") { ?>
+											<img src="<?php echo $product["Photo"] ?>" class="img-fluid img-thumbnail" width="200">
+										<?php } else { ?>
+											<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
+										<?php } ?>
 									</a>
 								</div>
 								<div class="">
@@ -90,16 +98,20 @@
 			<div class="col-lg-12">
 				<h3>More To Love</h3>
 				<ul class="list-inline">
-					<?php foreach ($productList as $product) {?>
+					<?php foreach ($productList as $product) { ?>
 						<li class="list-inline-item">
 							<div class="">
 								<div class="">
 									<a href="product.php?id=<?php echo $product["StockItemID"] ?>">
-										<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
+										<?php if ($product["Photo"] != "") { ?>
+											<img src="<?php echo $product["Photo"] ?>" class="img-fluid img-thumbnail" width="200">
+										<?php } else { ?>
+											<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
+										<?php } ?>
 									</a>
 								</div>
 								<div class="">
-									<span class="">US $<?php echo $product["RecommendedRetailPrice"] ?></span>
+									<span class="">EUR €<?php echo $product["RecommendedRetailPrice"] ?></span>
 								</div>
 							</div>
 						</li>

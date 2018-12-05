@@ -58,7 +58,7 @@
 	                <div class="list-group">
 	                    <a href="ProductList.php" class="list-group-item list-group-item-action">All Categories</a>
 	                    <?php foreach ($categories as $category) { ?>
-	                        <a href="ProductList.php?categoryId=<?php echo $category["StockGroupID"];if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;} ?>" class="list-group-item list-group-item-action"><?php echo $category["StockGroupName"]; ?></a>
+	                        <a href="ProductList.php?categoryId=<?php echo $category["StockGroupID"];if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;} ?>" class="list-group-item list-group-item-action"><?php echo $category["StockGroupName"] ?></a>
 	                    <?php }?>
 	                </div>
 	            </div>
@@ -72,15 +72,14 @@
 			                        $image = json_decode($product["Photo"]);
 			                        if ($image != []) {
 				                        foreach ($image as $key => $value) {
-					                        if ($key == 1) {
-						                        echo "<img class=\"card-img-top\" src=\"$value\">";
-					                        }
+					                        if ($key == 1) { ?>
+						                         <img id="productImage<?php echo $key ?>" class="card-img-top img-thumbnail" src="<?php echo $value ?>">
+					                        <?php }
 					                        break;
 				                        }
-			                        } else {
-				                        echo "<img class=\"card-img-top\" src=\"pictures/missing_product.jpg\" width=\"250\" height=\"250\">";
-			                        }
-		                        ?>
+			                        } else { ?>
+				                        <img id="productImage0" class="card-img-top img-thumbnail" src="pictures/missing_product.jpg" width="250" height="250">
+			                        <?php } ?>
 	                            <div class="card-body">
 	                                <a class="product-name" href="product.php?id=<?php echo $product["StockItemID"] ?>">
 		                                <h4 id="productName" class="card-title card-product-title"><?php echo $product["StockItemName"] ?></h4>

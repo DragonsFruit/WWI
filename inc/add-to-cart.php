@@ -3,6 +3,7 @@
 
     $id = $_POST["id"];
     $name = $_POST["name"];
+    $image = $_POST["image"];
 
     $newPrice = $_POST["price"];
     $oldPrice = $_SESSION["cart"][$id]["product_price"];
@@ -16,6 +17,7 @@
     $product = [
         "product_id" => $id,
         "product_name" => $name,
+        "product_image" => $image,
         "product_price" => $price,
         "product_quantity" => $quantity
     ];

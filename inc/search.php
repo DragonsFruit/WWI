@@ -16,7 +16,7 @@
 		//Fetching result from database.
 		foreach ($searchResults as $searchResult) {
 ?>
-			<a id="<?php echo $searchResult["StockItemID"]?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="product.php?id=<?php echo $searchResult["StockItemID"]?>">
+			<a id="<?php echo $searchResult["StockItemID"] ?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="product.php?id=<?php echo $searchResult["StockItemID"] ?>">
 				<?php
 					$image = json_decode($searchResult["Photo"]);
 					$itemName = $searchResult["StockItemName"];
@@ -24,15 +24,15 @@
 					if (!is_null($image)) {
 						foreach ($image as $key => $value) {
 							if ($key == 0) {
-								echo "<img src=\"$value\" class=\"search-image\" height=\"40\" width=\"40\" alt=\"$itemName\" />";
+								echo "<img src=\"$value\" class=\"search-image img-thumbnail\" height=\"40\" width=\"40\" alt=\"$itemName\" />";
 							}
 						}
 					} else {
-						echo "<img src=\"pictures/missing_product.jpg\" class=\"search-image\" height=\"40\" width=\"40\" alt=\"$itemName\" />";
+						echo "<img src=\"pictures/missing_product.jpg\" class=\"search-image img-thumbnail\" height=\"40\" width=\"40\" alt=\"$itemName\" />";
 					}
 				?>
-				<span class="search-description w-100 mx-2"><?php echo $searchResult["SearchDetails"]; ?></span>
-				<span class="badge badge-primary badge-pill">€<?php echo $searchResult["RecommendedRetailPrice"]; ?></span>
+				<span class="search-description w-100 mx-2"><?php echo $searchResult["SearchDetails"] ?></span>
+				<span class="badge badge-primary badge-pill">€<?php echo $searchResult["RecommendedRetailPrice"] ?></span>
 			</a>
 <?php
 		}
