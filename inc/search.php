@@ -28,11 +28,11 @@
 							}
 						}
 					} else {
-						echo "<img src=\"https://placehold.it/40x40\" class=\"search-image\" height=\"40\" width=\"40\" alt=\"$itemName\" />";
+						echo "<img src=\"pictures/missing_product.jpg\" class=\"search-image\" height=\"40\" width=\"40\" alt=\"$itemName\" />";
 					}
 				?>
 				<span class="search-description w-100 mx-2"><?php echo $searchResult["SearchDetails"]; ?></span>
-				<span class="badge badge-primary badge-pill">$<?php echo $searchResult["RecommendedRetailPrice"]; ?></span>
+				<span class="badge badge-primary badge-pill">€<?php echo $searchResult["RecommendedRetailPrice"]; ?></span>
 			</a>
 <?php
 		}

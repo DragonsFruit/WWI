@@ -42,7 +42,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row br-10 mt-3 bg-white">
+		<div class="row bg-white border br-10 py-3 mt-3">
 			<div class="col-lg-12">
 				<h3>Flash Deals</h3>
 				<ul class="list-inline">
@@ -51,7 +51,7 @@
 							<div class="">
 								<div class="">
 									<a href="product.php?id=<?php echo $product["StockItemID"] ?>">
-										<img src="//ae01.alicdn.com/kf/HTB1.KXlX6zuK1RjSspeq6ziHVXa4.jpg_220x220.jpg" class="img-fluid img-thumbnail" width="200">
+										<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
 									</a>
 								</div>
 								<div class="">
@@ -64,7 +64,7 @@
 			</div>
 		</div>
 
-		<div class="row br-10 mt-3 bg-white">
+		<div class="row bg-white border br-10 py-3 mt-3">
 			<div class="col-lg-12">
 				<h3>Products Under $30</h3>
 				<ul class="list-inline">
@@ -73,7 +73,7 @@
 							<div class="">
 								<div class="">
 									<a href="product.php?id=<?php echo $product["StockItemID"] ?>">
-										<img src="//ae01.alicdn.com/kf/HTB1.KXlX6zuK1RjSspeq6ziHVXa4.jpg_220x220.jpg" class="img-fluid img-thumbnail" width="200">
+										<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
 									</a>
 								</div>
 								<div class="">
@@ -86,7 +86,7 @@
 			</div>
 		</div>
 
-		<div class="row br-10 my-3 bg-white">
+		<div class="row bg-white border br-10 py-3 my-3">
 			<div class="col-lg-12">
 				<h3>More To Love</h3>
 				<ul class="list-inline">
@@ -95,7 +95,7 @@
 							<div class="">
 								<div class="">
 									<a href="product.php?id=<?php echo $product["StockItemID"] ?>">
-										<img src="//ae01.alicdn.com/kf/HTB1.KXlX6zuK1RjSspeq6ziHVXa4.jpg_220x220.jpg" class="img-fluid img-thumbnail" width="200">
+										<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
 									</a>
 								</div>
 								<div class="">

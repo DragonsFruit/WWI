@@ -40,10 +40,10 @@
 	                                        } else {
 			                                    echo "<li data-target=\"#carousel-thumb\" data-slide-to=\"$key\"><span class=\"img-thumb-item\">";
 	                                        }
-		                                    echo "<img class=\"d - block w - 100 h - 100 img - fluid\" src=\"$value\"></span></li>";
+		                                    echo "<img class=\"d-block w-100 h-100 img-fluid\" src=\"$value\"></span></li>";
 	                                    }
                                     } else {
-	                                    echo "<img class=\"d - block w - 100 h - 100 img - fluid\" src=\"https://placehold.it/40x40\"></span></li>";
+	                                    echo "<img class=\"d-block w-100 h-100 img-fluid\" src=\"pictures/missing_product.jpg\"></span></li>";
                                     }
                                 ?>
                             </ol>
@@ -64,7 +64,7 @@
 				                            echo "<img class=\"d-block wx-500 hx-500 img-cover\" src=\"$value\"></div>";
 			                            }
 		                            } else {
-	                                    echo "<img class=\"d - block w - 100 h - 100 img - fluid\" src=\"https://placehold.it/500x500\"></span></li>";
+	                                    echo "<img class=\"d-block w-100 h-100 img-fluid\" src=\"pictures/missing_product.jpg\"></span></li>";
                                     }
 	                            ?>
                             </div>
@@ -153,8 +153,8 @@
                             </dl>
                         </div>
                     </div>
-	                <div class="product-actions mb-0">
-		                <dl class="property-item">
+	                <div class="product-actions mb-0 px-3">
+		                <dl>
 			                <div class="row" id="productActionBlock">
 								<span class="col-6">
 									<a href="#!" id="buyNowButton" class="btn btn-success btn-success-custom w-100">Nu Kopen</a>
@@ -186,9 +186,11 @@
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="product-details-tab" data-toggle="tab" href="#nav-product-details" role="tab" aria-controls="nav-product-details" aria-selected="true">Productinformatie</a>
-                            <a class="nav-item nav-link" id="product-feedback-tab" data-toggle="tab" href="#nav-product-feedback" role="tab" aria-controls="nav-product-feedback" aria-selected="false">Feedback (389 reviews)</a>
+	                        <?php if ($product->youTubeID != "") { ?>
+	                            <a class="nav-item nav-link" id="product-video-tab" data-toggle="tab" href="#nav-product-video" role="tab" aria-controls="nav-product-video" aria-selected="false">Video</a>
+	                        <?php } ?>
+	                        <a class="nav-item nav-link" id="product-feedback-tab" data-toggle="tab" href="#nav-product-feedback" role="tab" aria-controls="nav-product-feedback" aria-selected="false">Feedback (389 reviews)</a>
                             <a class="nav-item nav-link" id="product-shipping-tab" data-toggle="tab" href="#nav-product-shipping" role="tab" aria-controls="nav-product-shipping" aria-selected="false">Verzending & Betaling</a>
-	                        <a class="nav-item nav-link" id="product-video-tab" data-toggle="tab" href="#nav-product-video" role="tab" aria-controls="nav-product-video" aria-selected="false">Video</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -223,34 +225,41 @@
                                         <p class="mt-2 mb-0"><?php echo $product->productDescription ?></p>
                                     </div>
                                 </div>
-
-                                <!-- Packaging details -->
-                                <div class="box product-property-main my-2">
-                                    <div class="box-title">Verpakkingsdetails</div>
-                                    <div class="box-body">
-                                        <ul class="product-packaging-list">
-                                            <li class="packaging-item">
-                                                <span class="packaging-title">Eenheidstype:</span>
-                                                <span class="packaging-des">stuk</span>
-                                            </li>
-                                            <li class="packaging-item">
-                                                <span class="packaging-title">Pakket Gewicht:</span>
-                                                <span class="packaging-des"><?php echo $product->productWeight ?> kg</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
+	                    <?php if ($product->youTubeID != "") {?>
+		                    <!-- Product video -->
+		                    <div class="tab-pane fade" id="nav-product-video" role="tabpanel" aria-labelledby="product-video-tab">
+			                    <div class="mt-3">
+			                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/<?php echo $product->youTubeID ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			                    </div>
+		                    </div>
+	                    <?php } ?>
+
                         <!-- Product feedback -->
-                        <div class="tab-pane fade" id="nav-product-feedback" role="tabpanel" aria-labelledby="product-feedback-tab">...</div>
+                        <div class="tab-pane fade" id="nav-product-feedback" role="tabpanel" aria-labelledby="product-feedback-tab"></div>
 
                         <!-- Product shipping -->
-                        <div class="tab-pane fade" id="nav-product-shipping" role="tabpanel" aria-labelledby="product-shipping-tab">...</div>
-
-	                    <!-- Product shipping -->
-	                    <div class="tab-pane fade" id="nav-product-video" role="tabpanel" aria-labelledby="product-video-tab">...</div>
+                        <div class="tab-pane fade" id="nav-product-shipping" role="tabpanel" aria-labelledby="product-shipping-tab">
+	                        <p class="text-warning mt-3">Gratis verzending naar Netherlands via WideWorldImporters Standaard Verzending</p>
+	                        <!-- Packaging details -->
+	                        <div class="box product-property-main my-2">
+		                        <div class="box-title">Verpakkingsdetails</div>
+		                        <div class="box-body">
+			                        <ul class="product-packaging-list">
+				                        <li class="packaging-item">
+					                        <span class="packaging-title">Eenheidstype:</span>
+					                        <span class="packaging-des">stuk</span>
+				                        </li>
+				                        <li class="packaging-item">
+					                        <span class="packaging-title">Pakket Gewicht:</span>
+					                        <span class="packaging-des"><?php echo $product->productWeight ?> kg</span>
+				                        </li>
+			                        </ul>
+		                        </div>
+	                        </div>
+                        </div>
                     </div>
                 </div>
             </div>

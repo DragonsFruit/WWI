@@ -14,6 +14,7 @@
 		public $productSize;
 		public $productTags;
 		public $productPhoto;
+		public $youTubeID;
 
 		public function __construct() {
 			$this->db = DB::instance();
@@ -31,7 +32,8 @@
 			    $this->productBrand = $row['Brand'];
 			    $this->productSize = $row['Size'];
 			    $this->productTags = $row['Tags'];
-			    $this->productPhoto = $row['Photo'];
+				$this->productPhoto = $row['Photo'];
+				$this->youTubeID = $row['YouTubeID'];
 			}
 		}
 	}

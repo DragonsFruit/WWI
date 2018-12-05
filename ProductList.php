@@ -63,7 +63,7 @@
 	                </div>
 	            </div>
 	        </div>
-	        <div class="col-lg-9 col-sm-12 mb-3 br-10 bg-white">
+	        <div class="col-lg-9 col-sm-12 mb-3 bg-white border br-10">
 	            <div class="row">
 		            <div class="card-deck py-3 px-3 mx-auto">
 	                <?php foreach ($productsList as $product) {?>
@@ -78,7 +78,7 @@
 					                        break;
 				                        }
 			                        } else {
-				                        echo "<img class=\"card-img-top\" src=\"https://place-hold.it/250x250/\">";
+				                        echo "<img class=\"card-img-top\" src=\"pictures/missing_product.jpg\" width=\"250\" height=\"250\">";
 			                        }
 		                        ?>
 	                            <div class="card-body">

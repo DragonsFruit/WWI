@@ -15,17 +15,20 @@
 	    <div class="row">
 	        <div class="col-12">
 				<ul class="nav nav-tabs tab-nav-main" id="myTab" role="tablist">
+					<?php if(!isset($_SESSION['user'])) { ?>
 					<li class="nav-item">
 						<a class="nav-link active" id="bevestig-tab" data-toggle="tab" href="#nav-bevestig" role="tab" aria-controls="nav-bevestig" aria-selected="true">Bevestig bestelling</a>
 					</li>
+					<?php } ?>
 					<li class="nav-item">
-						<a class="nav-link" id="product-betaling-tab" data-toggle="tab" href="#nav-product-betaling" role="tab" aria-controls="nav-product-feedback" aria-selected="false">Betaling</a>
+						<a class="nav-link <?php if(isset($_SESSION['user'])) { echo "active"; } ?>" id="product-betaling-tab" data-toggle="tab" href="#nav-product-betaling" role="tab" aria-controls="nav-product-feedback" aria-selected="false">Betaling</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" id="product-klaar-tab" data-toggle="tab" href="#nav-product-klaar" role="tab" aria-controls="nav-product-shipping" aria-selected="false">Klaar</a>
 					</li>
 				</ul>
 	            <div class="tab-content" id="nav-tabContent">
+		            <?php if(!isset($_SESSION['user'])) { ?>
 	                <!-- Product confirmation -->
 	                <div class="tab-pane fade show active" id="nav-bevestig" role="tabpanel" aria-labelledby="bevestig-tab">
 	                    <div class="row">
@@ -78,8 +81,9 @@
 							</form>
 						</div>
 	                </div>
+		            <?php } ?>
 					<!-- Payment -->
-	                <div class="tab-pane fade show" id="nav-product-betaling" role="tabpanel" aria-labelledby="product-betaling-tab">
+	                <div class="tab-pane fade show <?php if(isset($_SESSION['user'])) { echo "active"; } ?>" id="nav-product-betaling" role="tabpanel" aria-labelledby="product-betaling-tab">
 						<div class="row">
 			                <div id="payment-form" class="mt-5 container">
 								<div><p>Totaalbedrag: $<?php echo $totalPrice?></p></div>
