@@ -111,17 +111,6 @@
 
                     <!-- Attribute -->
                     <div class="product-attribute">
-                        <div class="product-info">
-                            <dl class="property-item">
-                               <dt class="item-title">Color:</dt>
-                                <dd class="item-description">
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-secondary"><input type="radio" name="color" id="option1" class="btn btn-primary" autocomplete="off">Green</label>
-                                        <label class="btn btn-secondary"><input type="radio" name="color" id="option2" class="btn btn-primary" autocomplete="off">Gray</label>
-                                    </div>
-                                </dd>
-                            </dl>
-                        </div>
                         <div class="product-operate-wrap">
                             <dl class="property-item">
                                 <dt class="item-title">Shipping:</dt>

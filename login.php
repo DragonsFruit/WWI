@@ -14,8 +14,6 @@
 		$login->login($inputUsername, $inputPassword);
 	}
 	include "inc/header.php";
-
-	var_dump($_SESSION);
 ?>
 
 <main>

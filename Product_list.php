@@ -68,7 +68,19 @@
 		            <div class="card-deck py-3 px-3 mx-auto">
 	                <?php foreach ($productsList as $product) {?>
 	                        <div class="card card-product card-product-list mb-3 mx-auto" style="min-width: 250px">
-	                            <img class="card-img-top" src="https://place-hold.it/250x250/">
+		                        <?php
+			                        $image = json_decode($product["Photo"]);
+			                        if ($image != []) {
+				                        foreach ($image as $key => $value) {
+					                        if ($key == 1) {
+						                        echo "<img class=\"card-img-top\" src=\"$value\">";
+					                        }
+					                        break;
+				                        }
+			                        } else {
+				                        echo "<img class=\"card-img-top\" src=\"https://place-hold.it/250x250/\">";
+			                        }
+		                        ?>
 	                            <div class="card-body">
 	                                <a class="product-name" href="product.php?id=<?php echo $product["StockItemID"] ?>">
 		                                <h4 id="productName" class="card-title card-product-title"><?php echo $product["StockItemName"] ?></h4>
