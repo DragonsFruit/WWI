@@ -23,7 +23,7 @@
 
 <!-- Main -->
     <main class="detail">
-        <section class="container detail-container mb-2">
+        <section class="container detail-container border br-10 py-3 mb-2">
             <div class="row">
                 <!-- Carousel -->
                 <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails col-lg-6 px-0" data-ride="carousel">
@@ -90,19 +90,19 @@
                     <div class="product-rating">
                         <span class="product-star">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
                         <span class="percent-num">4.0</span>
-                        <span class="ratings-num">(389 votes)</span>
+                        <span class="ratings-num">(389 reviews)</span>
                     </div>
 
                     <!-- Price -->
                     <div class="product-price">
                         <div class="detail-description">
-                            <span class="detail-title">Price:</span>
+                            <span class="detail-title">Prijs:</span>
                             <div class="price-content">
-                                <span class="price-symbol">US $</span><span id="productPrice" class="price"><?php echo $product->productPrice ?> </span><span class="price-unit"> / piece</span>
+                                <span class="price-symbol">EUR €</span><span id="productPrice" class="price"><?php echo $product->productPrice ?> </span><span class="price-unit"> / stuk</span>
                             </div>
                         </div>
                         <div class="detail-description">
-                            <span class="detail-title">Tax rate:</span>
+                            <span class="detail-title">BTW:</span>
                             <div class="tax-content">
                                 <span class="tax-rate"><?php echo floor($product->productTaxRate) ?></span><span class="tax-unit">%</span>
                             </div>
@@ -113,14 +113,14 @@
                     <div class="product-attribute">
                         <div class="product-operate-wrap">
                             <dl class="property-item">
-                                <dt class="item-title">Shipping:</dt>
+                                <dt class="item-title">Verzenden:</dt>
                                 <dd class="item-description">
                                     <div class="shipment-info">
-                                        <span class="shipment-cost">Free Shipping</span> to Netherlands via <span class="shipping-company">WideWorldImporters Standard Shipping</span>
+                                        <span class="shipment-cost">Gratis verzending</span> naar Netherlands via <span class="shipping-company">WideWorldImporters Standaard Verzending</span>
                                     </div>
                                     <div class="shipment-addition-info">
-                                        <p>Estimated Delivery Time: <span class="shipping-days"><?php echo $product->productLeadTimeDays ?> days</span>
-                                            <button type="button" class="btn btn-circle btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="If you finish the payment today, your order will arrive within the estimated delivery time.">?</button>
+                                        <p>Geschatte Leveringstijd: <span class="shipping-days"><?php echo $product->productLeadTimeDays ?> dagen</span>
+                                            <button type="button" class="btn btn-circle btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Als u vandaag de betaling hebt voltooid, komt uw bestelling binnen de geschatte levertijd.">?</button>
                                         </p>
                                     </div>
                                 </dd>
@@ -128,25 +128,25 @@
 
                             <!-- Quantity -->
                             <dl class="property-item">
-                                <dt class="item-title">Quantity:</dt>
+                                <dt class="item-title">Kwantiteit:</dt>
                                 <dd class="item-description">
                                     <div class="quantity-info">
                                         <span class="quantity-modified">
                                             <input type="number" id="totalQuantity" class="quantity-input" min="1" value="1" maxlength="5" autocomplete="off">
                                         </span>
-                                        <span class="unit">piece</span>
-                                        <span class="available-stock">(In stock)</span>
+                                        <span class="unit">stuk</span>
+                                        <span class="available-stock">(Op voorraad)</span>
                                     </div>
                                 </dd>
                             </dl>
 
                         <!-- Total price -->
                             <dl class="property-item">
-                                <dt class="item-title">Total price:</dt>
+                                <dt class="item-title">Totaal prijs:</dt>
                                 <dd class="item-description">
                                     <div class="total-price-info">
                                         <span class="total-price-show">
-                                            <span class="price-symbol">US $</span><span id="totalPrice" class="total-price-value"><?php echo $product->productPrice ?></span>
+                                            <span class="price-symbol">EUR €</span><span id="totalPrice" class="total-price-value"><?php echo $product->productPrice ?></span>
                                         </span>
                                     </div>
                                 </dd>
@@ -157,10 +157,10 @@
 		                <dl class="property-item">
 			                <div class="row" id="productActionBlock">
 								<span class="col-6">
-									<a href="#!" id="buyNowButton" class="btn btn-success btn-success-custom w-100">Buy Now</a>
+									<a href="#!" id="buyNowButton" class="btn btn-success btn-success-custom w-100">Nu Kopen</a>
 								</span>
 	                            <span class="col-6">
-                                    <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary btn-primary-custom w-100">Add to Cart</a>
+                                    <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary btn-primary-custom w-100">In Winkelwagen</a>
                                 </span>
 			                </div>
 		                </dl>
@@ -168,13 +168,13 @@
                 </div>
             </div>
         </section>
-        <section class="container mb-2">
+        <section class="container mb-3">
             <div class="row">
                 <div class="col-lg-2 pl-0">
-                    <div class="store-info-wrap" id="j-store-info-wrap" data-spm="100005" data-widget-cid="widget-37">
+                    <div class="store-info-wrap border br-10 py-3" data-spm="100005" data-widget-cid="widget-37">
                         <span class="top-rated-mark"><a href="#!"></a></span>
                         <dl class="store-intro">
-                            <dt>Sold By</dt>
+                            <dt>Verkocht Door</dt>
                             <dd class="store-name mx-0">
                                 <a class="store-link" href="#!">A Datum Corporation</a>
                             </dd>
@@ -182,12 +182,13 @@
                         </dl>
                     </div>
                 </div>
-                <div class="col-lg-10 main-container">
+                <div class="col-lg-10 main-container border br-10 py-3">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="product-details-tab" data-toggle="tab" href="#nav-product-details" role="tab" aria-controls="nav-product-details" aria-selected="true">Product Details</a>
-                            <a class="nav-item nav-link" id="product-feedback-tab" data-toggle="tab" href="#nav-product-feedback" role="tab" aria-controls="nav-product-feedback" aria-selected="false">Feedback (389 votes)</a>
-                            <a class="nav-item nav-link" id="product-shipping-tab" data-toggle="tab" href="#nav-product-shipping" role="tab" aria-controls="nav-product-shipping" aria-selected="false">Shipping & Payment</a>
+                            <a class="nav-item nav-link active" id="product-details-tab" data-toggle="tab" href="#nav-product-details" role="tab" aria-controls="nav-product-details" aria-selected="true">Productinformatie</a>
+                            <a class="nav-item nav-link" id="product-feedback-tab" data-toggle="tab" href="#nav-product-feedback" role="tab" aria-controls="nav-product-feedback" aria-selected="false">Feedback (389 reviews)</a>
+                            <a class="nav-item nav-link" id="product-shipping-tab" data-toggle="tab" href="#nav-product-shipping" role="tab" aria-controls="nav-product-shipping" aria-selected="false">Verzending & Betaling</a>
+	                        <a class="nav-item nav-link" id="product-video-tab" data-toggle="tab" href="#nav-product-video" role="tab" aria-controls="nav-product-video" aria-selected="false">Video</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -196,18 +197,18 @@
                             <div class="product-desc d-grid">
                                 <!-- Product specifics -->
                                 <div class="box product-property-main my-2">
-                                    <div class="box-title">Product specifics</div>
+                                    <div class="box-title">Product specificaties</div>
                                     <div class="box-body">
                                         <ul class="product-property-list">
                                             <li class="property-item">
-                                                <span class="propery-title">Brand Name:</span>
+                                                <span class="propery-title">Merknaam:</span>
                                                 <span class="propery-des"><?php // echo $productBrand ?>A Datum Corporation</span>
                                             </li>
                                             <?php
                                                 $productTags = json_decode($product->productTags);
                                                 foreach ($productTags as $key => $value) { ?>
                                                 <li class="property-item">
-                                                    <span class="propery-title">Usage <?php echo $key+1 ?>:</span>
+                                                    <span class="propery-title">Gebruik <?php echo $key+1 ?>:</span>
                                                     <span class="propery-des"><?php echo $value ?></span>
                                                 </li>
                                             <?php } ?>
@@ -217,7 +218,7 @@
 
                                 <!-- Product description -->
                                 <div class="box product-property-main my-2">
-                                    <div class="box-title">Product Description</div>
+                                    <div class="box-title">Product Beschrijving</div>
                                     <div class="box-body">
                                         <p class="mt-2 mb-0"><?php echo $product->productDescription ?></p>
                                     </div>
@@ -225,15 +226,15 @@
 
                                 <!-- Packaging details -->
                                 <div class="box product-property-main my-2">
-                                    <div class="box-title">Packaging Details</div>
+                                    <div class="box-title">Verpakkingsdetails</div>
                                     <div class="box-body">
                                         <ul class="product-packaging-list">
                                             <li class="packaging-item">
-                                                <span class="packaging-title">Unit Type:</span>
-                                                <span class="packaging-des">piece</span>
+                                                <span class="packaging-title">Eenheidstype:</span>
+                                                <span class="packaging-des">stuk</span>
                                             </li>
                                             <li class="packaging-item">
-                                                <span class="packaging-title">Package Weight:</span>
+                                                <span class="packaging-title">Pakket Gewicht:</span>
                                                 <span class="packaging-des"><?php echo $product->productWeight ?> kg</span>
                                             </li>
                                         </ul>
@@ -247,6 +248,9 @@
 
                         <!-- Product shipping -->
                         <div class="tab-pane fade" id="nav-product-shipping" role="tabpanel" aria-labelledby="product-shipping-tab">...</div>
+
+	                    <!-- Product shipping -->
+	                    <div class="tab-pane fade" id="nav-product-video" role="tabpanel" aria-labelledby="product-video-tab">...</div>
                     </div>
                 </div>
             </div>

@@ -57,7 +57,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form class="form-inline my-2 my-lg-0 mx-auto">
                     <div class="input-group search-main w-100">
-                        <input id="search" class="form-control search" type="search" placeholder="I'm shopping for..." aria-label="Search" autocomplete="off" spellcheck="false">
+                        <input id="search" class="form-control search" type="search" placeholder="Ik ben opzoek naar..." aria-label="Search" autocomplete="off" spellcheck="false">
 	                    <div id="searchResultsBox" class="w-100 position-absolute d-none"></div>
                         <div class="input-group-append">
                             <select id="category" class="browser-default custom-select" name="category">
@@ -81,34 +81,34 @@
 						<li class="nav-item dropdown">
 							<a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="far fa-user"></i> <?php echo "Hello, " . $_SESSION['user']['username'] ?></a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item text-dark bg-transparent" href="#!">Wish List</a>
+								<a class="dropdown-item text-dark bg-transparent" href="#!">Wenslijst</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item text-danger bg-transparent" id="logOut" href="#!">Log Out</a>
+								<a class="dropdown-item text-danger bg-transparent" id="logOut" href="#!">Loguit</a>
 							</div>
 						</li>
 					<?php } ?>
 					<li class="nav-item <?php if($currentPage =='product'){echo 'active';}?>">
-						<a href="product_list.php" class="nav-link"><i class="far fa-th-large"></i> Products</a>
+						<a href="ProductList.php" class="nav-link"><i class="far fa-th-large"></i> Producten</a>
 					</li>
 					<li class="nav-item <?php if($currentPage =='cart'){echo 'active';}?>">
 						<span class="cart-counter mt-1 px-2"><?php echo (!$_SESSION["cart"]["misc"]["total_quantity"]) ? 0 : $_SESSION["cart"]["misc"]["total_quantity"] ?></span>
 						<a href="#cart" id="shoppingCartButton" class="nav-link cart position-relative">
 							<i class="far fa-shopping-cart"></i>
-							<span>Cart</span>
+							<span>Winkelwagen</span>
 						</a>
 						<div id="shoppingCart" class="position-absolute d-none">
 							<div class="shopping-cart">
 								<div class="shopping-cart-header">
 									<div class="shopping-cart-total">
-										<span class="lighter-text">Total:</span>
+										<span class="lighter-text">Totaal:</span>
 										<span class="main-color-text">$<span id="shoppingCartTotalPrice"><?php echo (!$_SESSION["cart"]["misc"]["total_price"]) ? 0 : $_SESSION["cart"]["misc"]["total_price"] ?></span></span>
-										<span class="lighter-text" style="float: right"><a href="shopping_cart.php">Go to cart</a></span>
+										<span class="lighter-text" style="float: right"><a href="ShoppingCart.php">Naar winkelwagen</a></span>
 									</div>
 								</div>
 
 								<ul id="shoppingCartBox" class="shopping-cart-items list-group list-group-flush"></ul>
 
-								<a href="paymentprocess.php" class="btn btn-primary btn-primary-custom d-block mt-2">Checkout</a>
+								<a href="PaymentProcess.php" class="btn btn-primary btn-primary-custom d-block mt-2">Afrekenen</a>
 							</div>
 						</div>
 					</li>

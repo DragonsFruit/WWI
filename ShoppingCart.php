@@ -31,15 +31,15 @@
 ?>
 
 <main>
-	<div class="container bg-white br-10">
-		<h1>Your Shopping Cart <small style="font-size: 16px;">(<span id="shoppingCartTotalCount"><?php echo $totalQuantity ?></span><?php echo ($totalQuantity > 0) ? " Items" : " Item" ?>)</small></h1>
+	<div class="container bg-white py-3 border br-10">
+		<h1>UW Winkelwagen <small style="font-size: 16px;">(<span id="shoppingCartTotalCount"><?php echo $totalQuantity ?></span><?php echo ($totalQuantity > 0) ? " Items" : " Item" ?>)</small></h1>
 		<table id="cart" class="table table-hover table-condensed">
 			<thead>
 				<tr>
 					<th style="width:50%">Product</th>
-					<th style="width:10%">Price</th>
-					<th style="width:8%">Quantity</th>
-					<th style="width:22%" class="text-center">Subtotal</th>
+					<th style="width:10%">Prijs</th>
+					<th style="width:8%">Aantal</th>
+					<th style="width:22%" class="text-center">Subtotaal</th>
 					<th style="width:10%"></th>
 				</tr>
 			</thead>
@@ -66,8 +66,8 @@
 								</td>
 								<td data-th="Subtotal" class="text-center">$<span id="subtotalPrice"><?php echo $cartItem['product_price']?></span></td>
 								<td class="actions" data-th="">
-									<a href="shopping_cart.php?action=delete&id=<?php echo $cartItem['product_id'] ?>" class="btn btn-danger btn-danger-custom">
-										<i class="far fa-trash-alt"></i> Remove
+									<a href="ShoppingCart.php?action=delete&id=<?php echo $cartItem['product_id'] ?>" class="btn btn-danger btn-danger-custom">
+										<i class="far fa-trash-alt"></i> Verwijder
 									</a>
 								</td>
 							</tr>
@@ -78,10 +78,10 @@
 	        </tbody>
 	        <tfoot>
 		        <tr>
-			        <td><a href="product_list.php" class="btn btn-secondary btn-secondary-custom"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+			        <td><a href="ProductList.php" class="btn btn-secondary btn-secondary-custom"><i class="fa fa-angle-left"></i> Verder winkelen</a></td>
 			        <td colspan="2" class="hidden-xs"></td>
-			        <td class="hidden-xs text-center"><strong>Total $<span id="totalPrice"><?php echo $_SESSION["cart"]["misc"]["total_price"] ?></span></strong></td>
-			        <td><a href="paymentprocess.php" class="btn btn-success btn-success-custom">Checkout <i class="fa fa-angle-right"></i></a></td>
+			        <td class="hidden-xs text-center"><strong>Totaal €<span id="totalPrice"><?php echo $_SESSION["cart"]["misc"]["total_price"] ?></span></strong></td>
+			        <td><a href="PaymentProcess.php" class="btn btn-success btn-success-custom">Afrekenen <i class="fa fa-angle-right"></i></a></td>
 		        </tr>
 	        </tfoot>
 	    </table>

@@ -56,9 +56,9 @@
 	            <div class="card bg-light mb-3">
 	                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
 	                <div class="list-group">
-	                    <a href="Product_list.php" class="list-group-item list-group-item-action">All Categories</a>
+	                    <a href="ProductList.php" class="list-group-item list-group-item-action">All Categories</a>
 	                    <?php foreach ($categories as $category) { ?>
-	                        <a href="Product_list.php?categoryId=<?php echo $category["StockGroupID"];if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;} ?>" class="list-group-item list-group-item-action"><?php echo $category["StockGroupName"]; ?></a>
+	                        <a href="ProductList.php?categoryId=<?php echo $category["StockGroupID"];if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;} ?>" class="list-group-item list-group-item-action"><?php echo $category["StockGroupName"]; ?></a>
 	                    <?php }?>
 	                </div>
 	            </div>
@@ -106,19 +106,19 @@
 	                    <nav aria-label="product_pages">
 	                        <ul class="pagination">
 	                            <li class="page-item <?php if ($page == 1){echo "disabled";} ?>">
-	                                <a class="page-link" href="Product_list.php?page=<?php if($page > 1){echo $page-1;} if($categoryId != 0){print "&categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>">Previous</a>
+	                                <a class="page-link" href="ProductList.php?page=<?php if($page > 1){echo $page-1;} if($categoryId != 0){print "&categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>">Vorige</a>
 	                            </li>
 	                            <?php for($i = 1; $i <= ($numberProducts / $recordsPerPage) + 1; $i++){?>
-	                                <li class="page-item <?php if($i == $page){echo "active";} ?>"><a class="page-link" href="Product_list.php?page=<?php echo $i; if($categoryId != 0){print "&categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>"><?php echo $i?></a></li>
+	                                <li class="page-item <?php if($i == $page){echo "active";} ?>"><a class="page-link" href="ProductList.php?page=<?php echo $i; if($categoryId != 0){print "&categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>"><?php echo $i?></a></li>
 	                            <?php }?>
 	                            <li class="page-item <?php if($page >= $numberProducts / $recordsPerPage){echo "disabled";} ?>">
-	                                <a class="page-link" href="Product_list.php?page=<?php echo $page + 1; if($categoryId != 0){print "?categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>">Next</a>
+	                                <a class="page-link" href="ProductList.php?page=<?php echo $page + 1; if($categoryId != 0){print "?categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>">Volgende</a>
 								</li>
-								<form name="numberProductsPage" id="paginationForm" method="GET" action="Product_list.php?<?php if($categoryId != 0){print "categoryId=".$categoryId;}?>">
+								<form name="numberProductsPage" id="paginationForm" method="GET" action="ProductList.php?<?php if($categoryId != 0){print "categoryId=".$categoryId;}?>">
 								<div class="form-group">
 								<input name="categoryId" value="<?php echo $categoryId ?>" hidden>
 									<select name="recordsPerPage" class="form-control dropdownProducts" id="sel1">
-										<option class="dropdown-item">Number per page</option>
+										<option class="dropdown-item">Aantal per pagina</option>
 										<option class="dropdown-item <?php if($recordsPerPage == 15){echo "active";} ?>" value=15>15</option>
 										<option class="dropdown-item <?php if($recordsPerPage == 20){echo "active";} ?>" value=20>20</option>
 										<option class="dropdown-item <?php if($recordsPerPage == 25){echo "active";} ?>" value=25>25</option>

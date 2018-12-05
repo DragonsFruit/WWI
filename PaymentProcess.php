@@ -11,7 +11,7 @@
 ?>
 
 <main>
-	<div class="container">
+	<div class="container bg-white border br-10 py-3">
 	    <div class="row">
 	        <div class="col-12">
 				<ul class="nav nav-tabs tab-nav-main" id="myTab" role="tablist">
