@@ -72,8 +72,8 @@
 			                        $image = json_decode($product["Photo"]);
 			                        if ($image != []) {
 				                        foreach ($image as $key => $value) {
-					                        if ($key == 1) { ?>
-						                         <img id="productImage<?php echo $key ?>" class="card-img-top img-thumbnail" src="<?php echo $value ?>">
+					                        if ($key == 0) { ?>
+						                         <img id="productImage<?php echo $key ?>" class="card-img-top img-thumbnail" src="<?php echo $value ?>" width="250" height="250">
 					                        <?php }
 					                        break;
 				                        }

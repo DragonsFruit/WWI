@@ -19,7 +19,8 @@
 <main>
     <div class="container bg-white py-3 border br-10">
 	    <form class="form-signin" method="POST">
-	        <h2 class="form-signin-heading">Log In</h2><br>
+	        <h2 class="form-signin-heading">Log In</h2>
+		    <br>
 		    <div class="form-group">
 			    <label for="inputEmail">E-mail Adres</label>
 			    <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Uw geweldige e-mail adres..." required autofocus>
@@ -31,7 +32,7 @@
 		    <a href="Register.php">Geen account? Hier registreren!</a>
 		    <br>
 	        <br>
-		    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+		    <button class="btn btn-lg btn-primary btn-primary-custom btn-block" type="submit">Log in</button>
 	    </form>
     </div>
 </main>

@@ -1,3 +1,10 @@
+// Day prototype extension
+Date.prototype.addDays = function(days) {
+	let date = new Date(this.valueOf());
+	date.setDate(date.getDate() + days);
+	return date;
+}
+
 // Find get parameter
 function findGetParameter(parameterName) {
     let result = null,
@@ -82,7 +89,7 @@ $(document).ready(function () {
 	// Calculate product total price
 	$(".quantity-input").change("change", function () {
 		let totalCost = $("#productPrice").html() * $(this).val();
-		$("#totalPrice").html(Math.round(totalCost * 100) / 100);
+		$("#totalPrice").html(totalCost.toFixed(2));
 	});
 
 	// Search when typing or category is changed
@@ -182,22 +189,60 @@ $(document).ready(function () {
 		}
 	});
 
-	// Check mark
+	// Payment and invoice
 	$("#product-klaar-tab").click(function () {
+		// Get current date
+		var invoiceDate = new Date();
+		let dd = invoiceDate.getDate();
+		let mm = invoiceDate.getMonth()+1; //January is 0!
+		let yyyy = invoiceDate.getFullYear();
+
+		if(dd<10) {
+			dd = '0'+dd
+		}
+
+		if(mm<10) {
+			mm = '0'+mm
+		}
+
+		// Get current date plus 14 day shipping
+		var deliveryTime = new Date().addDays(14);
+		let deliveryTimeDD = deliveryTime.getDate();
+		let deliveryTimeMM = deliveryTime.getMonth()+1;
+		let deliverTimeYYYY = deliveryTime.getFullYear();
+		let deliverTimeHH = deliveryTime.getHours();
+		let deliverTimemm = deliveryTime.getMinutes();
+		let deliverTimeSS = deliveryTime.getSeconds();
+
+		let userId = $("#userId").val();
+		invoiceDate = yyyy + '-' + mm + '-' + dd;
+		let totalItems = $("#totalItems").val();
+		deliveryTime = deliverTimeYYYY + '-' + deliveryTimeMM + '-' + deliveryTimeDD + ' ' + deliverTimeHH + '-' + deliverTimemm + '-' + deliverTimeSS;
+
+		console.log(userId);
+		console.log(invoiceDate);
+		console.log(totalItems);
+		console.log(deliveryTime);
+
 		setTimeout(function() {
-			$(".payment-description").html("Processing payment...");
+			$(".payment-description").html("Betaling verwerken...");
 		}, 100);
 
 		$.ajax({
 			type: "POST",
-			url: "inc/CreateInvoice.php"
+			url: "inc/CreateInvoice.php",
+			data: {
+				userId: userId,
+				invoiceDate: invoiceDate,
+				totalItems: totalItems,
+				deliveryTime: deliveryTime
+			},
+			success: function() {
+				$(".payment-description").html("Betaling ontvangen! <br> <a href='Invoices.php' class='btn btn-link text-primary'>Naar bestellingen overzicht</a>");
+				$(".circle-loader").toggleClass("load-complete");
+				$(".checkmark").toggle();
+			}
 		});
-
-		setTimeout(function() {
-			$(".payment-description").html("Payment received!");
-			$(".circle-loader").toggleClass("load-complete");
-			$(".checkmark").toggle();
-		}, 3000);
 	});
 
 	// Pagination products per page

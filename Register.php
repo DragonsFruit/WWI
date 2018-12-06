@@ -3,10 +3,10 @@
 	include_once "inc/Autoload.php";
 	
 	// Set current page active
-	$currentPage = 'product';
+	$currentPage = 'register';
 
 	// Specify header title
-	$headerTitle =  "form";
+	$headerTitle =  "Registratie";
 
 	include "inc/Header.php";
 
@@ -33,46 +33,46 @@
 			<h2 class="form-signin-heading">Registratie</h2>
 			<br>
 			<div class="form-row">
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-6">
 					<label for="inputEmail">E-mail Adres</label>
-					<input type="email" class="form-control" id="inputEmail" name="email" required>
+					<input type="email" class="form-control" id="inputEmail" name="email" placeholder="Voer hier uw e-mail adres in..." required>
 				</div>
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-6">
 					<label for="inputPassword">Wachtwoord</label>
-					<input type="password" class="form-control" id="inputPassword" name="wachtwoord" required>
+					<input type="password" class="form-control" id="inputPassword" name="wachtwoord" placeholder="Voer hier uw wachtwoord in..." required>
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-6">
 					<label for="inputFirstName">Voornaam</label>
 					<input type="text" class="form-control" id="inputFirstName" name="voornaam" required>
 				</div>
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-6">
 					<label for="inputLastName">Achternaam en Tussennaam</label>
 					<input type="text" class="form-control" id="inputLastName" name="achternaam" required>
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-10">
 					<label for="inputAddress">Adres</label>
 					<input type="text" class="form-control" id="inputAddress" name="adres" required>
 				</div>
 				<div class="form-group col-md-2">
 					<label for="inputNumber">Huisnummer</label>
-					<input type="number" class="form-control" id="inputNumber" name="nummer" required>
+					<input type="number" class="form-control" id="inputNumber" name="nummer" min="0" required>
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-8">
 					<label for="inputCity">Stad</label>
 					<input type="text" class="form-control" id="inputCity" name="stad" required>
 				</div>
-				<div class="form-group col-md-2">
+				<div class="form-group col-md-4">
 					<label for="inputZip">Postcode</label>
 					<input type="text" class="form-control" id="inputZip" name="postcode" required>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary">Registreren</button>
+			<button type="submit" class="btn btn-primary btn-primary-custom btn-block">Registreren</button>
 		</form>
 	</div>
 </main>

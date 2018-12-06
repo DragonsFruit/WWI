@@ -19,7 +19,6 @@
 	$productListDeals = new Productlist();
 	$productListDeals->getProductsWithDeals(50);
 	$productListDeals = $productListDeals->data;
-
 ?>
 
 <main>
@@ -30,13 +29,13 @@
 				<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img class="d-block w-100" src="https://place-hold.it/600x500/" height="250" alt="First slide">
+							<img class="d-block w-100" src="https://place-hold.it/1000x250/" height="250" alt="First slide">
 						</div>
 						<div class="carousel-item">
-							<img class="d-block w-100" src="https://place-hold.it/300x600/" height="250" alt="Second slide">
+							<img class="d-block w-100" src="https://place-hold.it/1000x250/" height="250" alt="Second slide">
 						</div>
 						<div class="carousel-item">
-							<img class="d-block w-100" src="https://place-hold.it/1920x1080/" height="250" alt="Third slide">
+							<img class="d-block w-100" src="https://place-hold.it/1000x250/" height="250" alt="Third slide">
 						</div>
 					</div>
 				</div>
@@ -51,10 +50,17 @@
 							<div class="">
 								<div class="">
 									<a href="product.php?id=<?php echo $product["StockItemID"] ?>">
-										<?php if ($product["Photo"] != "") { ?>
-											<img src="<?php echo $product["Photo"] ?>" class="img-fluid img-thumbnail" width="200">
-										<?php } else { ?>
-											<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
+										<?php
+											$image = json_decode($product["Photo"]);
+
+											if ($image != []) {
+												foreach ($image as $key => $value) {
+													if ($key == 0) { ?>
+														<img src="<?php echo $value ?>" class="img-fluid img-thumbnail custom-image" width="200" height="200">
+													<?php }
+												}
+											} else { ?>
+											<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail custom-image" width="200" height="200">
 										<?php } ?>
 									</a>
 								</div>
@@ -77,15 +83,23 @@
 							<div class="">
 								<div class="">
 									<a href="product.php?id=<?php echo $product["StockItemID"] ?>">
-										<?php if ($product["Photo"] != "") { ?>
-											<img src="<?php echo $product["Photo"] ?>" class="img-fluid img-thumbnail" width="200">
-										<?php } else { ?>
-											<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
+										<?php
+											$image = json_decode($product["Photo"]);
+
+											if ($image != []) {
+												foreach ($image as $key => $value) {
+													if ($key == 0) { ?>
+														<img src="<?php echo $value ?>" class="img-fluid img-thumbnail custom-image" width="200" height="200">
+														<?php
+													}
+												}
+											} else { ?>
+											<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail custom-image" width="200" height="200">
 										<?php } ?>
 									</a>
 								</div>
 								<div class="">
-									<span class="">US $<?php echo $product["RecommendedRetailPrice"] ?></span>
+									<span class="">EUR €<?php echo $product["RecommendedRetailPrice"] ?></span>
 								</div>
 							</div>
 						</li>
@@ -103,10 +117,18 @@
 							<div class="">
 								<div class="">
 									<a href="product.php?id=<?php echo $product["StockItemID"] ?>">
-										<?php if ($product["Photo"] != "") { ?>
-											<img src="<?php echo $product["Photo"] ?>" class="img-fluid img-thumbnail" width="200">
-										<?php } else { ?>
-											<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail" width="200">
+										<?php
+											$image = json_decode($product["Photo"]);
+
+											if ($image != []) {
+												foreach ($image as $key => $value) {
+													if ($key == 0) { ?>
+														<img src="<?php echo $value ?>" class="img-fluid img-thumbnail custom-image" width="200" height="200">
+														<?php
+													}
+												}
+											} else { ?>
+											<img src="pictures/missing_product.jpg" class="img-fluid img-thumbnail custom-image" width="200" height="200">
 										<?php } ?>
 									</a>
 								</div>

@@ -22,7 +22,7 @@
 ?>
 
 <!-- Main -->
-    <main class="detail">
+    <main>
         <section class="container detail-container border br-10 mb-2">
             <div class="row">
                 <!-- Carousel -->

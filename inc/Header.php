@@ -8,7 +8,7 @@
 		die();
 	}
 
-	if(!isset($_SESSION["cart"])){
+	if(!isset($_SESSION["cart"]) && !isset($_SESSION["user"])){
 		$cartSession = [
 			"cart" => [
 				"misc" => [
@@ -18,6 +18,15 @@
 			],
 		];
 		$_SESSION = $cartSession;
+	} elseif (!isset($_SESSION["cart"]) && isset($_SESSION["user"])) {
+		$cartSession = [
+			"misc" => [
+				"total_price" => 0,
+				"total_quantity" => 0,
+			]
+			,
+		];
+		$_SESSION["cart"] = $cartSession;
 	}
 
 	$category = new Category();

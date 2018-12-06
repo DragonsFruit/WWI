@@ -11,7 +11,6 @@
 	$invoice = new Invoice();
 	$invoice->getInvoicesFor($userId);
 	$invoices = $invoice->data;
-	var_dump($invoices);
 ?>
 
 <main>
@@ -25,6 +24,7 @@
 						<th>Datum</th>
 						<th>Beschrijving</th>
 						<th>Aantal</th>
+						<th>Totaal</th>
 						<th>Afgeleverd</th>
 						<th>Ontvanger</th>
 					</tr>
@@ -41,10 +41,13 @@
 								<span><?php echo $invoice['InvoiceDate'] ?></span>
 							</td>
 							<td data-th="Beschrijving">
-								<span></span>
+								<span><?php echo $invoice["Description"]?></span>
 							</td>
 							<td data-th="Aantal">
-								<span><?php echo $invoice['TotalDryItems'] ?></span>
+								<span><?php echo $invoice['Quantity'] ?></span>
+							</td>
+							<td data-th="Totaal">
+								<span>€<?php printf("%.2f", ($invoice['RecommendedRetailPrice'] * $invoice['Quantity'])) ?></span>
 							</td>
 							<td data-th="Afgeleverd">
 								<span><?php echo $invoice['ConfirmedDeliveryTime'] ?></span>
@@ -57,6 +60,7 @@
 					}
 				?>
 				</tbody>
+			</table>
 			<?php } else { ?>
 			<table class="table table-hover table-condensed">
 				<tbody>
@@ -70,14 +74,14 @@
 						</td>
 					</tr>
 				</tbody>
-			<?php } ?>
-			<tfoot>
-				<tr>
-					<td><a href="ProductList.php" class="btn btn-secondary btn-secondary-custom"><i class="fa fa-angle-left"></i> Verder winkelen</a></td>
-					<td colspan="2" class="hidden-xs"></td>
-				</tr>
-			</tfoot>
-		</table>
+				<tfoot>
+					<tr>
+						<td><a href="ProductList.php" class="btn btn-secondary btn-secondary-custom"><i class="fa fa-angle-left"></i> Verder winkelen</a></td>
+						<td colspan="2" class="hidden-xs"></td>
+					</tr>
+				</tfoot>
+			</table>
+		<?php } ?>
 	</div>
 </main>
 
