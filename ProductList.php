@@ -1,6 +1,6 @@
 <?php
 	// Load classes
-	include_once "inc/autoload.php";
+	include_once "inc/Autoload.php";
 
 	// Set current page active
 	$currentPage = 'product_list';
@@ -47,23 +47,23 @@
 	$category->getCategories();
     $categories = $category->data;
 
-	include "inc/header.php";
+	include "inc/Header.php";
 ?>
 <main>
 	<div class="container">
 	    <div class="row">
 	        <div class="col-lg-3 col-sm-12">
 	            <div class="card bg-light mb-3">
-	                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
+	                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categorieën</div>
 	                <div class="list-group">
-	                    <a href="ProductList.php" class="list-group-item list-group-item-action">All Categories</a>
+	                    <a href="ProductList.php" class="list-group-item list-group-item-action">Alle Categorieën</a>
 	                    <?php foreach ($categories as $category) { ?>
-	                        <a href="ProductList.php?categoryId=<?php echo $category["StockGroupID"];if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;} ?>" class="list-group-item list-group-item-action"><?php echo $category["StockGroupName"]; ?></a>
+	                        <a href="ProductList.php?categoryId=<?php echo $category["StockGroupID"];if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;} ?>" class="list-group-item list-group-item-action"><?php echo $category["StockGroupName"] ?></a>
 	                    <?php }?>
 	                </div>
 	            </div>
 	        </div>
-	        <div class="col-lg-9 col-sm-12 mb-3 br-10 bg-white">
+	        <div class="col-lg-9 col-sm-12 mb-3 bg-white border br-10">
 	            <div class="row">
 		            <div class="card-deck py-3 px-3 mx-auto">
 	                <?php foreach ($productsList as $product) {?>
@@ -72,15 +72,14 @@
 			                        $image = json_decode($product["Photo"]);
 			                        if ($image != []) {
 				                        foreach ($image as $key => $value) {
-					                        if ($key == 1) {
-						                        echo "<img class=\"card-img-top\" src=\"$value\">";
-					                        }
+					                        if ($key == 1) { ?>
+						                         <img id="productImage<?php echo $key ?>" class="card-img-top img-thumbnail" src="<?php echo $value ?>">
+					                        <?php }
 					                        break;
 				                        }
-			                        } else {
-				                        echo "<img class=\"card-img-top\" src=\"https://place-hold.it/250x250/\">";
-			                        }
-		                        ?>
+			                        } else { ?>
+				                        <img id="productImage0" class="card-img-top img-thumbnail" src="pictures/missing_product.jpg" width="250" height="250">
+			                        <?php } ?>
 	                            <div class="card-body">
 	                                <a class="product-name" href="product.php?id=<?php echo $product["StockItemID"] ?>">
 		                                <h4 id="productName" class="card-title card-product-title"><?php echo $product["StockItemName"] ?></h4>
@@ -135,4 +134,4 @@
 	</div>
 </main>
 
-<?php include "inc/footer.php" ?>
+<?php include "inc/Footer.php" ?>

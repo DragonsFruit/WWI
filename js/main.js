@@ -46,7 +46,7 @@ function searchProduct() {
 	} else {
 		$.ajax({
 			type: "POST",
-			url: "inc/search.php",
+			url: "inc/Search.php",
 			data: {
 				search: searchValue,
 				category: categoryValue
@@ -65,7 +65,7 @@ function getShoppingCartProducts() {
 
 	$.ajax({
 		type: "POST",
-		url: "inc/cart.php",
+		url: "inc/Cart.php",
 		success: function (html) {
 			shoppingCartBox.html(html).show();
 		}
@@ -115,6 +115,7 @@ $(document).ready(function () {
 	$("a.add-to-cart").click(function(event) {
 		let id = findGetParameter("id");
 		let productName = $("#productName").html().trim();
+		let productImage = $("#productImage0").attr("src").trim();
 
 		let quantityInput = $(".quantity-input").val();
 		let cartCounter = $(".cart-counter").html().trim();
@@ -127,18 +128,18 @@ $(document).ready(function () {
 		if (id === null) {
 			id = $(this).parents(".card-product").find(".id-input").val();
 			productName = $(this).parents(".card-product").find("#productName").html().trim();
-
+			productImage = $(this).parents(".card-product").find("#productImage0").attr("src").trim();
 			quantityInput = $(this).parents(".card-product").find(".quantity-input").val();
-
 			newTotalPrice = $(this).parents(".card-product").find("#totalPrice").html().trim();
 		}
 
 		$.ajax({
 			type: "POST",
-			url: "inc/add-to-cart.php",
+			url: "inc/AddToCart.php",
 			data: {
 				id: id,
 				name: productName,
+				image: productImage,
 				quantity: quantityInput,
 				price: newTotalPrice,
 			}
@@ -186,7 +187,7 @@ $(document).ready(function () {
 
 		$.ajax({
 			type: "POST",
-			url: "inc/destroy.php"
+			url: "inc/CreateInvoice.php"
 		});
 
 		setTimeout(function() {
@@ -202,15 +203,18 @@ $(document).ready(function () {
 	});
 
 	// Shopping cart quantity input
-	$("#quantityInput").change(function(){
+	$(".product-quantity").change(function(){
 		let id = $(this).parents("#listItem").find("#productId").val();
 		let productName = $(this).parents("#listItem").find("#productName").html().trim();
+		let productImage = $(this).parents("#listItem").find("#productImage").attr("src").trim();
 		let quantityInput = $(this).parents("#listItem").find("#quantityInput").val();
 		let price = $(this).parents("#listItem").find("#productPrice").html().trim();
+		let subTotalPrice = $(this).parents("#listItem").find("#subtotalPrice");
 
 		// Update subtotal of product
 		let subPrice = Number(price) * Number(quantityInput);
-		$("#subtotalPrice").text(subPrice.toFixed(2));
+		subPrice = subPrice.toFixed(2);
+		subTotalPrice.text(subPrice);
 
 		// Update counters
 		let totalQuantityInput = $("#cart #quantityInput");
@@ -232,16 +236,15 @@ $(document).ready(function () {
 		$("#totalPrice").text(count.toFixed(2));
 		$("#shoppingCartTotalPrice").text(count.toFixed(2));
 
-		let newTotalPrice = $("#totalPrice").html().trim();
-
 		$.ajax({
 			type: "POST",
-			url: "inc/add-to-cart.php",
+			url: "inc/UpdateCart.php",
 			data: {
 				id: id,
 				name: productName,
+				image: productImage,
 				quantity: quantityInput,
-				price: newTotalPrice,
+				price: subPrice,
 			}
 		});
 	});
@@ -250,7 +253,7 @@ $(document).ready(function () {
 	$("#logOut").click(function(){
 		$.ajax({
 			type: "POST",
-			url: "inc/destroy.php",
+			url: "inc/Destroy.php",
 			success: function() {
 				location.reload();
 			}

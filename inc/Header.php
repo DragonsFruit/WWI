@@ -1,5 +1,7 @@
 <?php
-	session_start();
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 
 	if ($currentPage == "login" && isset($_SESSION["user"])) {
 		header("Location: index.php");
@@ -7,7 +9,7 @@
 	}
 
 	if(!isset($_SESSION["cart"])){
-		$product = [
+		$cartSession = [
 			"cart" => [
 				"misc" => [
 					"total_price" => 0,
@@ -15,7 +17,7 @@
 				]
 			],
 		];
-		$_SESSION = $product;
+		$_SESSION = $cartSession;
 	}
 
 	$category = new Category();
@@ -40,13 +42,13 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
 
-	<title><?php echo (!$headerTitle) ? 'WideWorldImporters' : $headerTitle; ?> | WWI</title>
+	<title><?php echo (!$headerTitle) ? 'WideWorldImporters' : $headerTitle ?> | WWI</title>
 </head>
 
 <body>
     <!--Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-light">
-		<div class="container">
+		<div class="container px-0">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -61,54 +63,65 @@
 	                    <div id="searchResultsBox" class="w-100 position-absolute d-none"></div>
                         <div class="input-group-append">
                             <select id="category" class="browser-default custom-select" name="category">
-	                            <option value="0" selected>All Categories</option>
+	                            <option value="0" selected>Alle Categorieën</option>
 	                            <?php foreach ($categories as $category) { ?>
-		                            <option value="<?php echo $category["StockGroupID"];?>"><?php echo $category["StockGroupName"];?></option>
+		                            <option value="<?php echo $category["StockGroupID"] ?>"><?php echo $category["StockGroupName"] ?></option>
 	                            <?php } ?>
-	                            <option value="0">All Categories</option>
+	                            <option value="0">Alle Categorieën</option>
                             </select>
                             <button class="btn btn-primary btn-search" type="submit"><i class="fa fa-search text-grey" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </form>
 
-				<ul class="navbar-nav">
+				<ul class="navbar-nav position-relative">
 					<?php if (!isset($_SESSION['user']['username'])) { ?>
-						<li class="nav-item">
-							<a href="login.php" class="nav-link"><i class="far fa-user"></i> Login</a>
+						<li class="nav-item position-relative">
+							<a href="login.php" class="nav-link pt-4 plx-30">
+								<i class="far fa-user nav-icon"></i>
+								<span class="pl-1">Login</span>
+							</a>
 						</li>
 					<?php } else { ?>
-						<li class="nav-item dropdown">
-							<a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="far fa-user"></i> <?php echo "Hello, " . $_SESSION['user']['username'] ?></a>
+						<li class="nav-item position-relative dropdown">
+							<a href="index.php" class="nav-link pt-4 plx-30 dropdown-toggle" data-toggle="dropdown">
+								<i class="far fa-user nav-icon"></i>
+								<span class="pl-1"><?php echo "Helo, " . $_SESSION['user']['username'] ?></span>
+							</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item text-dark bg-transparent" href="#!">Wenslijst</a>
+								<a class="dropdown-item" href="Invoices.php">Bestellingen overzicht</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item text-danger bg-transparent" id="logOut" href="#!">Loguit</a>
 							</div>
 						</li>
 					<?php } ?>
-					<li class="nav-item <?php if($currentPage =='product'){echo 'active';}?>">
-						<a href="ProductList.php" class="nav-link"><i class="far fa-th-large"></i> Producten</a>
-					</li>
-					<li class="nav-item <?php if($currentPage =='cart'){echo 'active';}?>">
-						<span class="cart-counter mt-1 px-2"><?php echo (!$_SESSION["cart"]["misc"]["total_quantity"]) ? 0 : $_SESSION["cart"]["misc"]["total_quantity"] ?></span>
-						<a href="#cart" id="shoppingCartButton" class="nav-link cart position-relative">
-							<i class="far fa-shopping-cart"></i>
-							<span>Winkelwagen</span>
+					<li class="nav-item position-relative <?php if($currentPage =='product'){echo 'active';}?>">
+						<a href="ProductList.php" class="nav-link pt-4 plx-30">
+							<i class="far fa-th-large nav-icon"></i>
+							<span class="pl-1">Producten</span>
 						</a>
+					</li>
+					<li class="nav-item position-relative <?php if($currentPage =='cart'){echo 'active';}?>">
+						<a href="#!" id="shoppingCartButton" class="nav-link cart pt-4 plx-30">
+							<i class="far fa-shopping-cart nav-icon"></i>
+							<span class="mw-100 of-hidden pl-1">Winkelwagen</span>
+						</a>
+						<span class="cart-counter mt-1 px-2"><?php echo (!$_SESSION["cart"]["misc"]["total_quantity"]) ? 0 : $_SESSION["cart"]["misc"]["total_quantity"] ?></span>
 						<div id="shoppingCart" class="position-absolute d-none">
 							<div class="shopping-cart">
 								<div class="shopping-cart-header">
 									<div class="shopping-cart-total">
 										<span class="lighter-text">Totaal:</span>
-										<span class="main-color-text">$<span id="shoppingCartTotalPrice"><?php echo (!$_SESSION["cart"]["misc"]["total_price"]) ? 0 : $_SESSION["cart"]["misc"]["total_price"] ?></span></span>
+										<span class="main-color-text">€<span id="shoppingCartTotalPrice"><?php echo (!$_SESSION["cart"]["misc"]["total_price"]) ? 0 : $_SESSION["cart"]["misc"]["total_price"] ?></span></span>
 										<span class="lighter-text" style="float: right"><a href="ShoppingCart.php">Naar winkelwagen</a></span>
 									</div>
 								</div>
 
 								<ul id="shoppingCartBox" class="shopping-cart-items list-group list-group-flush"></ul>
 
-								<a href="PaymentProcess.php" class="btn btn-primary btn-primary-custom d-block mt-2">Afrekenen</a>
+								<?php if ($_SESSION["cart"]["misc"]["total_quantity"] != 0 && $_SESSION["cart"]["misc"]["total_price"] != 0) { ?>
+									<a href="PaymentProcess.php" class="btn btn-primary btn-primary-custom d-block mt-2">Afrekenen</a>
+								<?php } ?>
 							</div>
 						</div>
 					</li>
