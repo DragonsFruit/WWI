@@ -15,6 +15,7 @@
                 if (password_verify($inputPassword, $result['wachtwoord'])) {
                 	session_start();
                     $_SESSION['user']['username'] = $result["voornaam"];
+	                $_SESSION['user']['user_id'] = $result["userid"];
                 }
             } catch (PDOException $e) {
                 echo 'Login error: ' . $e->getMessage();

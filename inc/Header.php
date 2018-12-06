@@ -3,8 +3,8 @@
 		session_start();
 	}
 
-	if ($currentPage == "login" && isset($_SESSION["user"])) {
-		header("Location: index.php");
+	if ($currentPage == "login" && isset($_SESSION["user"]) || $currentPage == "invoice" && !isset($_SESSION["user"])) {
+		header("Location: Index.php");
 		die();
 	}
 
@@ -40,6 +40,8 @@
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/datatables.min.js"></script>
+	<script src="js/responsive.bootstrap4.min.js"></script>
 	<script src="js/main.js"></script>
 
 	<title><?php echo (!$headerTitle) ? 'WideWorldImporters' : $headerTitle ?> | WWI</title>

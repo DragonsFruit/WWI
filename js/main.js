@@ -76,6 +76,9 @@ $(document).ready(function () {
 	// Enable tooltip
 	$('[data-toggle="tooltip"]').tooltip();
 
+	// Enable data table
+	$("#invoiceTable").DataTable();
+
 	// Calculate product total price
 	$(".quantity-input").change("change", function () {
 		let totalCost = $("#productPrice").html() * $(this).val();

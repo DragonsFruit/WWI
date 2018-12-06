@@ -1,7 +1,11 @@
 <?php
-	/**
-	 * Created by PhpStorm.
-	 * User: kirito
-	 * Date: 2018-12-06
-	 * Time: 14:36
-	 */
+    session_start();
+
+    $userId = $_POST["userId"];
+    $invoiceDate = $_POST["invoiceDate"];
+    $totalItems = $_POST["totalItems"];
+	$deliveryTime = $_POST["totalItems"];
+
+	// Create the invoice
+	$invoice = new Invoice();
+	$invoice->createInvoiceFor($userId, $invoiceDate, $totalItems, $deliveryTime);

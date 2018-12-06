@@ -27,11 +27,10 @@
 
 /* CREATE TABLE useraccounts (
 userid int NOT NULL auto_increment,
-email varchar(45) NOT NULL,
-wachtwoord varchar(45) NOT NULL,
+email varchar(255) NOT NULL,
+wachtwoord varchar(255) NOT NULL,
 voornaam varchar(45) NOT NULL,
 achternaam varchar(45) NOT NULL,
-gebdatum date NOT NULL,
 postcode varchar(45) NOT NULL,
 straat varchar(45) NOT NULL,
 huisnummer int NOT NULL,
