@@ -1,12 +1,12 @@
 <?php
 	// Load classes
-	include_once "inc/autoload.php";
+	include_once "inc/Autoload.php";
 
 	// Set current page active
 	$currentPage = 'contact';
 	$headerTitle =  "Contact";
 
-	include "inc/header.php";
+	include "inc/Header.php";
 	$totalPrice = $_SESSION["cart"]["misc"]["total_price"];
 ?>
     <main>
@@ -44,5 +44,5 @@
 
 
 <?php
-    include "inc/footer.php";
+    include "inc/Footer.php";
 ?>

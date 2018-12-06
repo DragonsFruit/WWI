@@ -1,6 +1,6 @@
 <?php
 	// Load classes
-	include_once "inc/autoload.php";
+	include_once "inc/Autoload.php";
 
 	// Set current page active
 	$currentPage = 'product_list';
@@ -47,7 +47,7 @@
 	$category->getCategories();
     $categories = $category->data;
 
-	include "inc/header.php";
+	include "inc/Header.php";
 ?>
 <main>
 	<div class="container">
@@ -134,4 +134,4 @@
 	</div>
 </main>
 
-<?php include "inc/footer.php" ?>
+<?php include "inc/Footer.php" ?>

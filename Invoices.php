@@ -1,5 +1,5 @@
 <?php
-	include_once "inc/autoload.php";
+	include_once "inc/Autoload.php";
 	session_start();
 
 	$currentPage = "shopping_cart";
@@ -29,7 +29,7 @@
 
 	$totalQuantity = $_SESSION["cart"]["misc"]["total_quantity"];
 
-	include "inc/header.php";
+	include "inc/Header.php";
 ?>
 
 <main>
@@ -109,5 +109,5 @@
 </main>
 
 <?php
-	include "inc/footer.php";
+	include "inc/Footer.php";
 ?>

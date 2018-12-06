@@ -46,7 +46,7 @@ function searchProduct() {
 	} else {
 		$.ajax({
 			type: "POST",
-			url: "inc/search.php",
+			url: "inc/Search.php",
 			data: {
 				search: searchValue,
 				category: categoryValue
@@ -65,60 +65,12 @@ function getShoppingCartProducts() {
 
 	$.ajax({
 		type: "POST",
-		url: "inc/cart.php",
+		url: "inc/Cart.php",
 		success: function (html) {
 			shoppingCartBox.html(html).show();
 		}
 	});
 }
-
-// // Shopping cart quantity input
-// function updateItemInCart() {
-// 	let id = $(this).parents("#listItem").find("#productId").val();
-// 	let productName = $(this).parents("#listItem").find("#productName").html().trim();
-// 	let productImage = $(this).parents("#listItem").find("#productImage").attr("src").trim();
-// 	let quantityInput = $(this).parents("#listItem").find("#quantityInput").val();
-// 	let price = $(this).parents("#listItem").find("#productPrice").html().trim();
-//
-// 	// Update subtotal of product
-// 	let subPrice = Number(price) * Number(quantityInput);
-// 	subPrice = subPrice.toFixed(2);
-// 	$("#subtotalPrice").text(subPrice);
-//
-// 	// Update counters
-// 	let totalQuantityInput = $("#cart #quantityInput");
-// 	let count = 0;
-// 	$.each(totalQuantityInput, function (i, val) {
-// 		let inputValue = $(val).val();
-// 		count += Number(inputValue);
-// 	});
-// 	$(".cart-counter").text(count);
-// 	$("#shoppingCartTotalCount").text(count);
-//
-// 	// // Update shopping cart total price
-// 	let subtotalPrice = $("#cart #subtotalPrice");
-// 	count = 0;
-// 	$.each(subtotalPrice, function (i, val) {
-// 		let inputValue = $(val).html().trim();
-// 		count += Number(inputValue);
-// 	});
-// 	$("#totalPrice").text(count.toFixed(2));
-// 	$("#shoppingCartTotalPrice").text(count.toFixed(2));
-//
-// 	let newTotalPrice = $("#totalPrice").html().trim();
-//
-// 	$.ajax({
-// 		type: "POST",
-// 		url: "inc/add-to-cart.php",
-// 		data: {
-// 			id: id,
-// 			name: productName,
-// 			image: productImage,
-// 			quantity: quantityInput,
-// 			price: newTotalPrice,
-// 		}
-// 	});
-// }
 
 $(document).ready(function () {
 	// Enable tooltip
@@ -183,7 +135,7 @@ $(document).ready(function () {
 
 		$.ajax({
 			type: "POST",
-			url: "inc/add-to-cart.php",
+			url: "inc/AddToCart.php",
 			data: {
 				id: id,
 				name: productName,
@@ -235,7 +187,7 @@ $(document).ready(function () {
 
 		$.ajax({
 			type: "POST",
-			url: "inc/destroy.php"
+			url: "inc/CreateInvoice.php"
 		});
 
 		setTimeout(function() {
@@ -286,7 +238,7 @@ $(document).ready(function () {
 
 		$.ajax({
 			type: "POST",
-			url: "inc/updateCart.php",
+			url: "inc/UpdateCart.php",
 			data: {
 				id: id,
 				name: productName,
@@ -301,7 +253,7 @@ $(document).ready(function () {
 	$("#logOut").click(function(){
 		$.ajax({
 			type: "POST",
-			url: "inc/destroy.php",
+			url: "inc/Destroy.php",
 			success: function() {
 				location.reload();
 			}

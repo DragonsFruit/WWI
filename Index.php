@@ -1,9 +1,9 @@
 <?php
 	// Load classes
-	include_once "inc/autoload.php";
+	include_once "inc/Autoload.php";
 	$headerTitle = "WideWorldImporters";
 	$currentPage = "home";
-	include "inc/header.php";
+	include "inc/Header.php";
 
 	// Products in random
 	$productList = new Productlist();
@@ -122,4 +122,4 @@
 	</section>
 </main>
 
-<?php include "inc/footer.php" ?>
+<?php include "inc/Footer.php" ?>

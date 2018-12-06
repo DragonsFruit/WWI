@@ -1,6 +1,6 @@
 <?php
 	// Load classes
-	include_once "inc/autoload.php";
+	include_once "inc/Autoload.php";
 	
 	// Set current page active
 	$currentPage = 'product';
@@ -8,7 +8,7 @@
 	// Specify header title
 	$headerTitle =  "form";
 
-	include "inc/header.php";
+	include "inc/Header.php";
 ?>
 
 <div class="container">
