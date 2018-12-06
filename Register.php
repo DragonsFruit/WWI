@@ -35,11 +35,11 @@
 			<div class="form-row">
 				<div class="form-group col-md-4">
 					<label for="inputEmail">E-mail Adres</label>
-					<input type="email" class="form-control" id="inputEmail" name="email" placeholder="Voer hier uw e-mail adres in..." required>
+					<input type="email" class="form-control" id="inputEmail" name="email" required>
 				</div>
 				<div class="form-group col-md-4">
 					<label for="inputPassword">Wachtwoord</label>
-					<input type="password" class="form-control" id="inputPassword" name="wachtwoord" placeholder="Voer hier uw wachtwoord in..." required>
+					<input type="password" class="form-control" id="inputPassword" name="wachtwoord" required>
 				</div>
 			</div>
 			<div class="form-row">
@@ -59,7 +59,7 @@
 				</div>
 				<div class="form-group col-md-2">
 					<label for="inputNumber">Huisnummer</label>
-					<input type="text" class="form-control" id="inputNumber" name="nummer" required>
+					<input type="number" class="form-control" id="inputNumber" name="nummer" required>
 				</div>
 			</div>
 			<div class="form-row">
