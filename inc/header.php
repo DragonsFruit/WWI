@@ -63,11 +63,11 @@
 	                    <div id="searchResultsBox" class="w-100 position-absolute d-none"></div>
                         <div class="input-group-append">
                             <select id="category" class="browser-default custom-select" name="category">
-	                            <option value="0" selected>All Categories</option>
+	                            <option value="0" selected>Alle Categorieën</option>
 	                            <?php foreach ($categories as $category) { ?>
 		                            <option value="<?php echo $category["StockGroupID"] ?>"><?php echo $category["StockGroupName"] ?></option>
 	                            <?php } ?>
-	                            <option value="0">All Categories</option>
+	                            <option value="0">Alle Categorieën</option>
                             </select>
                             <button class="btn btn-primary btn-search" type="submit"><i class="fa fa-search text-grey" aria-hidden="true"></i></button>
                         </div>
@@ -89,6 +89,8 @@
 								<span class="pl-1"><?php echo "Helo, " . $_SESSION['user']['username'] ?></span>
 							</a>
 							<div class="dropdown-menu">
+								<a class="dropdown-item" href="Invoices.php">Bestellingen overzicht</a>
+								<div class="dropdown-divider"></div>
 								<a class="dropdown-item text-danger bg-transparent" id="logOut" href="#!">Loguit</a>
 							</div>
 						</li>
@@ -117,7 +119,9 @@
 
 								<ul id="shoppingCartBox" class="shopping-cart-items list-group list-group-flush"></ul>
 
-								<a href="PaymentProcess.php" class="btn btn-primary btn-primary-custom d-block mt-2">Afrekenen</a>
+								<?php if ($_SESSION["cart"]["misc"]["total_quantity"] != 0 && $_SESSION["cart"]["misc"]["total_price"] != 0) { ?>
+									<a href="PaymentProcess.php" class="btn btn-primary btn-primary-custom d-block mt-2">Afrekenen</a>
+								<?php } ?>
 							</div>
 						</div>
 					</li>

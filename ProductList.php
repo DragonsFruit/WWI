@@ -54,9 +54,9 @@
 	    <div class="row">
 	        <div class="col-lg-3 col-sm-12">
 	            <div class="card bg-light mb-3">
-	                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
+	                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categorieën</div>
 	                <div class="list-group">
-	                    <a href="ProductList.php" class="list-group-item list-group-item-action">All Categories</a>
+	                    <a href="ProductList.php" class="list-group-item list-group-item-action">Alle Categorieën</a>
 	                    <?php foreach ($categories as $category) { ?>
 	                        <a href="ProductList.php?categoryId=<?php echo $category["StockGroupID"];if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;} ?>" class="list-group-item list-group-item-action"><?php echo $category["StockGroupName"] ?></a>
 	                    <?php }?>
