@@ -11,7 +11,9 @@
 	include "inc/header.php";
 
 	if (isset($_POST["voornaam"]) &&
-        isset($_POST["achternaam"])) {
+		isset($_POST["achternaam"]) &&
+		isset($_POST["wachtwoord"]))
+		 {
 		$registration = new Registration();
 		$email = $_POST['email'];
 		$wachtwoord = $_POST['wachtwoord'];
