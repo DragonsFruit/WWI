@@ -21,9 +21,10 @@
 			foreach ($stockItems as $stockItem) {
 				if ($stockItem != $stockItems["misc"]) {
 					$sql = "INSERT INTO invoicelines(InvoiceID, StockItemID, Description, Quantity)
-					SELECT i.InvoiceID,?,?,?
-					FROM invoices i
-					WHERE CustomerID = ?";
+							SELECT i.InvoiceID,?,?,?
+							FROM invoices i
+							WHERE CustomerID = ?
+							AND i.InvoiceID NOT IN (SELECT il.invoiceID FROM invoicelines il WHERE il.InvoiceID = i.InvoiceID)";
 					$this->db->run($sql, [$stockItem["product_id"], $stockItem["product_name"], $stockItem["product_quantity"], $_SESSION["user"]["user_id"]]);
 					$sql = null;
 				}
