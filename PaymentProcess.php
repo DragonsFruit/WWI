@@ -127,7 +127,7 @@
 					                <div class="card-ccv br-10"></div>
 				                </div>
 			                </div>
-			                <input id="userId" value="<?php echo $_SESSION["user"]["user_id"] ?>" hidden>
+			                <input id="userId" value="<?php echo (isset($_SESSION["user"]["user_id"])) ? $_SESSION["user"]["user_id"] : 1 ?>" hidden>
 			                <input id="totalItems" value="<?php echo $_SESSION["cart"]["misc"]["total_quantity"] ?>" hidden>
 						</div>
 	                </div>

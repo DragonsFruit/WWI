@@ -6,6 +6,9 @@
 	if ($currentPage == "login" && isset($_SESSION["user"]) || $currentPage == "invoice" && !isset($_SESSION["user"])) {
 		header("Location: Index.php");
 		die();
+	} elseif ($currentPage == "payment_process" && isset($_SESSION["cart"]) && $_SESSION["cart"]["misc"]["total_price"] == 0) {
+		header("Location: Index.php");
+		die();
 	}
 
 	if(!isset($_SESSION["cart"]) && !isset($_SESSION["user"])){
