@@ -950,7 +950,10 @@ table#cart>tbody>tr>td, table#cart>tfoot>tr>td{
 	border-bottom: 1px solid rgba(255, 255, 255, 0.87);
 	border-radius: unset;
 	cursor: pointer;
-	outline: none;
+}
+
+.credit-card-container .sub-container .card-bank-name select option {
+	color: #000000 !important;
 }
 
 .credit-card-container .sub-container .card-holder {

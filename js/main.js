@@ -284,17 +284,21 @@ $(document).ready(function () {
 		$("#totalPrice").text(count.toFixed(2));
 		$("#shoppingCartTotalPrice").text(count.toFixed(2));
 
-		$.ajax({
-			type: "POST",
-			url: "inc/UpdateCart.php",
-			data: {
-				id: id,
-				name: productName,
-				image: productImage,
-				quantity: quantityInput,
-				price: subPrice,
-			}
-		});
+		if (quantityInput != 0) {
+			console.log(quantityInput);
+			console.log("update cart");
+			$.ajax({
+				type: "POST",
+				url: "inc/UpdateCart.php",
+				data: {
+					id: id,
+					name: productName,
+					image: productImage,
+					quantity: quantityInput,
+					price: subPrice,
+				}
+			});
+		}
 	});
 
 	// Logout user
