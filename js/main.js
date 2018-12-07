@@ -3,7 +3,7 @@ Date.prototype.addDays = function(days) {
 	let date = new Date(this.valueOf());
 	date.setDate(date.getDate() + days);
 	return date;
-}
+};
 
 // Find get parameter
 function findGetParameter(parameterName) {
@@ -79,6 +79,10 @@ function getShoppingCartProducts() {
 	});
 }
 
+function confirmPurchase() {
+	$(".nav-tabs .active").parent().next("li").find("a").trigger("click");
+}
+
 $(document).ready(function () {
 	// Enable tooltip
 	$('[data-toggle="tooltip"]').tooltip();
@@ -119,6 +123,29 @@ $(document).ready(function () {
     $("#category").focusout(function () {
 	    let searchResultBox = $("#searchResultsBox");
 	    searchResultBox.addClass("d-none");
+    });
+
+    $("#buyNowButton").click(function () {
+	    let id = findGetParameter("id");
+	    let productName = $("#productName").html().trim();
+	    let productImage = $("#productImage0").attr("src").trim();
+	    let quantityInput = $(".quantity-input").val();
+	    let newTotalPrice = $("#totalPrice").html().trim();
+
+	    $.ajax({
+		    type: "POST",
+		    url: "inc/AddToCart.php",
+		    data: {
+			    id: id,
+			    name: productName,
+			    image: productImage,
+			    quantity: quantityInput,
+			    price: newTotalPrice,
+		    },
+		    success: function () {
+			    window.location.href = "PaymentProcess.php"
+		    }
+	    });
     });
 
     // Add to cart
@@ -174,12 +201,6 @@ $(document).ready(function () {
 	// Shopping cart button
 	$("#shoppingCartButton").on("click", function() {
 		getShoppingCartProducts();
-
-		if ($("#shoppingCart").hasClass("d-none")) {
-			$("#shoppingCart").removeClass("d-none");
-		} else {
-			$("#shoppingCart").addClass("d-none");
-		}
 	});
 
 	// Pay button
@@ -192,7 +213,7 @@ $(document).ready(function () {
 	// Payment and invoice
 	$("#product-klaar-tab").click(function () {
 		// Get current date
-		var invoiceDate = new Date();
+		let invoiceDate = new Date();
 		let dd = invoiceDate.getDate();
 		let mm = invoiceDate.getMonth()+1; //January is 0!
 		let yyyy = invoiceDate.getFullYear();
@@ -206,7 +227,7 @@ $(document).ready(function () {
 		}
 
 		// Get current date plus 14 day shipping
-		var deliveryTime = new Date().addDays(14);
+		let deliveryTime = new Date().addDays(14);
 		let deliveryTimeDD = deliveryTime.getDate();
 		let deliveryTimeMM = deliveryTime.getMonth()+1;
 		let deliverTimeYYYY = deliveryTime.getFullYear();
@@ -238,7 +259,9 @@ $(document).ready(function () {
 				deliveryTime: deliveryTime
 			},
 			success: function() {
-				$(".payment-description").html("Betaling ontvangen! <br> <a href='Invoices.php' class='btn btn-link text-primary'>Naar bestellingen overzicht</a>");
+				$(".cart-counter").text(0);
+				$("#shoppingCartTotalCount").text(0);
+				$(".payment-description").html("Betaling ontvangen!<br><a href='Invoices.php' class='btn btn-link text-primary'>Naar bestellingen overzicht</a>");
 				$(".circle-loader").toggleClass("load-complete");
 				$(".checkmark").toggle();
 			}

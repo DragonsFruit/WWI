@@ -91,7 +91,7 @@
 		                            <?php } ?>
 	                                <div class="row">
 		                                <div class="col-12">
-			                                <a href="#!" id="buyNowButton" class="buy-now btn btn-success btn-success-custom w-100 mb-2">
+			                                <a href="#!" class="buy-now btn btn-success btn-success-custom w-100 mb-2">
 				                                <span class="price-symbol">EUR €</span><span id="totalPrice"><?php echo $product["RecommendedRetailPrice"] ?></span>
 			                                </a>
 			                                <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary btn-primary-custom w-100">Add to Cart</a>
@@ -111,7 +111,7 @@
 	                                <li class="page-item <?php if($i == $page){echo "active";} ?>"><a class="page-link" href="ProductList.php?page=<?php echo $i; if($categoryId != 0){print "&categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>"><?php echo $i?></a></li>
 	                            <?php }?>
 	                            <li class="page-item <?php if($page >= $numberProducts / $recordsPerPage){echo "disabled";} ?>">
-	                                <a class="page-link" href="ProductList.php?page=<?php echo $page + 1; if($categoryId != 0){print "?categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>">Volgende</a>
+	                                <a class="page-link" href="ProductList.php?page=<?php echo $page + 1; if($categoryId != 0){print "&categoryId=".$categoryId;}if($recordsPerPage != 0){print "&recordsPerPage=".$recordsPerPage;}?>">Volgende</a>
 								</li>
 								<form name="numberProductsPage" id="paginationForm" method="GET" action="ProductList.php?<?php if($categoryId != 0){print "categoryId=".$categoryId;}?>">
 								<div class="form-group">

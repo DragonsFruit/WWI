@@ -23,7 +23,7 @@
 		$straat = $_POST['adres'];
 		$huisnummer = $_POST['nummer'];
 		$stad = $_POST['stad'];
-        $registration->registerUserPassword($email, $wachtwoord, $voornaam, $achternaam, $postcode, $straat, $huisnummer, $stad);
+        $registration->registerUserWith($email, $wachtwoord, $voornaam, $achternaam, $postcode, $straat, $huisnummer, $stad);
     }
 ?>
 

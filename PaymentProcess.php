@@ -32,7 +32,7 @@
 	                <!-- Product confirmation -->
 	                <div class="tab-pane fade show active" id="nav-bevestig" role="tabpanel" aria-labelledby="bevestig-tab">
 	                    <div class="row">
-							<form class="mt-3 container">
+							<form class="mt-3 container" action="javascript:confirmPurchase()">
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="inputEmail4">E-mail adres</label>
@@ -66,7 +66,7 @@
 										<label class="form-check-label" for="termsOfServices">Ik ga akkoord met de algemene voorwaarden.</label>
 									</div>
 								</div>
-								<a class="btn btn-primary btn-next text-white">Next</a>
+								<button class="btn btn-primary text-white" type="submit">Next</button>
 							</form>
 						</div>
 	                </div>
