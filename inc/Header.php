@@ -100,7 +100,7 @@
 						<li class="nav-item position-relative dropdown">
 							<a href="index.php" class="nav-link pt-4 plx-30 dropdown-toggle" data-toggle="dropdown">
 								<i class="far fa-user nav-icon"></i>
-								<span class="pl-1"><?php echo "Helo, " . $_SESSION['user']['username'] ?></span>
+								<span class="pl-1"><?php echo "Hallo, " . $_SESSION['user']['username'] ?></span>
 							</a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="Invoices.php">Bestellingen overzicht</a>
