@@ -91,14 +91,14 @@
 				<ul class="navbar-nav position-relative">
 					<?php if (!isset($_SESSION['user']['username'])) { ?>
 						<li class="nav-item position-relative">
-							<a href="login.php" class="nav-link pt-4 plx-30">
+							<a href="Login.php" class="nav-link pt-4 plx-30">
 								<i class="far fa-user nav-icon"></i>
 								<span class="pl-1">Login</span>
 							</a>
 						</li>
 					<?php } else { ?>
 						<li class="nav-item position-relative dropdown">
-							<a href="index.php" class="nav-link pt-4 plx-30 dropdown-toggle" data-toggle="dropdown">
+							<a href="#!" class="nav-link pt-4 plx-30 dropdown-toggle" data-toggle="dropdown">
 								<i class="far fa-user nav-icon"></i>
 								<span class="pl-1"><?php echo "Hallo, " . $_SESSION['user']['username'] ?></span>
 							</a>
@@ -115,14 +115,14 @@
 							<span class="pl-1">Producten</span>
 						</a>
 					</li>
-					<li class="nav-item position-relative <?php if($currentPage =='cart'){echo 'active';}?>">
-						<a href="#!" id="shoppingCartButton" class="nav-link cart pt-4 plx-30">
+					<li class="nav-item position-relative dropdown <?php if($currentPage =='cart'){echo 'active';}?>">
+						<a href="#!" id="shoppingCartButton" class="nav-link pt-4 plx-30 dropdown-toggle cart" data-toggle="dropdown">
 							<i class="far fa-shopping-cart nav-icon"></i>
 							<span class="mw-100 of-hidden pl-1">Winkelwagen</span>
 						</a>
 						<span class="cart-counter mt-1 px-2"><?php echo (!$_SESSION["cart"]["misc"]["total_quantity"]) ? 0 : $_SESSION["cart"]["misc"]["total_quantity"] ?></span>
-						<div id="shoppingCart" class="position-absolute d-none">
-							<div class="shopping-cart">
+						<div class="dropdown-menu shopping-cart">
+							<div class="shopping-cart-main">
 								<div class="shopping-cart-header">
 									<div class="shopping-cart-total">
 										<span class="lighter-text">Totaal:</span>
@@ -130,12 +130,8 @@
 										<span class="lighter-text" style="float: right"><a href="ShoppingCart.php">Naar winkelwagen</a></span>
 									</div>
 								</div>
-
-								<ul id="shoppingCartBox" class="shopping-cart-items list-group list-group-flush"></ul>
-
-								<?php if ($_SESSION["cart"]["misc"]["total_quantity"] != 0 && $_SESSION["cart"]["misc"]["total_price"] != 0) { ?>
-									<a href="PaymentProcess.php" class="btn btn-primary btn-primary-custom d-block mt-2">Afrekenen</a>
-								<?php } ?>
+								<div class="dropdown-divider"></div>
+								<ul id="shoppingCartBox" class="shopping-cart-items list-group"></ul>
 							</div>
 						</div>
 					</li>
