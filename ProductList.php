@@ -92,7 +92,7 @@
 	                                <div class="row">
 		                                <div class="col-12">
 			                                <a href="#!" id="buyNowButton" class="buy-now btn btn-success btn-success-custom w-100 mb-2">
-				                                <span class="price-symbol">US $</span><span id="totalPrice"><?php echo $product["RecommendedRetailPrice"] ?></span>
+				                                <span class="price-symbol">EUR €</span><span id="totalPrice"><?php echo $product["RecommendedRetailPrice"] ?></span>
 			                                </a>
 			                                <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary btn-primary-custom w-100">Add to Cart</a>
 		                                </div>
