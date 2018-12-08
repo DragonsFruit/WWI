@@ -32,7 +32,11 @@
                     <br><br>
                     <b>Ons adres:</b><br><br>
 
-                    adres<br><br>
+                    Suite 14<br>
+                    1968 Martin Luther King Junior Drive<br> 
+                    San Francisco<br>
+                    California<br> 
+                    United States<br><br>
 
                     Je kunt je vragen altijd naar dit adres sturen, maar houdt er rekening mee dat producten niet naar dit adres kunnen worden teruggestuurd.<br>
                     Als je een product wilt terugsturen, neem dan contact op met onze klantenservice via je account. Zij kunnen je hierbij verder helpen.<br></p>
