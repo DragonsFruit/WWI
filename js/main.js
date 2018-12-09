@@ -130,7 +130,15 @@ $(document).ready(function () {
 	    let productName = $("#productName").html().trim();
 	    let productImage = $("#productImage0").attr("src").trim();
 	    let quantityInput = $(".quantity-input").val();
-	    let newTotalPrice = $("#totalPrice").html().trim();
+		let newTotalPrice = $("#totalPrice").val();
+		
+		if (id === null) {
+			id = $(this).parents(".card-product").find(".id-input").val();
+			productName = $(this).parents(".card-product").find("#productName").html().trim();
+			productImage = $(this).parents(".card-product").find("#productImage0").attr("src").trim();
+			quantityInput = $(this).parents(".card-product").find(".quantity-input").val();
+			newTotalPrice = $(this).parents(".card-product").find("#totalPrice").val();
+		}
 
 	    $.ajax({
 		    type: "POST",
@@ -159,7 +167,7 @@ $(document).ready(function () {
 		let count = Number(cartCounter) + Number(quantityInput);
 
 		let oldTotalPrice = $("#shoppingCartTotalPrice").html().trim();
-		let newTotalPrice = $("#totalPrice").html().trim();
+		let newTotalPrice = $("#totalPrice").val();
 		let totalPrice = Number(oldTotalPrice) + Number(newTotalPrice);
 
 		if (id === null) {
@@ -167,7 +175,7 @@ $(document).ready(function () {
 			productName = $(this).parents(".card-product").find("#productName").html().trim();
 			productImage = $(this).parents(".card-product").find("#productImage0").attr("src").trim();
 			quantityInput = $(this).parents(".card-product").find(".quantity-input").val();
-			newTotalPrice = $(this).parents(".card-product").find("#totalPrice").html().trim();
+			newTotalPrice = $(this).parents(".card-product").find("#totalPrice").val();
 		}
 
 		$.ajax({

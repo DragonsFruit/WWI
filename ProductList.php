@@ -86,13 +86,14 @@
 	                                </a>
 		                            <input type="number" class="quantity-input" value="1" hidden>
 									<input type="number" class="id-input" value="<?php echo $product["StockItemID"] ?>" hidden>
+									<input type="number" id="totalPrice" value="<?php echo $product["RecommendedRetailPrice"] ?>" hidden>
 		                            <?php if($product["MarketingComments"] != "") { ?>
 	                                    <p class="card-text card-product-text text-truncate"><?php echo $product["MarketingComments"] ?></p>
 		                            <?php } ?>
 	                                <div class="row">
 		                                <div class="col-12">
-			                                <a href="#!" class="buy-now btn btn-success btn-success-custom w-100 mb-2">
-				                                <span class="price-symbol">EUR €</span><span id="totalPrice"><?php echo $product["RecommendedRetailPrice"] ?></span>
+			                                <a href="#!" id="buyNowButton" class="buy-now btn btn-success btn-success-custom w-100 mb-2">
+				                                <span class="price-symbol">EUR €</span><span id="totalPrice2"><?php echo $product["RecommendedRetailPrice"] ?></span>
 			                                </a>
 			                                <a href="#!" id="addCartButton" class="add-to-cart btn btn-primary btn-primary-custom w-100">Add to Cart</a>
 		                                </div>
