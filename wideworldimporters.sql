@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 07, 2018 at 10:04 PM
+-- Generation Time: Dec 09, 2018 at 09:50 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `wideworldimporters`
+-- Database: `wideworldimportersbackup`
 --
 
 DELIMITER $$
@@ -100,61 +100,6 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `colors`
---
-
-CREATE TABLE `colors` (
-	`ColorID` int(11) NOT NULL,
-	`ColorName` varchar(20) NOT NULL,
-	`ValidFrom` datetime NOT NULL,
-	`ValidTo` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `colors`
---
-
-INSERT INTO `colors` (`ColorID`, `ColorName`, `ValidFrom`, `ValidTo`) VALUES
-(1, 'Azure', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(2, 'Beige', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(3, 'Black', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(4, 'Blue', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(5, 'Charcoal', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(6, 'Chartreuse', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(7, 'Cyan', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(8, 'Dark Brown', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(9, 'Dark Green', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(10, 'Fuchsia', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(11, 'Gold', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(12, 'Steel Gray', '2016-01-01 16:00:00', '9999-12-31 23:59:59'),
-(13, 'Hot Pink', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(14, 'Indigo', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(15, 'Ivory', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(16, 'Khaki', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(17, 'Lavender', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(18, 'Light Brown', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(19, 'Light Green', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(20, 'Maroon', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(21, 'Mauve', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(22, 'Navy Blue', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(23, 'Olive', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(24, 'Orange', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(25, 'Plum', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(26, 'Puce', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(27, 'Purple', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(28, 'Red', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(29, 'Royal Blue', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(30, 'Salmon', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(31, 'Silver', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(32, 'Tan', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(33, 'Teal', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(34, 'Wheat', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(35, 'White', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(36, 'Yellow', '2013-01-01 00:00:00', '9999-12-31 23:59:59');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `invoicelines`
 --
 
@@ -175,7 +120,18 @@ INSERT INTO `invoicelines` (`InvoiceLineID`, `InvoiceID`, `StockItemID`, `Descri
 (51, 119, 2, 'USB rocket launcher (Gray)', 1),
 (52, 121, 1, 'USB missile launcher (Green)', 1),
 (53, 121, 3, 'Office cube periscope (Black)', 1),
-(54, 122, 4, 'USB food flash drive - sushi roll', 8);
+(54, 122, 4, 'USB food flash drive - sushi roll', 8),
+(55, 106, 2, 'USB rocket launcher (Gray)', 1),
+(56, 124, 1, 'USB missile launcher (Green)', 1),
+(57, 124, 2, 'USB rocket launcher (Gray)', 1),
+(58, 124, 3, 'Office cube periscope (Black)', 2),
+(59, 125, 1, 'USB missile launcher (Green)', 1),
+(60, 125, 2, 'USB rocket launcher (Gray)', 1),
+(61, 125, 3, 'Office cube periscope (Black)', 1),
+(62, 127, 1, 'USB missile launcher (Green)', 10),
+(63, 127, 2, 'USB rocket launcher (Gray)', 1),
+(64, 128, 1, 'USB missile launcher (Green)', 2),
+(65, 128, 2, 'USB rocket launcher (Gray)', 1);
 
 -- --------------------------------------------------------
 
@@ -322,67 +278,13 @@ INSERT INTO `invoices` (`InvoiceID`, `CustomerID`, `BillToCustomerID`, `InvoiceD
 (119, 2, 2, '2018-12-07', '13', 2, NULL, '2018-12-21 19:25:28', NULL, '2018-12-07 19:25:28'),
 (120, 2, 2, '2018-12-07', '14', 2, NULL, '2018-12-21 19:25:44', NULL, '2018-12-07 19:25:45'),
 (121, 2, 2, '2018-12-07', '15', 2, NULL, '2018-12-21 19:26:19', NULL, '2018-12-07 19:26:19'),
-(122, 2, 2, '2018-12-07', '16', 8, NULL, '2018-12-21 21:57:21', NULL, '2018-12-07 21:57:21');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `packagetypes`
---
-
-CREATE TABLE `packagetypes` (
-	`PackageTypeID` int(11) NOT NULL,
-	`PackageTypeName` varchar(50) NOT NULL,
-	`ValidFrom` datetime NOT NULL,
-	`ValidTo` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `packagetypes`
---
-
-INSERT INTO `packagetypes` (`PackageTypeID`, `PackageTypeName`, `ValidFrom`, `ValidTo`) VALUES
-(1, 'Bag', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(2, 'Block', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(3, 'Bottle', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(4, 'Box', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(5, 'Can', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(6, 'Carton', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(7, 'Each', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(8, 'Kg', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(9, 'Packet', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(10, 'Pair', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(11, 'Pallet', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(12, 'Tray', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(13, 'Tub ', '2013-01-01 00:00:00', '9999-12-31 23:59:59'),
-(14, 'Tube', '2013-01-01 00:00:00', '9999-12-31 23:59:59');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `specialdeals`
---
-
-CREATE TABLE `specialdeals` (
-	`SpecialDealID` int(11) NOT NULL,
-	`StockItemID` int(11) DEFAULT NULL,
-	`StockGroupID` int(11) DEFAULT NULL,
-	`DealDescription` varchar(30) NOT NULL,
-	`StartDate` date NOT NULL,
-	`EndDate` date NOT NULL,
-	`DiscountAmount` decimal(18,2) DEFAULT NULL,
-	`DiscountPercentage` decimal(18,3) DEFAULT NULL,
-	`UnitPrice` decimal(18,2) DEFAULT NULL,
-	`LastEditedWhen` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `specialdeals`
---
-
-INSERT INTO `specialdeals` (`SpecialDealID`, `StockItemID`, `StockGroupID`, `DealDescription`, `StartDate`, `EndDate`, `DiscountAmount`, `DiscountPercentage`, `UnitPrice`, `LastEditedWhen`) VALUES
-(1, 0, 7, '10% 1st qtr USB Wingtip', '2016-01-01', '2016-03-31', '0.00', '10.000', '0.00', '2015-12-31 16:00:00'),
-(2, 0, 7, '15% 2nd qtr USB Tailspin', '2016-04-01', '2016-06-30', '0.00', '15.000', '0.00', '2015-12-31 16:00:00');
+(122, 2, 2, '2018-12-07', '16', 8, NULL, '2018-12-21 21:57:21', NULL, '2018-12-07 21:57:21'),
+(123, 2, 2, '2018-12-07', '17', 6, NULL, '2018-12-21 22:28:23', NULL, '2018-12-07 22:28:24'),
+(124, 1, 1, '2018-12-07', '12', 4, NULL, '2018-12-21 22:28:57', NULL, '2018-12-07 22:28:57'),
+(125, 1, 1, '2018-12-09', '13', 3, NULL, '2018-12-23 17:02:58', NULL, '2018-12-09 17:02:59'),
+(126, 1, 1, '2018-12-09', '14', 3, NULL, '2018-12-23 17:03:03', NULL, '2018-12-09 17:03:03'),
+(127, 1, 1, '2018-12-09', '15', 11, NULL, '2018-12-23 20:40:43', NULL, '2018-12-09 20:40:43'),
+(128, 1, 1, '2018-12-09', '16', 3, NULL, '2018-12-23 20:47:32', NULL, '2018-12-09 20:47:32');
 
 -- --------------------------------------------------------
 
@@ -435,8 +337,8 @@ CREATE TABLE `stockitemholdings` (
 --
 
 INSERT INTO `stockitemholdings` (`StockItemID`, `QuantityOnHand`, `BinLocation`, `LastStocktakeQuantity`, `LastCostPrice`, `ReorderLevel`, `TargetStockLevel`, `LastEditedWhen`) VALUES
-(1, 175609, 'L-1', 171341, '9.50', 20, 100, '2016-05-31 07:00:00'),
-(2, 165538, 'L-1', 161435, '9.50', 20, 100, '2016-05-31 12:00:00'),
+(1, 175588, 'L-1', 171341, '9.50', 20, 100, '2016-05-31 07:00:00'),
+(2, 165536, 'L-1', 161435, '9.50', 20, 100, '2016-05-31 12:00:00'),
 (3, 253190, 'L-2', 246900, '11.25', 10, 120, '2016-05-31 12:00:00'),
 (4, 208109, 'L-3', 202964, '12.00', 5, 100, '2016-05-31 12:00:00'),
 (5, 199064, 'L-3', 194162, '12.00', 5, 100, '2016-05-31 12:00:00'),
@@ -1421,13 +1323,6 @@ INSERT INTO `useraccounts` (`CustomerID`, `Email`, `Password`, `FirstName`, `Las
 --
 
 --
--- Indexes for table `colors`
---
-ALTER TABLE `colors`
-	ADD PRIMARY KEY (`ColorID`),
-	ADD UNIQUE KEY `UQ_Warehouse_Colors_ColorName` (`ColorName`);
-
---
 -- Indexes for table `invoicelines`
 --
 ALTER TABLE `invoicelines`
@@ -1442,21 +1337,6 @@ ALTER TABLE `invoicelines`
 ALTER TABLE `invoices`
 	ADD PRIMARY KEY (`InvoiceID`),
 	ADD KEY `CustomerID` (`CustomerID`);
-
---
--- Indexes for table `packagetypes`
---
-ALTER TABLE `packagetypes`
-	ADD PRIMARY KEY (`PackageTypeID`),
-	ADD UNIQUE KEY `UQ_Warehouse_PackageTypes_PackageTypeName` (`PackageTypeName`);
-
---
--- Indexes for table `specialdeals`
---
-ALTER TABLE `specialdeals`
-	ADD PRIMARY KEY (`SpecialDealID`),
-	ADD KEY `FK_Sales_SpecialDeals_StockItemID` (`StockItemID`),
-	ADD KEY `FK_Sales_SpecialDeals_StockGroupID` (`StockGroupID`);
 
 --
 -- Indexes for table `stockgroups`
@@ -1503,13 +1383,13 @@ ALTER TABLE `useraccounts`
 -- AUTO_INCREMENT for table `invoicelines`
 --
 ALTER TABLE `invoicelines`
-	MODIFY `InvoiceLineID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+	MODIFY `InvoiceLineID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-	MODIFY `InvoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+	MODIFY `InvoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT for table `useraccounts`
