@@ -26,6 +26,12 @@
 							WHERE CustomerID = ?";
 					$this->db->run($sql, [$stockItem["product_id"], $stockItem["product_name"], $stockItem["product_quantity"], $_SESSION["user"]["user_id"]]);
 					$sql = null;
+
+					$sql = "UPDATE stockitemholdings
+							SET QuantityOnHand = QuantityOnHand - ?
+							WHERE StockItemID = ?";
+					$this->db->run($sql, [$stockItem["product_quantity"], $stockItem["product_id"]]);
+					$sql = null;
 				}
 			}
 
