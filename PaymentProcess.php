@@ -104,7 +104,7 @@
 				                <div class="sub-container br-10 my-auto mx-auto">
 					                <div class="card-bank-name br-10">
 						                <select class="custom-select" id="ideal-bank" required>
-							                <option selected>Kies uw bank</option>
+							                <option disabled selected hidden>Kies uw bank</option>
 							                <option value="abn_amro">ABN AMRO</option>
 							                <option value="asn_bank">ASN Bank</option>
 							                <option value="bunq">Bunq</option>
