@@ -17,11 +17,13 @@
 					ON SIG.StockGroupID = SG.StockGroupID";
 
 			if ($categoryId != 0) {
-				$sql .= " WHERE SG.StockGroupID = '$categoryId'";
+				$sql .= " WHERE SG.StockGroupID = ?";
+				$result = $this->db->run($sql, [$categoryId])->fetchAll();
+			} else {
+				$sql .= " GROUP BY SI.StockItemID LIMIT ?, ?";
+				$result = $this->db->run($sql, [$recordsFrom, $recordsPerPage])->fetchAll();
 			}
-			$sql .= " GROUP BY SI.StockItemID LIMIT $recordsFrom, $recordsPerPage";
-			
-			$result = $this->db->run($sql)->fetchAll();
+
 			$this->data = $result;
 		}
 

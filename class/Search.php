@@ -9,22 +9,24 @@
 		}
 
 		public function getProductsWith($name, $categoryId) {
-			//stockitemid moet uiteindelijk variabel zijn
+			$name = '%' . $name . '%';
+
 			$sql = "SELECT SI.StockItemID, SI.StockItemName, SI.SearchDetails, SI.RecommendedRetailPrice, SI.Photo
 				    FROM stockitems SI
 				    JOIN stockitemstockgroups SIG
 			        ON SI.StockItemID = SIG.StockItemID
 				    JOIN stockgroups SG
 				    ON SIG.StockGroupID = SG.StockGroupID
-				    WHERE SI.StockItemName LIKE '%$name%'";
+				    WHERE SI.StockItemName LIKE ?";
 
 			if ($categoryId != 0) {
-				$sql .= " AND SG.StockGroupID = '$categoryId'";
+				$sql .= " AND SG.StockGroupID = ? GROUP BY SI.StockItemID LIMIT 5";
+				$result = $this->db->run($sql, [$name, $categoryId])->fetchAll();
+			} else {
+				$sql    .= " GROUP BY SI.StockItemID LIMIT 5";
+				$result = $this->db->run($sql, [$name])->fetchAll();
 			}
 
-			$sql .= " GROUP BY SI.StockItemID LIMIT 5";
-
-			$result = $this->db->run($sql)->fetchAll();
 			$this->data = $result;
 		}
 	}
